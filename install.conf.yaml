@@ -2,4 +2,5 @@
 - link: 
     ~/.dotfiles: ''
     ~/.vimrc: vimrc
+    ~/.vim: vim
 - shell: []
