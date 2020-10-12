@@ -1,10 +1,16 @@
+" change the mapleader from \ to ,
+" NOTE: This has to be set before <leader> is used.
+let mapleader=","
+
+" source plugin config
 runtime coc.vim
 
-syntax on " turn on syntax highlighting
-autocmd vimenter * colorscheme gruvbox
+" theme settings
+syntax on
+colorscheme gruvbox
 set bg=dark
 
-set belloff=all
+set belloff=all " disable audio bell
 
 set showmatch " show matching braces when text indicator is over them
 
@@ -29,8 +35,6 @@ set incsearch " Enable incremental searching
 set number " Turn on line numbering
 set rnu
 
-" set backup " Turn on file backups
-
 set lbr " Don't line wrap mid-word.
 
 set autoindent " Copy the indentation from the current line.
@@ -52,10 +56,6 @@ set expandtab " Use spaces instead of tabs
 " Easily create HTML unorded lists. 
 " map <F3> i<ul><CR><Space><Space><li></li><CR><Esc>I</ul><Esc>kcit
 " map <F4> <Esc>o<li></li><Esc>cit
-
-" change the mapleader from \ to ,
-" NOTE: This has to be set before <leader> is used.
-" let mapleader=","
 
 " Quickly save your file.
 " map <leader>w :w!<cr>
