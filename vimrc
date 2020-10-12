@@ -4,6 +4,8 @@ syntax on " turn on syntax highlighting
 autocmd vimenter * colorscheme gruvbox
 set bg=dark
 
+set belloff=all
+
 set showmatch " show matching braces when text indicator is over them
 
 set history=1000 " Save 1,000 items in history
