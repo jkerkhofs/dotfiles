@@ -5,3 +5,6 @@
 [submodule "vim/pack/vendor/start/vim-airline"]
 	path = vim/pack/vendor/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
+[submodule "vim/pack/vendor/start/coc"]
+	path = vim/pack/vendor/start/coc
+	url = https://github.com/neoclide/coc.nvim
