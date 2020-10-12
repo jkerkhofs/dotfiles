@@ -1,6 +1,8 @@
 runtime coc.vim
 
 syntax on " turn on syntax highlighting
+autocmd vimenter * colorscheme gruvbox
+set bg=dark
 
 set showmatch " show matching braces when text indicator is over them
 
@@ -40,12 +42,6 @@ set expandtab " Use spaces instead of tabs
 " Make a tab equal to 4 spaces
 " set shiftwidth=4
 " set tabstop=4
-
-colorscheme slate " Specifiy a color scheme.
-
-" Tell vim what background you are using
-" set bg=light
-set bg=dark
 
 " map Y y$ " Map Y to act like D and C, i.e. yank until EOL, rather than act like yy
 
