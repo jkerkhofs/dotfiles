@@ -1,6 +1,7 @@
-- clean: ['~']
-- link: 
-    ~/.dotfiles: ''
+- clean: ["~"]
+- link:
+    ~/.dotfiles: ""
     ~/.vimrc: vimrc
     ~/.vim: vim
-- shell: []
+- shell:
+    - ./install-powerline-fonts

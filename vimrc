@@ -9,6 +9,7 @@ runtime coc.vim
 syntax on
 colorscheme gruvbox
 set bg=dark
+let g:airline_powerline_fonts = 1 " use the powerline symbols within Airline.
 
 set belloff=all " disable audio bell
 
