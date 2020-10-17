@@ -45,7 +45,7 @@ set hlsearch " Highlight search matches
 
 set incsearch " Enable incremental searching
 
-nnoremap <esc> :noh<return><esc>
+nnoremap <esc><esc> :noh<return><esc>
 
 " set ignorecase " Ignore case when searching
 
