@@ -1,3 +1,8 @@
+" General settings
+set nocompatible
+syntax enable
+filetype plugin on
+
 " change the mapleader from \ to ,
 " NOTE: This has to be set before <leader> is used.
 let mapleader=","
@@ -5,8 +10,19 @@ let mapleader=","
 " source plugin config
 runtime coc.vim
 
+let g:coc_global_extensions = [
+        \ 'coc-tsserver',
+        \ 'coc-eslint',
+        \ 'coc-prettier',
+        \ 'coc-html',
+        \ 'coc-css',
+        \ 'coc-json'
+  \ ]
+
+packadd! matchit " enable the matchit plugin (e.g. to find the matching html tags)
+
 " theme settings
-syntax on
+set termguicolors
 colorscheme gruvbox
 set bg=dark
 let g:airline_powerline_fonts = 1 " use the powerline symbols within Airline.
@@ -43,6 +59,14 @@ set autoindent " Copy the indentation from the current line.
 set smartindent " Enable smart autoindenting.
 
 set expandtab " Use spaces instead of tabs
+
+" FINDING FILES
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+" - Hit tab to :find by partial match
+" - Use * to make it fuzzy
+" - TIP: :b lets you autocomplete any open buffer
+" set path+=**
 
 " set smarttab " Enable smart tabs
 
