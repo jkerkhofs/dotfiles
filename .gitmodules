@@ -26,3 +26,6 @@
 [submodule "vim/pack/vendor/start/vim-repeat"]
 	path = vim/pack/vendor/start/vim-repeat
 	url = https://github.com/tpope/vim-repeat
+[submodule "vim/pack/vendor/start/vim-polyglot"]
+	path = vim/pack/vendor/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
