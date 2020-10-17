@@ -16,13 +16,15 @@ let g:coc_global_extensions = [
         \ 'coc-prettier',
         \ 'coc-html',
         \ 'coc-css',
-        \ 'coc-json'
+        \ 'coc-json',
+        \ 'coc-git'
   \ ]
 
 packadd! matchit " enable the matchit plugin (e.g. to find the matching html tags)
 
 " theme settings
 set termguicolors
+let g:gruvbox_sign_column = 'bg0'
 colorscheme gruvbox
 set bg=dark
 let g:airline_powerline_fonts = 1 " use the powerline symbols within Airline.

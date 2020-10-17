@@ -1,0 +1,7 @@
+{
+  "git.addedSign.hlGroup": "GruvboxGreenSign",
+  "git.changedSign.hlGroup": "GruvboxAquaSign",
+  "git.removedSign.hlGroup": "GruvboxRedSign",
+  "git.topRemovedSign.hlGroup": "GruvboxRedSign",
+  "git.changeRemovedSign.hlGroup": "GruvboxPurpleSign"
+}
