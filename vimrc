@@ -45,6 +45,8 @@ set hlsearch " Highlight search matches
 
 set incsearch " Enable incremental searching
 
+nnoremap <esc> :noh<return><esc>
+
 " set ignorecase " Ignore case when searching
 
 " set smartcase " Override the 'ignorecase' option if the search pattern contains upper case characters.
