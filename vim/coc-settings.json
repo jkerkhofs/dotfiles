@@ -3,5 +3,6 @@
   "git.changedSign.hlGroup": "GruvboxAquaSign",
   "git.removedSign.hlGroup": "GruvboxRedSign",
   "git.topRemovedSign.hlGroup": "GruvboxRedSign",
-  "git.changeRemovedSign.hlGroup": "GruvboxPurpleSign"
+  "git.changeRemovedSign.hlGroup": "GruvboxPurpleSign",
+  "explorer.icon.enableNerdfont": true
 }

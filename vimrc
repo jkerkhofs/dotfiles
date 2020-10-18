@@ -7,9 +7,6 @@ filetype plugin on
 " NOTE: This has to be set before <leader> is used.
 let mapleader=","
 
-" source plugin config
-runtime coc.vim
-
 let g:coc_global_extensions = [
         \ 'coc-tsserver',
         \ 'coc-eslint',
@@ -17,8 +14,12 @@ let g:coc_global_extensions = [
         \ 'coc-html',
         \ 'coc-css',
         \ 'coc-json',
-        \ 'coc-git'
+        \ 'coc-git',
+        \ 'coc-explorer'
   \ ]
+
+" source plugin config
+runtime coc.vim
 
 packadd! matchit " enable the matchit plugin (e.g. to find the matching html tags)
 
