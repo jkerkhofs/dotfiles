@@ -4,5 +4,6 @@
   "git.removedSign.hlGroup": "GruvboxRedSign",
   "git.topRemovedSign.hlGroup": "GruvboxRedSign",
   "git.changeRemovedSign.hlGroup": "GruvboxPurpleSign",
-  "explorer.icon.enableNerdfont": true
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false
 }
