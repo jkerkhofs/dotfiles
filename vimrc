@@ -1,3 +1,6 @@
+" TODO Clean up settings
+" TODO Consolidate coc.vim settings with vimrc
+
 " General settings
 set nocompatible
 syntax enable
@@ -47,6 +50,8 @@ set scrolloff=5 " Show a few lines of context around the cursor
 set hlsearch " Highlight search matches
 
 set incsearch " Enable incremental searching
+
+set backspace=indent,eol,start  " more powerful backspacing
 
 nnoremap <esc><esc> :noh<return><esc>
 
