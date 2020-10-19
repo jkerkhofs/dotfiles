@@ -1,1 +1,5 @@
 .netrwhist
+/tmp/swap/*
+/tmp/backup/*
+/tmp/undo/*
+!.gitkeep

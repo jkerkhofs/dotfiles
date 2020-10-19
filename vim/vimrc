@@ -11,6 +11,13 @@ set noswapfile
 " NOTE: This has to be set before <leader> is used.
 let mapleader=","
 
+set backup
+set backupdir=~/.vim/tmp/backup//
+set swapfile
+set directory=~/.vim/tmp/swap//
+set undofile
+set undodir=~/.vim/tmp/undo//
+
 let g:coc_global_extensions = [
         \ 'coc-tsserver',
         \ 'coc-eslint',
