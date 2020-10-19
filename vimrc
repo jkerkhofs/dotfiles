@@ -55,6 +55,8 @@ set incsearch " Enable incremental searching
 set backspace=indent,eol,start  " more powerful backspacing
 
 nnoremap <esc><esc> :noh<return><esc>
+nnoremap <leader>ve :execute "sp" resolve(expand("~/.vimrc"))<CR>
+nnoremap <leader>vv :source ~/.vimrc<CR>
 
 " set ignorecase " Ignore case when searching
 
