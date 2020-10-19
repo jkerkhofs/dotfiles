@@ -83,7 +83,7 @@ set wildignore+=*/build/*
 " - Hit tab to :find by partial match
 " - Use * to make it fuzzy
 " - TIP: :b lets you autocomplete any open buffer
-" set path+=**
+set path=.,**
 
 " set smarttab " Enable smart tabs
 
