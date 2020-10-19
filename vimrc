@@ -73,6 +73,8 @@ set smartindent " Enable smart autoindenting.
 
 set expandtab " Use spaces instead of tabs
 
+set wildignore+=*/node_modules/*
+
 " FINDING FILES
 " Search down into subfolders
 " Provides tab-completion for all file-related tasks
