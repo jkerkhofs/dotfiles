@@ -5,6 +5,7 @@
 set nocompatible
 syntax enable
 filetype plugin on
+set noswapfile
 
 " change the mapleader from \ to ,
 " NOTE: This has to be set before <leader> is used.
