@@ -74,6 +74,8 @@ set smartindent " Enable smart autoindenting.
 set expandtab " Use spaces instead of tabs
 
 set wildignore+=*/node_modules/*
+set wildignore+=*/public/*
+set wildignore+=*/build/*
 
 " FINDING FILES
 " Search down into subfolders
