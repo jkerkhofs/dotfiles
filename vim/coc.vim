@@ -52,6 +52,12 @@ nmap <leader>e :CocCommand explorer<CR>
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+" navigate chunks of current buffer
+nmap <silent> <leader>gc <Plug>(coc-git-nextchunk)
+nmap <silent> <leader>gC <Plug>(coc-git-prevchunk)
+" show chunk diff at current position
+nmap <silent> <leader>gi <Plug>(coc-git-chunkinfo)
+
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
