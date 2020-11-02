@@ -132,6 +132,17 @@ nnoremap <esc><esc> :noh<return><esc>
 nnoremap <leader>ve :execute "sp" resolve(expand("~/.vim/vimrc"))<CR>
 nnoremap <leader>vv :source ~/.vim/vimrc<CR>
 
+" quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" 'FZF' Mappings {{{
+nmap <silent> <leader>b :Buffers<CR>
+nmap <silent> <leader><space> :GFiles<CR>
+" }}}
+
 " 'CoC' Mappings {{{
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
