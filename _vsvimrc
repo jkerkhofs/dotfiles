@@ -1,0 +1,93 @@
+" General settings
+" ----------------
+let mapleader=","
+set incsearch
+set hlsearch
+set ignorecase
+set number
+set relativenumber
+set cursorline
+set vsvimcaret=50
+set vsvim_useeditorindent
+set vsvim_useeditordefaults
+set scrolloff=5
+set clipboard=unnamed
+
+nnoremap <leader>ve :e C:\Users\jke\.vsvimrc<cr>
+nnoremap <leader>vv :source C:\Users\jke\.vsvimrc<cr>
+
+" Write, close file
+nnoremap <leader>w :w<cr>
+nnoremap <leader>x :q<cr>
+
+" Clear search highlight
+nnoremap <esc><esc> :noh<cr>
+
+" Keep search results in the center of the screen
+" nnoremap n nzz
+" nnoremap N Nzz
+
+" Window movement (C-hjkl are mapped to arrows using karabiner-elements)
+nnoremap <left> <C-w>h
+nnoremap <down> <C-w>j
+nnoremap <up> <C-w>k
+nnoremap <right> <C-w>l
+
+" Navigation 
+nnoremap g[ :vsc Window.PreviousTab<cr>
+nnoremap g] :vsc Window.NextTab<cr>
+nnoremap <C-o> :vsc ReSharper.ReSharper_NavigateBackward<cr>
+nnoremap <C-i> :vsc ReSharper.ReSharper_NavigateForward<cr>
+nnoremap <leader><space> :vsc ReSharper.ReSharper_GotoRecentFiles<cr> 
+nnoremap <leader><leader> :vsc Window.QuickLaunch<cr>
+
+" Navigate by method
+nnoremap ] :vsc Edit.NextMethod<cr>
+nnoremap [ :vsc Edit.PreviousMethod<cr>
+nnoremap <leader>m :vsc ReSharper_GotoMethod<cr>
+
+" gd goes to definition by default
+nnoremap gp :vsc Edit.PeekDefinition<cr>
+nnoremap gr :vsc Edit.FindAllReferences<cr>
+nnoremap gi :vsc Edit.GoToImplementation<cr>
+nnoremap gb :vsc Edit.GoToBase<cr>
+nnoremap gh :vsc Edit.QuickInfo<cr>
+nnoremap gH :vsc Edit.ParameterInfo<cr>
+nnoremap gw :vsc Debug.QuickWatch<cr>
+
+" Refactorings
+nnoremap <leader>r :vsc ReSharper.ReSharper_Rename<cr>
+nnoremap <leader>a :vsc ReSharper_AltEnter<cr>
+nnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<cr>
+nnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<cr>
+vnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<cr>
+vnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<cr>
+
+" Formatting
+nnoremap <leader>f :vsc ReSharper.ReSharper_ReformatCode<cr>
+
+" Commenting
+nnoremap <leader>/ :vsc Edit.ToggleLineComment<cr>
+vnoremap <leader>/ :vsc Edit.ToggleLineComment<cr>
+
+" Build, debug & run
+nnoremap <Leader>B :vsc Build.BuildSolution<cr> :vsc View.Output<cr>
+nnoremap <Leader>D :vsc Debug.Start<cr> :vsc View.Output<cr>
+nnoremap <Leader>R :vsc Debug.StartWithoutDebugging<cr> :vsc View.Output<cr>
+nnoremap <leader>Q :vsc Debug.StopDebugging<cr>
+
+" Debugging
+nnoremap <leader>bp :vsc Debug.ToggleBreakpoint<cr>
+nnoremap <leader>tr :vsc ReSharper.ReSharper_UnitTestRunFromContext<cr>
+nnoremap <leader>td :vsc ReSharper.ReSharper_UnitTestDebugContext<cr>
+nnoremap <Leader>ts :vsc ReSharper.ReSharper_UnitTestRunSolution<cr>
+nnoremap <leader>j :vsc Debug.StepOver<cr>
+nnoremap <leader>l :vsc Debug.StepInto<cr>
+nnoremap <leader>h :vsc Debug.StepOut<cr>
+
+" Show/hide windows
+nnoremap <leader>e :vsc ReSharper.ReSharper_LocateInSolutionOrAssemblyExplorer<cr>
+nnoremap <C-w>e :vsc View.SolutionExplorer<cr>
+nnoremap <C-w>o :vsc View.Output<cr>
+nnoremap <C-w>t :vsc ReSharper.ReSharper_ShowUnitTestSessions<cr>
+nnoremap <C-w>g :vsc View.TfsTeamExplorer<cr>
