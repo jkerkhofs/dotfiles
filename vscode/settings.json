@@ -1,0 +1,151 @@
+{
+  // UI
+  "window.titleBarStyle": "native",
+  "window.zoomLevel": 0,
+  "customizeUI.titleBar": "frameless",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "One Monokai",
+  "workbench.editor.showTabs": false,
+  "workbench.activityBar.visible": false,
+
+  // Explorer
+  "explorer.autoReveal": false,
+
+  // Editor
+  "editor.cursorBlinking": "solid",
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "editor.linkedEditing": true,
+  "editor.cursorSurroundingLines": 5,
+
+  // Terminal
+  "terminal.external.osxExec": "iterm.app",
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "terminal.integrated.rendererType": "dom",
+  "terminal.integrated.fontFamily": "'MesloLGS NF'",
+
+  // Language
+  "prettier.printWidth": 120,
+  "html.format.wrapLineLength": 100,
+  "html.format.wrapAttributes": "aligned-multiple",
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "css.lint.duplicateProperties": "warning",
+  "scss.lint.duplicateProperties": "warning",
+  "csharpextensions.privateMemberPrefix": "_",
+  "csharpextensions.useThisForCtorAssignments": false,
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[html]": { "editor.defaultFormatter": "vscode.html-language-features" },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+  // VIM
+  "vim.smartRelativeLine": true,
+  "vim.leader": ",",
+  "vim.foldfix": true,
+  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "x"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "X"],
+      "commands": ["workbench.action.closeOtherEditors"]
+    },
+    {
+      "before": ["<esc>", "<esc>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["<leader>", "<space>"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "<leader>"],
+      "commands": ["workbench.action.showCommands"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine"]
+    },
+    {
+      "before": ["<leader>", "a"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["<leader>", "r"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["g", "p"],
+      "commands": ["editor.action.peekDefinition"]
+    },
+    {
+      "before": ["<C-w>", "e"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
+      "before": ["<C-w>", "E"],
+      "commands": ["workbench.view.extensions"]
+    },
+    {
+      "before": ["<C-w>", "f"],
+      "commands": ["workbench.view.search"]
+    },
+    {
+      "before": ["<C-w>", "g"],
+      "commands": ["workbench.scm.focus"]
+    },
+    {
+      "before": ["<C-w>", "n"],
+      "commands": ["notifications.focusToasts"]
+    },
+    {
+      "before": ["<leader>", "g", "d"],
+      "commands": ["git.openChange"]
+    },
+    {
+      "before": ["<leader>", "g", "f"],
+      "commands": ["git.openFile"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["<leader>", "<space>"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "<leader>"],
+      "commands": ["workbench.action.showCommands"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "x"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["editor.action.commentLine"]
+    },
+    {
+      "before": ["<leader>", "g", "s"],
+      "commands": ["git.stageSelectedRanges"]
+    }
+  ]
+}
