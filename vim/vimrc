@@ -64,14 +64,15 @@ set path=.,**
 "}}}
 
 " Theme settings {{{
-set termguicolors
-set bg=dark
-
 " Plugin theme settings {{{ 
 let g:gruvbox_sign_column = 'bg0'
 colorscheme gruvbox
 let g:airline_powerline_fonts = 1 " use the powerline symbols within Airline.
 " }}}
+
+set termguicolors
+set bg=dark
+highlight Normal guibg=NONE ctermbg=NONE
 " }}}
 
 " Backups {{{
