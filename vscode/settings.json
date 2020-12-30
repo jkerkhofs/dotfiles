@@ -1,5 +1,4 @@
 {
-  // UI
   "window.titleBarStyle": "native",
   "window.zoomLevel": 0,
   "customizeUI.titleBar": "frameless",
@@ -8,23 +7,19 @@
   "workbench.editor.showTabs": false,
   "workbench.activityBar.visible": false,
 
-  // Explorer
   "explorer.autoReveal": false,
 
-  // Editor
   "editor.cursorBlinking": "solid",
   "editor.tabSize": 2,
   "editor.minimap.enabled": false,
   "editor.linkedEditing": true,
   "editor.cursorSurroundingLines": 5,
 
-  // Terminal
   "terminal.external.osxExec": "iterm.app",
   "terminal.integrated.shell.osx": "/bin/zsh",
   "terminal.integrated.rendererType": "dom",
   "terminal.integrated.fontFamily": "'MesloLGS NF'",
 
-  // Language
   "prettier.printWidth": 120,
   "html.format.wrapLineLength": 100,
   "html.format.wrapAttributes": "aligned-multiple",
@@ -42,7 +37,6 @@
   "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
 
-  // VIM
   "vim.smartRelativeLine": true,
   "vim.leader": ",",
   "vim.foldfix": true,
