@@ -1,7 +1,7 @@
 {
   "window.titleBarStyle": "native",
   "window.zoomLevel": 0,
-  "customizeUI.titleBar": "frameless",
+  "customizeUI.titleBar": "inline",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "One Monokai",
   "workbench.editor.showTabs": false,
@@ -9,6 +9,7 @@
 
   "explorer.autoReveal": false,
 
+  "editor.accessibilitySupport": "off",
   "editor.cursorBlinking": "solid",
   "editor.tabSize": 2,
   "editor.minimap.enabled": false,
@@ -36,6 +37,10 @@
   "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
 
   "vim.smartRelativeLine": true,
   "vim.leader": ",",
@@ -141,5 +146,7 @@
       "before": ["<leader>", "g", "s"],
       "commands": ["git.stageSelectedRanges"]
     }
-  ]
+  ],
+  "tabnine.experimentalAutoImports": true,
+  "markdown.extension.preview.autoShowPreviewToSide": true
 }
