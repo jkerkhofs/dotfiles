@@ -3,22 +3,32 @@
   {
     "key": "left",
     "command": "workbench.action.focusLeftGroup",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus && vim.mode != 'Insert'"
+  },
+  {
+    "key": "left",
+    "command": "workbench.view.explorer",
+    "when": "editorTextFocus && vim.mode != 'Insert' && activeEditorGroupIndex == 1"
   },
   {
     "key": "right",
     "command": "workbench.action.focusRightGroup",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus && vim.mode != 'Insert'"
+  },
+  {
+    "key": "right",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "!editorTextFocus && !inputFocus && activeViewlet == 'workbench.view.explorer'"
   },
   {
     "key": "up",
     "command": "workbench.action.focusAboveGroup",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus && vim.mode != 'Insert'"
   },
   {
     "key": "down",
     "command": "workbench.action.focusBelowGroup",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus && vim.mode != 'Insert'"
   },
   {
     "key": "down",
@@ -61,11 +71,6 @@
     "when": "terminalFocus"
   },
   {
-    "key": "escape",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "sideBarVisible && vim.active && vim.mode == 'Normal'"
-  },
-  {
     "key": "ctrl+enter",
     "command": "workbench.action.terminal.toggleTerminal"
   },
@@ -75,8 +80,7 @@
     "when": "terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "space",
-    "command": "acceptSelectedSuggestion",
-    "when": "suggestWidgetVisible && textInputFocus"
+    "key": "alt+w",
+    "command": "workbench.action.switchWindow"
   }
 ]
