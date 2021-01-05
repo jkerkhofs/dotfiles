@@ -7,7 +7,7 @@
   },
   {
     "key": "left",
-    "command": "workbench.view.explorer",
+    "command": "workbench.action.focusSideBar",
     "when": "editorTextFocus && vim.mode != 'Insert' && activeEditorGroupIndex == 1"
   },
   {
@@ -18,7 +18,7 @@
   {
     "key": "right",
     "command": "workbench.action.focusActiveEditorGroup",
-    "when": "!editorTextFocus && !inputFocus && activeViewlet == 'workbench.view.explorer'"
+    "when": "!editorTextFocus && !inputFocus && explorerViewletFocus"
   },
   {
     "key": "up",
@@ -82,5 +82,15 @@
   {
     "key": "alt+w",
     "command": "workbench.action.switchWindow"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletFocus"
   }
 ]
