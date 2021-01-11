@@ -13,8 +13,8 @@ set vsvim_useeditordefaults
 set scrolloff=5
 set clipboard=unnamed
 
-nnoremap <leader>ve :e C:\Users\jke\.vsvimrc<cr>
-nnoremap <leader>vv :source C:\Users\jke\.vsvimrc<cr>
+nnoremap <leader>ve :e C:\Users\jke\_vsvimrc<cr>
+nnoremap <leader>vv :source C:\Users\jke\_vsvimrc<cr>
 
 " Write, close file
 nnoremap <leader>w :w<cr>
@@ -58,6 +58,7 @@ nnoremap gw :vsc Debug.QuickWatch<cr>
 " Refactorings
 nnoremap <leader>r :vsc ReSharper.ReSharper_Rename<cr>
 nnoremap <leader>a :vsc ReSharper_AltEnter<cr>
+nnoremap <leader>A :vsc ReSharper.ReSharper_RefactorThis<cr>
 nnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<cr>
 nnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<cr>
 vnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<cr>
@@ -78,6 +79,7 @@ nnoremap <leader>Q :vsc Debug.StopDebugging<cr>
 
 " Debugging
 nnoremap <leader>bp :vsc Debug.ToggleBreakpoint<cr>
+nnoremap <leader>tt :vsc ReSharper.ReSharper_UnitTestRunCurrentSession<cr>
 nnoremap <leader>tr :vsc ReSharper.ReSharper_UnitTestRunFromContext<cr>
 nnoremap <leader>td :vsc ReSharper.ReSharper_UnitTestDebugContext<cr>
 nnoremap <Leader>ts :vsc ReSharper.ReSharper_UnitTestRunSolution<cr>
