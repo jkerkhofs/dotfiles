@@ -73,6 +73,10 @@
       "commands": ["workbench.action.showCommands"]
     },
     {
+      "before": ["<leader>", "e"],
+      "commands": ["revealInExplorer"]
+    },
+    {
       "before": ["<leader>", "f"],
       "commands": ["editor.action.formatDocument"]
     },
@@ -83,6 +87,10 @@
     {
       "before": ["<leader>", "a"],
       "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["<leader>", "A"],
+      "commands": ["editor.action.refactor"]
     },
     {
       "before": ["<leader>", "r"],
@@ -119,6 +127,14 @@
     {
       "before": ["<leader>", "g", "f"],
       "commands": ["git.openFile"]
+    },
+    {
+      "before": ["g", "]"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["g", "["],
+      "commands": ["workbench.action.previousEditor"]
     }
   ],
   "vim.visualModeKeyBindings": [
