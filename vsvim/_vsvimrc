@@ -10,7 +10,7 @@ set cursorline
 set vsvimcaret=50
 set vsvim_useeditorindent
 set vsvim_useeditordefaults
-set scrolloff=5
+set scrolloff=10
 set clipboard=unnamed
 
 nnoremap <leader>ve :e C:\Users\jke\_vsvimrc<cr>
