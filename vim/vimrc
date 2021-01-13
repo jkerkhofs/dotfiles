@@ -38,7 +38,7 @@ set showcmd
 " Display completion matches on your status line
 set wildmenu 
 " Show a few lines of context around the cursor
-set scrolloff=5 
+set scrolloff=10 
 " Copy the indentation from the current line.
 set autoindent 
 " Enable smart autoindenting.

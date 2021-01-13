@@ -14,7 +14,7 @@
   "editor.tabSize": 2,
   "editor.minimap.enabled": false,
   "editor.linkedEditing": true,
-  "editor.cursorSurroundingLines": 5,
+  "editor.cursorSurroundingLines": 10,
 
   "terminal.external.osxExec": "iterm.app",
   "terminal.integrated.shell.osx": "/bin/zsh",
