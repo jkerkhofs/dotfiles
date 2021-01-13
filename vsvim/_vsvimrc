@@ -10,7 +10,7 @@ set cursorline
 set vsvimcaret=50
 set vsvim_useeditorindent
 set vsvim_useeditordefaults
-set scrolloff=5
+set scrolloff=10
 set clipboard=unnamed
 
 nnoremap <leader>ve :e C:\Users\jke\_vsvimrc<cr>
@@ -32,6 +32,8 @@ nnoremap <left> <C-w>h
 nnoremap <down> <C-w>j
 nnoremap <up> <C-w>k
 nnoremap <right> <C-w>l
+nnoremap <C-w>H :vsc Window.MoveToPreviousTabGroup<cr>
+nnoremap <C-w>L :vsc Window.MoveToNextTabGroup<cr>
 
 " Navigation 
 nnoremap g[ :vsc Window.PreviousTab<cr>
@@ -66,6 +68,7 @@ vnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<cr>
 
 " Formatting
 nnoremap <leader>f :vsc ReSharper.ReSharper_ReformatCode<cr>
+vnoremap <leader>f :vsc ReSharper.ReSharper_ReformatCode<cr>
 
 " Commenting
 nnoremap <leader>/ :vsc Edit.ToggleLineComment<cr>
