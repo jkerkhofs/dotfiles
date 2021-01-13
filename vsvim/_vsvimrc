@@ -66,6 +66,7 @@ vnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<cr>
 
 " Formatting
 nnoremap <leader>f :vsc ReSharper.ReSharper_ReformatCode<cr>
+vnoremap <leader>f :vsc ReSharper.ReSharper_ReformatCode<cr>
 
 " Commenting
 nnoremap <leader>/ :vsc Edit.ToggleLineComment<cr>
