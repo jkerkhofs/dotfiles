@@ -32,6 +32,8 @@ nnoremap <left> <C-w>h
 nnoremap <down> <C-w>j
 nnoremap <up> <C-w>k
 nnoremap <right> <C-w>l
+nnoremap <C-w>H :vsc Window.MoveToPreviousTabGroup<cr>
+nnoremap <C-w>L :vsc Window.MoveToNextTabGroup<cr>
 
 " Navigation 
 nnoremap g[ :vsc Window.PreviousTab<cr>
