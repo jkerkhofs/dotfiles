@@ -89,6 +89,7 @@ nnoremap <Leader>ts :vsc ReSharper.ReSharper_UnitTestRunSolution<cr>
 nnoremap <leader>j :vsc Debug.StepOver<cr>
 nnoremap <leader>l :vsc Debug.StepInto<cr>
 nnoremap <leader>h :vsc Debug.StepOut<cr>
+nnoremap <C-w>a :vsc Debug.Autos<cr>
 
 " Show/hide windows
 nnoremap <leader>e :vsc ReSharper.ReSharper_LocateInSolutionOrAssemblyExplorer<cr>
