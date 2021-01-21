@@ -3,7 +3,7 @@
   "window.zoomLevel": 0,
   "customizeUI.titleBar": "inline",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorTheme": "One Monokai",
   "workbench.editor.showTabs": false,
   "workbench.activityBar.visible": false,
 
