@@ -71,6 +71,16 @@
     "when": "terminalFocus"
   },
   {
+    "key": "up",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "down",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
     "key": "ctrl+enter",
     "command": "workbench.action.terminal.toggleTerminal"
   },
@@ -78,6 +88,11 @@
     "key": "shift+ctrl+\\",
     "command": "workbench.action.terminal.split",
     "when": "terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus"
   },
   {
     "key": "alt+w",
