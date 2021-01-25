@@ -38,8 +38,9 @@
   "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[markdown]": {
-    "editor.wordWrap": "on",
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+    "editor.wordWrapColumn": 100,
+    "editor.wordWrap": "bounded"
   },
 
   "vim.smartRelativeLine": true,
@@ -170,7 +171,5 @@
       "before": ["<leader>", "g", "s"],
       "commands": ["git.stageSelectedRanges"]
     }
-  ],
-  "tabnine.experimentalAutoImports": true,
-  "markdown.extension.preview.autoShowPreviewToSide": true
+  ]
 }
