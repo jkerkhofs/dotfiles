@@ -71,12 +71,12 @@
     "when": "terminalFocus"
   },
   {
-    "key": "up",
+    "key": "ctrl+u",
     "command": "workbench.action.terminal.focusPrevious",
     "when": "terminalFocus"
   },
   {
-    "key": "down",
+    "key": "ctrl+d",
     "command": "workbench.action.terminal.focusNext",
     "when": "terminalFocus"
   },
