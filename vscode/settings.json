@@ -6,8 +6,11 @@
   "workbench.colorTheme": "One Monokai",
   "workbench.editor.showTabs": false,
   "workbench.activityBar.visible": false,
+  "workbench.settings.editor": "json",
 
   "explorer.autoReveal": false,
+
+  "files.autoSave": "onFocusChange",
 
   "editor.accessibilitySupport": "off",
   "editor.cursorBlinking": "solid",
@@ -122,6 +125,10 @@
       "commands": ["notifications.focusToasts"]
     },
     {
+      "before": ["<C-w>", "d"],
+      "commands": ["workbench.debug.action.focusVariablesView"]
+    },
+    {
       "before": ["<leader>", "g", "d"],
       "commands": ["git.openChange"]
     },
@@ -144,6 +151,22 @@
     {
       "before": ["<C-w>", "L"],
       "commands": ["workbench.action.moveEditorToNextGroup"]
+    },
+    {
+      "before": ["<leader>", "b", "p"],
+      "commands": ["editor.debug.action.toggleBreakpoint"]
+    },
+    {
+      "before": ["<leader>", "j"],
+      "commands": ["workbench.action.debug.stepOver"]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "commands": ["workbench.action.debug.stepInto"]
+    },
+    {
+      "before": ["<leader>", "h"],
+      "commands": ["workbench.action.debug.stepOut"]
     }
   ],
   "vim.visualModeKeyBindings": [
@@ -170,6 +193,42 @@
     {
       "before": ["<leader>", "g", "s"],
       "commands": ["git.stageSelectedRanges"]
+    },
+    {
+      "before": ["<C-w>", "e"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
+      "before": ["<C-w>", "E"],
+      "commands": ["workbench.view.extensions"]
+    },
+    {
+      "before": ["<C-w>", "f"],
+      "commands": ["workbench.view.search"]
+    },
+    {
+      "before": ["<C-w>", "g"],
+      "commands": ["workbench.scm.focus"]
+    },
+    {
+      "before": ["<C-w>", "n"],
+      "commands": ["notifications.focusToasts"]
+    },
+    {
+      "before": ["<C-w>", "d"],
+      "commands": ["workbench.debug.action.focusVariablesView"]
+    },
+    {
+      "before": ["<leader>", "j"],
+      "commands": ["workbench.action.debug.stepOver"]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "commands": ["workbench.action.debug.stepInto"]
+    },
+    {
+      "before": ["<leader>", "h"],
+      "commands": ["workbench.action.debug.stepOut"]
     }
   ]
 }
