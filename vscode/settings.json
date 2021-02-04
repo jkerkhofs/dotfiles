@@ -197,6 +197,10 @@
       "commands": ["workbench.action.closeActiveEditor"]
     },
     {
+      "before": ["<leader>", "f"],
+      "commands": ["editor.action.formatSelection"]
+    },
+    {
       "before": ["<leader>", "/"],
       "commands": ["editor.action.commentLine"]
     },
