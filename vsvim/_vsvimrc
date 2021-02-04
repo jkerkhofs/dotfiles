@@ -49,8 +49,8 @@ nnoremap [m :vsc Edit.PreviousMethod<cr>
 nnoremap <leader>m :vsc ReSharper_GotoMethod<cr>
 
 " Navigate by errors
-nnoremap ]e :vsc View.NextError<cr>
-nnoremap [e :vsc View.PreviousError<cr>
+nnoremap ]e :vsc ReSharper.ReSharper_GotoNextErrorInSolution<cr>
+nnoremap [e :vsc ReSharper.ReSharper_GotoPrevErrorInSolution<cr>
 
 " gd goes to definition by default
 nnoremap gp :vsc Edit.PeekDefinition<cr>
