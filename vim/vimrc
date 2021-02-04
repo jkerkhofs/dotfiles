@@ -130,7 +130,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " }}}
 
 " Mappings {{{
-nnoremap <esc><esc> :noh<return><esc>
+nnoremap <leader><esc> :noh<return><esc>
 nnoremap <leader>ve :e ~/.vim/vimrc<CR>
 nnoremap <leader>vv :source ~/.vim/vimrc<CR>
 nnoremap <leader>w :w<CR>

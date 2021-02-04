@@ -1,4 +1,6 @@
 {
+  "telemetry.enableTelemetry": false,
+
   "window.titleBarStyle": "native",
   "window.zoomLevel": 0,
   "customizeUI.titleBar": "inline",
@@ -65,7 +67,7 @@
       "commands": ["workbench.action.closeOtherEditors"]
     },
     {
-      "before": ["<esc>", "<esc>"],
+      "before": ["<leader>", "<esc>"],
       "commands": [":nohl"]
     },
     {
@@ -137,11 +139,11 @@
       "commands": ["git.openFile"]
     },
     {
-      "before": ["g", "]"],
+      "before": ["]", "t"],
       "commands": ["workbench.action.nextEditor"]
     },
     {
-      "before": ["g", "["],
+      "before": ["[", "t"],
       "commands": ["workbench.action.previousEditor"]
     },
     {
@@ -167,6 +169,14 @@
     {
       "before": ["<leader>", "h"],
       "commands": ["workbench.action.debug.stepOut"]
+    },
+    {
+      "before": ["]", "e"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["[", "e"],
+      "commands": ["editor.action.marker.prev"]
     }
   ],
   "vim.visualModeKeyBindings": [

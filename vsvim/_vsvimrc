@@ -21,7 +21,7 @@ nnoremap <leader>w :w<cr>
 nnoremap <leader>x :q<cr>
 
 " Clear search highlight
-nnoremap <esc><esc> :noh<cr>
+nnoremap <leader><esc> :noh<cr>
 
 " Keep search results in the center of the screen
 " nnoremap n nzz
@@ -36,17 +36,21 @@ nnoremap <C-w>H :vsc Window.MoveToPreviousTabGroup<cr>
 nnoremap <C-w>L :vsc Window.MoveToNextTabGroup<cr>
 
 " Navigation 
-nnoremap g[ :vsc Window.PreviousTab<cr>
-nnoremap g] :vsc Window.NextTab<cr>
+nnoremap ]t :vsc Window.NextTab<cr>
+nnoremap [t :vsc Window.PreviousTab<cr>
 nnoremap <C-o> :vsc ReSharper.ReSharper_NavigateBackward<cr>
 nnoremap <C-i> :vsc ReSharper.ReSharper_NavigateForward<cr>
 nnoremap <leader><space> :vsc ReSharper.ReSharper_GotoRecentFiles<cr> 
 nnoremap <leader><leader> :vsc Window.QuickLaunch<cr>
 
 " Navigate by method
-nnoremap ] :vsc Edit.NextMethod<cr>
-nnoremap [ :vsc Edit.PreviousMethod<cr>
+nnoremap ]m :vsc Edit.NextMethod<cr>
+nnoremap [m :vsc Edit.PreviousMethod<cr>
 nnoremap <leader>m :vsc ReSharper_GotoMethod<cr>
+
+" Navigate by errors
+nnoremap ]e :vsc View.NextError<cr>
+nnoremap [e :vsc View.PreviousError<cr>
 
 " gd goes to definition by default
 nnoremap gp :vsc Edit.PeekDefinition<cr>
