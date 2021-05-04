@@ -135,6 +135,7 @@ nnoremap <leader>ve :e ~/.vim/vimrc<CR>
 nnoremap <leader>vv :source ~/.vim/vimrc<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>x :bd<CR>
+vnoremap y ygv<esc>
 
 " quicker window movement
 nnoremap <down> <C-w>j

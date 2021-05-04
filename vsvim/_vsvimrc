@@ -27,6 +27,9 @@ nnoremap <leader><esc> :noh<cr>
 " nnoremap n nzz
 " nnoremap N Nzz
 
+" Keep cursor at last position after yanking
+vnoremap y ygv<esc>
+  
 " Window movement (C-hjkl are mapped to arrows using karabiner-elements)
 nnoremap <left> <C-w>h
 nnoremap <down> <C-w>j

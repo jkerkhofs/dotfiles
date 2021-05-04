@@ -186,6 +186,10 @@
   ],
   "vim.visualModeKeyBindings": [
     {
+      "before": ["y"],
+      "after": ["y", "g", "v", "<esc>"]
+    },
+    {
       "before": ["<leader>", "<space>"],
       "commands": ["workbench.action.quickOpen"]
     },
