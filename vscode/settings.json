@@ -108,6 +108,10 @@
       "commands": ["editor.action.peekDefinition"]
     },
     {
+      "before": ["g", "r"],
+      "commands": ["references-view.findReferences"]
+    },
+    {
       "before": ["<C-w>", "e"],
       "commands": ["workbench.view.explorer"]
     },
