@@ -1,6 +1,10 @@
 // Place your key bindings in this file to override the defaults
 [
   {
+    "key": "ctrl+,",
+    "command": "workbench.action.focusFirstEditorGroup"
+  },
+  {
     "key": "left",
     "command": "workbench.action.focusLeftGroup",
     "when": "editorTextFocus && vim.mode != 'Insert'"
