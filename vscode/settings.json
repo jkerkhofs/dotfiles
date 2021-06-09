@@ -3,13 +3,12 @@
 
   "window.titleBarStyle": "native",
   "window.zoomLevel": 0,
-  "customizeUI.titleBar": "inline",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "One Monokai",
   "workbench.editor.showTabs": false,
-  "workbench.activityBar.visible": false,
   "workbench.settings.editor": "json",
   "workbench.list.keyboardNavigation": "filter",
+  "workbench.activityBar.visible": false,
 
   "explorer.autoReveal": false,
 
@@ -23,8 +22,7 @@
   "editor.cursorSurroundingLines": 10,
 
   "terminal.external.osxExec": "iterm.app",
-  "terminal.integrated.shell.osx": "/bin/zsh",
-  "terminal.integrated.rendererType": "dom",
+  "terminal.integrated.defaultProfile.osx": "/bin/zsh",
   "terminal.integrated.fontFamily": "'MesloLGS NF'",
 
   "prettier.printWidth": 120,

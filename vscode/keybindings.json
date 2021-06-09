@@ -5,6 +5,11 @@
     "command": "workbench.action.focusFirstEditorGroup"
   },
   {
+    "key": "space",
+    "command": "workbench.action.focusNextGroup",
+    "when": "editorTextFocus && vim.mode != 'Insert'"
+  },
+  {
     "key": "left",
     "command": "workbench.action.focusLeftGroup",
     "when": "editorTextFocus && vim.mode != 'Insert'"
@@ -99,10 +104,6 @@
     "when": "terminalFocus"
   },
   {
-    "key": "alt+w",
-    "command": "workbench.action.switchWindow"
-  },
-  {
     "key": "ctrl+n",
     "command": "explorer.newFile",
     "when": "explorerViewletFocus"
@@ -111,5 +112,13 @@
     "key": "ctrl+shift+n",
     "command": "explorer.newFolder",
     "when": "explorerViewletFocus"
+  },
+  {
+    "key": "alt+w",
+    "command": "workbench.action.switchWindow"
+  },
+  {
+    "key": "alt+b",
+    "command": "workbench.action.toggleSidebarVisibility",
   }
 ]
