@@ -78,6 +78,10 @@
       "commands": ["workbench.action.showCommands"]
     },
     {
+      "before": ["<space>"],
+      "after": ["<C-w>", "w"]
+    },
+    {
       "before": ["<leader>", "e"],
       "commands": ["revealInExplorer"]
     },
@@ -194,6 +198,10 @@
     {
       "before": ["<leader>", "<leader>"],
       "commands": ["workbench.action.showCommands"]
+    },
+    {
+      "before": ["<space>"],
+      "after": ["<C-w>", "w"]
     },
     {
       "before": ["<leader>", "w"],

@@ -5,11 +5,6 @@
     "command": "workbench.action.focusFirstEditorGroup"
   },
   {
-    "key": "space",
-    "command": "workbench.action.focusNextGroup",
-    "when": "editorTextFocus && vim.mode != 'Insert'"
-  },
-  {
     "key": "left",
     "command": "workbench.action.focusLeftGroup",
     "when": "editorTextFocus && vim.mode != 'Insert'"
