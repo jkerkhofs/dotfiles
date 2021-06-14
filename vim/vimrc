@@ -190,8 +190,8 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " navigate chunks of current buffer
-nmap <silent> <leader>gc <Plug>(coc-git-nextchunk)
-nmap <silent> <leader>gC <Plug>(coc-git-prevchunk)
+nmap <silent> ]c <Plug>(coc-git-nextchunk)
+nmap <silent> [c <Plug>(coc-git-prevchunk)
 " show chunk diff at current position
 nmap <silent> <leader>gi <Plug>(coc-git-chunkinfo)
 
