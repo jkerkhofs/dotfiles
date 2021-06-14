@@ -22,7 +22,7 @@
   "editor.cursorSurroundingLines": 10,
 
   "terminal.external.osxExec": "iterm.app",
-  "terminal.integrated.defaultProfile.osx": "/bin/zsh",
+  "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.fontFamily": "'MesloLGS NF'",
 
   "prettier.printWidth": 120,
