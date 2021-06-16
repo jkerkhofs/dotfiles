@@ -38,3 +38,6 @@
 [submodule "vim/pack/vendor/start/tcomment"]
 	path = vim/pack/vendor/start/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
+[submodule "vim/pack/vendor/start/vim-closetag"]
+	path = vim/pack/vendor/start/vim-closetag
+	url = https://github.com/alvan/vim-closetag.git

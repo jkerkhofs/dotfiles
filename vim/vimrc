@@ -89,6 +89,11 @@ packadd! matchit " enable the matchit plugin (e.g. to find the matching html tag
 " }}}
 
 " 3rd party plugins {{{
+
+" 'vim-closetag' {{{
+let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact'
+let g:closetag_close_shortcut = '<leader>>'
+
 " 'CoC' {{{
 let g:coc_global_extensions = [
         \ 'coc-tsserver',
