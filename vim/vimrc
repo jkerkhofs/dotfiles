@@ -87,11 +87,11 @@ set undodir=~/.vim/tmp/undo//
 " }}}
 
 " Mappings {{{
-nnoremap <leader><esc> :noh<return><esc>
 nnoremap <leader>ve :e ~/.vim/vimrc<CR>
 nnoremap <leader>vv :source ~/.vim/vimrc<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>x :bd<CR>
+nnoremap <leader><esc> :noh<CR>
 
 " place cursor at the end after yanking selection
 vnoremap y ygv<esc>
