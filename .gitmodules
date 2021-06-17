@@ -44,3 +44,6 @@
 [submodule "vim/pack/vendor/start/javascript"]
 	path = vim/pack/vendor/start/javascript
 	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/pack/vendor/start/vim-move"]
+	path = vim/pack/vendor/start/vim-move
+	url = https://github.com/matze/vim-move.git
