@@ -41,3 +41,6 @@
 [submodule "vim/pack/vendor/start/graphql"]
 	path = vim/pack/vendor/start/graphql
 	url = https://github.com/jparise/vim-graphql.git
+[submodule "vim/pack/vendor/start/javascript"]
+	path = vim/pack/vendor/start/javascript
+	url = https://github.com/pangloss/vim-javascript.git
