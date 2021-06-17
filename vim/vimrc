@@ -86,15 +86,41 @@ set undofile
 set undodir=~/.vim/tmp/undo//
 " }}}
 
+" Mappings {{{
+nnoremap <leader><esc> :noh<return><esc>
+nnoremap <leader>ve :e ~/.vim/vimrc<CR>
+nnoremap <leader>vv :source ~/.vim/vimrc<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>x :bd<CR>
+
+" place cursor at the end after yanking selection
+vnoremap y ygv<esc>
+
+" quicker window movement
+nnoremap <down> <C-w>j
+nnoremap <up> <C-w>k
+nnoremap <left> <C-w>h
+nnoremap <right> <C-w>l
+nnoremap <space> <C-w>w
+
+" line(s) movement
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+" }}}
+
 " Native plugins {{{ 
 packadd! matchit " enable the matchit plugin (e.g. to find the matching html tags)
 " }}}
 
 " 3rd party plugins {{{
-
 " 'vim-closetag' {{{
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact'
 let g:closetag_close_shortcut = '<leader>>'
+" }}}
 
 " 'CoC' {{{
 let g:coc_global_extensions = [
@@ -136,31 +162,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " }}}
 " }}}
 
-" Mappings {{{
-nnoremap <leader><esc> :noh<return><esc>
-nnoremap <leader>ve :e ~/.vim/vimrc<CR>
-nnoremap <leader>vv :source ~/.vim/vimrc<CR>
-nnoremap <leader>w :w<CR>
-nnoremap <leader>x :bd<CR>
-
-" place cursor at the end after yanking selection
-vnoremap y ygv<esc>
-
-" quicker window movement
-nnoremap <down> <C-w>j
-nnoremap <up> <C-w>k
-nnoremap <left> <C-w>h
-nnoremap <right> <C-w>l
-nnoremap <space> <C-w>w
-
-" line(s) movement
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <Esc>:m .+1<CR>==gi
-inoremap <A-k> <Esc>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv=gv
-vnoremap <A-k> :m '<-2<CR>gv=gv
-
+" 3rd party plugin mappings {{{
 " 'tcomment' Mappings {{{
 map <silent> <leader>/ :TComment<CR>
 " }}}
