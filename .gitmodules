@@ -47,3 +47,6 @@
 [submodule "vim/pack/vendor/start/vim-move"]
 	path = vim/pack/vendor/start/vim-move
 	url = https://github.com/matze/vim-move.git
+[submodule "vim/pack/vendor/start/vim-bufkill"]
+	path = vim/pack/vendor/start/vim-bufkill
+	url = https://github.com/qpkorr/vim-bufkill.git
