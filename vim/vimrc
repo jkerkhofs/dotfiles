@@ -90,7 +90,6 @@ set undodir=~/.vim/tmp/undo//
 nnoremap <leader>ve :e ~/.vim/vimrc<CR>
 nnoremap <leader>vv :source ~/.vim/vimrc<CR>
 nnoremap <leader>w :w<CR>
-nnoremap <leader>Q :q<CR>
 nnoremap <leader><esc> :noh<CR>
 
 " place cursor at the end after yanking selection
