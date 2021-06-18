@@ -108,6 +108,10 @@ packadd! matchit " enable the matchit plugin (e.g. to find the matching html tag
 " }}}
 
 " 3rd party plugins {{{
+" tcomment {{{
+let g:tcomment#filetype#guess = 1
+" }}}
+
 " 'vim-closetag' {{{
 let g:closetag_filetypes = 'html,xhtml,phtml,javascript,javascriptreact'
 let g:closetag_close_shortcut = '<leader>>'
