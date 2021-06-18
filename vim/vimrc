@@ -11,9 +11,9 @@ set number
 set rnu
 " Use spaces instead of tabs
 set expandtab 
-set tabstop=4
+set tabstop=2
 set shiftwidth=2
-set softtabstop=4
+set softtabstop=2
 " Don't line wrap mid-word.
 set lbr 
 " Give more space for displaying messages.
