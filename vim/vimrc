@@ -101,6 +101,10 @@ nnoremap <up> <C-w>k
 nnoremap <left> <C-w>h
 nnoremap <right> <C-w>l
 nnoremap <space> <C-w>w
+
+" easier grep searching in project
+command! -nargs=+ Grep execute 'silent grep! -R -F <args>' | cw 25
+nnoremap <leader>gr :Grep<space>
 " }}}
 
 " Native plugins {{{ 
