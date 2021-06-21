@@ -23,6 +23,8 @@ set cmdheight=2
 set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
+" Don't show the intro
+set shortmess+=I
 " more powerful backspacing
 set backspace=indent,eol,start  
 " disable audio bell
@@ -43,6 +45,10 @@ set scrolloff=10
 set autoindent 
 " Enable smart autoindenting.
 set smartindent 
+" Open vertical splits right of the current one.
+set splitright
+" Open horizontal splits below the current one.
+set splitbelow
 
 " Searching {{{
 " Highlight search matches
@@ -102,9 +108,17 @@ nnoremap <left> <C-w>h
 nnoremap <right> <C-w>l
 nnoremap <space> <C-w>w
 
+" navigating tabs
+nnoremap <silent> ]t :tabprevious<CR>
+nnoremap <silent> [t :tabnext<CR>
+
 " easier grep searching in project
-command! -nargs=+ Grep execute 'silent grep! -R -F <args>' | cw 25
+command! -nargs=+ Grep execute 'silent grep! -R -F <args>' | cw 20
 nnoremap <leader>gr :Grep<space>
+
+" Navigating quickfix list
+nnoremap <silent> <C-J> :cnext<CR>
+nnoremap <silent> <C-K> :cprevious<CR>
 " }}}
 
 " Native plugins {{{ 
@@ -137,7 +151,8 @@ let g:coc_global_extensions = [
         \ 'coc-git',
         \ 'coc-explorer',
         \ 'coc-markdownlint',
-        \ 'coc-snippets'
+        \ 'coc-snippets',
+        \ 'coc-pairs'
   \ ]
 
 " Use tab and shift tab to jump through snippet
@@ -154,12 +169,6 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
@@ -212,14 +221,14 @@ nmap <silent> <leader>e :CocCommand explorer<CR>
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
 
 " navigate chunks of current buffer
-nmap <silent> ]c <Plug>(coc-git-nextchunk)
-nmap <silent> [c <Plug>(coc-git-prevchunk)
+nmap <silent> ]g <Plug>(coc-git-nextchunk)
+nmap <silent> [g <Plug>(coc-git-prevchunk)
 " show chunk diff at current position
-nmap <silent> <leader>gi <Plug>(coc-git-chunkinfo)
+nmap <silent> <leader>gh <Plug>(coc-git-chunkinfo)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -251,9 +260,6 @@ xmap <leader>f  <Plug>(coc-format-selected)
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-cursor)
 
-" Apply AutoFix to problem on the current line.
-" nmap <leader>qf  <Plug>(coc-fix-current)
-
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
@@ -272,21 +278,21 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Mappings for CoCList
 " Show all diagnostics.
-" nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>cd  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <leader>ce  :<C-u>CocList extensions<cr>
 " Show commands.
-" nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-" nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-" nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-" nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent> <leader>cj  :<C-u>CocNext<CR>
 " Do default action for previous item.
-" nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <leader>ck  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-" nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <leader>c<space>  :<C-u>CocListResume<CR>
 " }}}
 " }}}
 
