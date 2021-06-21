@@ -2,6 +2,8 @@
 - link:
     ~/.dotfiles: ""
     ~/.vim: vim
+    ~/.config/nvim/init.vim: nvim/init.vim
+    ~/.config/nvim/coc-settings.json: ~/.vim/coc-settings.json
     ~/Library/ApplicationSupport/Code/User/settings.json: vscode/settings.json
     ~/Library/ApplicationSupport/Code/User/keybindings.json: vscode/keybindings.json
 - shell:
