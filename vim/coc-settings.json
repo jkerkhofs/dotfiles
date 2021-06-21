@@ -6,6 +6,7 @@
   "git.changeRemovedSign.hlGroup": "GruvboxPurpleSign",
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
+  "prettier.printWidth": 120,
   "snippets.extends": {
     "javascriptreact": ["javascript"]
   }
