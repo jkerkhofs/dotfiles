@@ -50,3 +50,6 @@
 [submodule "vim/pack/vendor/start/vim-bufkill"]
 	path = vim/pack/vendor/start/vim-bufkill
 	url = https://github.com/qpkorr/vim-bufkill.git
+[submodule "vim/pack/vendor/start/vim-snippets"]
+	path = vim/pack/vendor/start/vim-snippets
+	url = https://github.com/honza/vim-snippets.git

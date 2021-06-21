@@ -5,5 +5,8 @@
   "git.topRemovedSign.hlGroup": "GruvboxRedSign",
   "git.changeRemovedSign.hlGroup": "GruvboxPurpleSign",
   "explorer.icon.enableNerdfont": true,
-  "explorer.previewAction.onHover": false
+  "explorer.previewAction.onHover": false,
+  "snippets.extends": {
+    "javascriptreact": ["javascript"]
+  }
 }
