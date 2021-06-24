@@ -9,5 +9,6 @@
   "prettier.printWidth": 120,
   "snippets.extends": {
     "javascriptreact": ["javascript"]
-  }
+  },
+  "javascript.suggestionActions.enabled": false
 }
