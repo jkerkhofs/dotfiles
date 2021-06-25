@@ -103,10 +103,11 @@ nnoremap <leader><esc> :noh<CR>
 " place cursor at the end after yanking selection
 vnoremap y ygv<esc>
 
-" quicker window movement
+" quicker window movement. 
+" Note: C-hjkl are mapped to left/down/up/right at OS level.
+nnoremap <left> <C-w>h
 nnoremap <down> <C-w>j
 nnoremap <up> <C-w>k
-nnoremap <left> <C-w>h
 nnoremap <right> <C-w>l
 nnoremap <space> <C-w>w
 
