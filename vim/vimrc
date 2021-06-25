@@ -49,6 +49,8 @@ set smartindent
 set splitright
 " Open horizontal splits below the current one.
 set splitbelow
+" Enable mouse support
+set mouse=nv
 
 " Searching {{{
 " Highlight search matches
