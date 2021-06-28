@@ -60,8 +60,10 @@ set incsearch
 set wildignore+=*/node_modules/*
 set wildignore+=*/public/*
 set wildignore+=*/build/*
-" set ignorecase " Ignore case when searching
-" set smartcase " Override the 'ignorecase' option if the search pattern contains upper case characters.
+" Ignore case when searching
+set ignorecase
+" Override the 'ignorecase' option if the search pattern contains upper case characters.
+set smartcase
 " Search down into subfolders
 " - Provides tab-completion for all file-related tasks
 " - Hit tab to :find by partial match
