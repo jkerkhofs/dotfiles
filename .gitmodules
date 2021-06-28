@@ -11,9 +11,6 @@
 [submodule "vim/pack/vendor/start/vim-jsx-pretty"]
 	path = vim/pack/vendor/start/vim-jsx-pretty
 	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
-[submodule "vim/pack/vendor/start/gruvbox"]
-	path = vim/pack/vendor/start/gruvbox
-	url = https://github.com/gruvbox-community/gruvbox.git
 [submodule "vim/pack/vendor/start/vim-airline-themes"]
 	path = vim/pack/vendor/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
@@ -56,3 +53,6 @@
 [submodule "vim/pack/vendor/start/yats"]
 	path = vim/pack/vendor/start/yats
 	url = https://github.com/HerringtonDarkholme/yats.vim.git
+[submodule "vim/pack/vendor/start/gruvbox-material"]
+	path = vim/pack/vendor/start/gruvbox-material
+	url = https://github.com/sainnhe/gruvbox-material.git
