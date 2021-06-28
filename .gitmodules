@@ -8,9 +8,6 @@
 [submodule "vim/pack/vendor/start/coc"]
 	path = vim/pack/vendor/start/coc
 	url = https://github.com/neoclide/coc.nvim
-[submodule "vim/pack/vendor/start/vim-jsx-pretty"]
-	path = vim/pack/vendor/start/vim-jsx-pretty
-	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
 [submodule "vim/pack/vendor/start/vim-airline-themes"]
 	path = vim/pack/vendor/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
@@ -38,9 +35,6 @@
 [submodule "vim/pack/vendor/start/graphql"]
 	path = vim/pack/vendor/start/graphql
 	url = https://github.com/jparise/vim-graphql.git
-[submodule "vim/pack/vendor/start/javascript"]
-	path = vim/pack/vendor/start/javascript
-	url = https://github.com/pangloss/vim-javascript.git
 [submodule "vim/pack/vendor/start/vim-move"]
 	path = vim/pack/vendor/start/vim-move
 	url = https://github.com/matze/vim-move.git
@@ -56,3 +50,12 @@
 [submodule "vim/pack/vendor/start/gruvbox-material"]
 	path = vim/pack/vendor/start/gruvbox-material
 	url = https://github.com/sainnhe/gruvbox-material.git
+[submodule "vim/pack/vendor/start/vim-javascript"]
+	path = vim/pack/vendor/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/pack/vendor/start/vim-jsx"]
+	path = vim/pack/vendor/start/vim-jsx
+	url = https://github.com/mxw/vim-jsx.git
+[submodule "vim/pack/vendor/start/vim-xml"]
+	path = vim/pack/vendor/start/vim-xml
+	url = https://github.com/amadeus/vim-xml.git
