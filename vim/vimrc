@@ -87,6 +87,9 @@ let g:airline_powerline_fonts = 1 " use the powerline symbols within Airline.
 set termguicolors
 set bg=dark
 highlight Normal guibg=NONE ctermbg=NONE
+
+" match html tag and endTag colors
+hi link htmlTag htmlEndTag
 " }}}
 
 " Backups {{{
