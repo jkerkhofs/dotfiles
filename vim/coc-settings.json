@@ -8,7 +8,8 @@
   "explorer.previewAction.onHover": false,
   "prettier.printWidth": 100,
   "snippets.extends": {
-    "javascriptreact": ["javascript"]
+    "javascriptreact": ["javascript"],
+    "scss": ["css"]
   },
   "javascript.suggestionActions.enabled": false
 }
