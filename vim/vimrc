@@ -136,6 +136,10 @@ packadd! matchit " enable the matchit plugin (e.g. to find the matching html tag
 " }}}
 
 " 3rd party plugins {{{
+" vim-jsx {{{
+let g:jsx_ext_required = 1
+" }}}
+
 " tcomment {{{
 let g:tcomment#filetype#guess = 1
 " Don't guess for scss because otherwise toggle doesn't work correctly
