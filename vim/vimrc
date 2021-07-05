@@ -87,9 +87,6 @@ let g:airline_powerline_fonts = 1 " use the powerline symbols within Airline.
 set termguicolors
 set bg=dark
 highlight Normal guibg=NONE ctermbg=NONE
-
-" match html tag and endTag colors
-hi link htmlTag htmlEndTag
 " }}}
 
 " Backups {{{
@@ -136,14 +133,31 @@ packadd! matchit " enable the matchit plugin (e.g. to find the matching html tag
 " }}}
 
 " 3rd party plugins {{{
-" vim-jsx {{{
-let g:jsx_ext_required = 1
-" }}}
-
-" tcomment {{{
-let g:tcomment#filetype#guess = 1
-" Don't guess for scss because otherwise toggle doesn't work correctly
-let g:tcomment#filetype#guess_scss = 0
+" {{{ Treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+  indent = {
+    enable = false,
+    disable = {},
+  },
+  ensure_installed = {
+    "javascript",
+    "typescript",
+    "tsx",
+    "json",
+    "html",
+    "css",
+    "scss"
+  },
+  context_commentstring = {
+    enable = true
+  },
+}
+EOF
 " }}}
 
 " 'vim-closetag' {{{
@@ -197,8 +211,9 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " }}}
 
 " 3rd party plugin mappings {{{
-" 'tcomment' Mappings {{{
-map <silent> <leader>/ :TComment<CR>
+" 'vim-commentary' Mappings {{{
+nmap <silent> <leader>/ gcc
+vmap <silent> <leader>/ gc
 " }}}
 
 " 'FZF' Mappings {{{
