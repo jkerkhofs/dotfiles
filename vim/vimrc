@@ -119,8 +119,8 @@ nnoremap <right> <C-w>l
 nnoremap <space> <C-w>w
 
 " navigating tabs
-nnoremap <silent> ]t :tabprevious<CR>
-nnoremap <silent> [t :tabnext<CR>
+nnoremap <silent> ]t :tabnext<CR>
+nnoremap <silent> [t :tabprevious<CR>
 
 " easier grep searching in project
 command! -nargs=+ Grep execute 'silent grep! -R -F <args>' | cw 20
