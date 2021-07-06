@@ -5,11 +5,14 @@ end
 
 local ts = require 'nvim-treesitter.configs'
 ts.setup {
-  ensure_installed = 'maintained', 
+  ensure_installed = 'maintained',
   highlight = {
     enable = true
   },
   context_commentstring = {
     enable = true
+  },
+  autotag = {
+    enable = true,
   }
 }

@@ -1,5 +1,4 @@
 if not vim.g.loaded_compe then
-  print("Compe is not loaded")
   return
 end
 

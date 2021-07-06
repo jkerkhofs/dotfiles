@@ -95,7 +95,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader><esc> :noh<CR>
 
 " Open file explorer
-map <silent> <leader>e :Lexplore<CR>
+nmap <silent> <leader>e :Lexplore<CR>
 
 " place cursor at the end after yanking selection
 vnoremap y ygv<esc>
@@ -140,33 +140,44 @@ endif
 
 call plug#begin()
 
-" Theme
-Plug 'sainnhe/gruvbox-material'
-
-" Git
-Plug 'tpope/vim-fugitive'
-
-" Line/block movements with A-hjkl
-Plug 'matze/vim-move'
+Plug 'sainnhe/gruvbox-material' "Theme
+Plug 'tpope/vim-fugitive' "Git 
+Plug 'matze/vim-move' "Line/block movements with A-hjkl
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 if has("nvim")
+  " Lualine
+  Plug 'hoob3rt/lualine.nvim'
+
   " Treesitter
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'nvim-treesitter/playground'
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+  Plug 'windwp/nvim-ts-autotag'
 
   " Commenting
   Plug 'tpope/vim-commentary'
 
   " LSP
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'kabouzeid/nvim-lspinstall'
-  Plug 'hrsh7th/nvim-compe'
+  " Plug 'neovim/nvim-lspconfig'
+  " Plug 'kabouzeid/nvim-lspinstall'
+  " Plug 'hrsh7th/nvim-compe'
+
+  " CoC
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+  " Snippets
+  Plug 'honza/vim-snippets'
 
   " Telescope
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+
+  " File explorer
+  Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  Plug 'kyazdani42/nvim-tree.lua'
 endif
 
 call plug#end()
