@@ -2,4 +2,6 @@
 /tmp/swap/*
 /tmp/backup/*
 /tmp/undo/*
+/autoload/
+/plugged/
 !.gitkeep
