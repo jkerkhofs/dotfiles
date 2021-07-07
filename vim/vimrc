@@ -89,7 +89,7 @@ set directory=~/.vim/tmp/swap//
 " }}}
 
 " Mappings {{{
-nnoremap <leader>ve :e ~/.vim/.vimrc<CR>
+nnoremap <leader>ve :e ~/.vim/vimrc<CR>
 nnoremap <leader>vv :source ~/.vim/vimrc<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader><esc> :noh<CR>
