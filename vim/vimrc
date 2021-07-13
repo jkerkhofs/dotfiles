@@ -94,8 +94,10 @@ nnoremap <leader>vv :source ~/.vim/vimrc<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader><esc> :noh<CR>
 
-" Open file explorer
-nmap <silent> <leader>e :Lexplore<CR>
+if !has("nvim")
+" Open default file explorer
+  nmap <silent> <leader>e :Lexplore<CR>
+endif
 
 " place cursor at the end after yanking selection
 vnoremap y ygv<esc>
@@ -177,7 +179,7 @@ if has("nvim")
 
   " File explorer
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
-  Plug 'kyazdani42/nvim-tree.lua'
+  " Plug 'kyazdani42/nvim-tree.lua'
 endif
 
 call plug#end()

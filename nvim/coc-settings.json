@@ -1,4 +1,6 @@
 {
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
   "prettier.printWidth": 100,
   "snippets.extends": {
     "javascriptreact": ["javascript"],
