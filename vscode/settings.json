@@ -1,7 +1,5 @@
 {
   "telemetry.enableTelemetry": false,
-
-  "window.titleBarStyle": "native",
   "window.zoomLevel": 0,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Gruvbox Material Dark",
