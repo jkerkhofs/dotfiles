@@ -5,5 +5,3 @@
     ~/.config/nvim: nvim
     ~/Library/ApplicationSupport/Code/User/settings.json: vscode/settings.json
     ~/Library/ApplicationSupport/Code/User/keybindings.json: vscode/keybindings.json
-- shell:
-    - ./install-powerline-fonts
