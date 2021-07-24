@@ -9,10 +9,10 @@ let g:coc_global_extensions = [
         \ 'coc-html',
         \ 'coc-css',
         \ 'coc-json',
+        \ 'coc-yaml',
         \ 'coc-git',
         \ 'coc-lua',
         \ 'coc-snippets',
-        \ 'coc-pairs',
         \ 'coc-explorer',
   \ ]
 

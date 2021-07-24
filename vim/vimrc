@@ -29,8 +29,6 @@ set shortmess+=I
 set backspace=indent,eol,start  
 " disable audio bell
 set belloff=all 
-" show matching braces when text indicator is over them
-set showmatch 
 " Save 1,000 items in history
 set history=1000 
 " Show the line and column number of the cursor position
@@ -121,6 +119,33 @@ nnoremap <leader>gr :Grep<space>
 " Navigating quickfix list
 nnoremap <silent> <C-J> :cnext<CR>
 nnoremap <silent> <C-K> :cprevious<CR>
+
+" CR on empty line => create empty line above and below
+" CR with cursor on "}", "]" or ")" => create line with closing char on line below
+" CR on other char => create new line below
+nnoremap <silent> <CR> :call SmartInsertNewLine()<CR>
+
+function! SmartInsertNewLine() abort
+  let prevChar = getline(".")[col(".")-2]
+  let char = getline(".")[col(".")-1]
+  let nextChar = getline(".")[col(".")]
+
+  if char ==# ">" && nextChar ==# "<"
+    exe "norm! a\<CR>"
+  elseif prevChar ==# "{" && char ==# "}"
+    exe "norm! i\<CR>"
+  elseif prevChar ==# "[" && char ==# "]"
+    exe "norm! i\<CR>"
+  elseif prevChar ==# "(" && char ==# ")"
+    exe "norm! i\<CR>"
+  elseif char ==# ""
+    exe "norm! i\<CR>"
+  else
+    exe "norm! \<CR>"
+  endif
+  exe "norm! O\<space>\<bs>\<esc>"
+  startinsert!
+endfunction
 " }}}
 
 " Native plugins {{{ 
