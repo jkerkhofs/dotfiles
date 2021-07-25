@@ -1,7 +1,15 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
 - clean: ["~"]
+
 - link:
     ~/.dotfiles: ""
     ~/.vim: vim
     ~/.config/nvim: nvim
+    ~/.zshenv: zsh/zshenv
+    ~/.config/zsh/.zshrc: zsh/zshrc
     ~/Library/ApplicationSupport/Code/User/settings.json: vscode/settings.json
     ~/Library/ApplicationSupport/Code/User/keybindings.json: vscode/keybindings.json
