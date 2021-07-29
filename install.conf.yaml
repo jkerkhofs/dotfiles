@@ -11,5 +11,6 @@
     ~/.config/nvim: nvim
     ~/.zshenv: zsh/zshenv
     ~/.config/zsh/.zshrc: zsh/zshrc
+    ~/.config/tmux/tmux.conf: tmux/tmux.conf
     ~/Library/ApplicationSupport/Code/User/settings.json: vscode/settings.json
     ~/Library/ApplicationSupport/Code/User/keybindings.json: vscode/keybindings.json
