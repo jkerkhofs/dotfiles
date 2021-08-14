@@ -452,12 +452,11 @@ selection:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /usr/local/bin/tmux
+  program: /bin/zsh
   args:
-    - new-session
-    - -A
-    # - -s
-    # - Main
+    - -l
+    - -c
+    - "tmux attach || tmux"
 
 # Startup directory
 #
