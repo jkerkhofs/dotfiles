@@ -13,7 +13,7 @@ else
   alias ls='ls -G' # macos
 fi
 alias l='ls -l'
-alias la='ls -la'
+alias la='ls -lah'
 
 # vim
 if type nvim > /dev/null 2>&1; then
