@@ -4,17 +4,19 @@
 alias reload=". ~/.config/zsh/.zshrc"
 
 # ls
-if type lsd > /dev/null; then
+if type lsd > /dev/null 2>&1; then
   alias ls='lsd'
   alias lt='ls --tree'
+elif ls --color=auto > /dev/null 2>&1; then
+  alias ls='ls --color=auto' # linux
 else
-  alias ls='ls -G'
+  alias ls='ls -G' # macos
 fi
 alias l='ls -l'
 alias la='ls -la'
 
 # vim
-if type nvim > /dev/null; then
+if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
   alias vi='nvim'
 fi
