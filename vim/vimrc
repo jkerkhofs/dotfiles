@@ -9,6 +9,9 @@ let mapleader=","
 set signcolumn=yes
 set number 
 set rnu
+" Disable relative numbers on insert mode.
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
 " Use spaces instead of tabs
 set expandtab 
 set tabstop=2
