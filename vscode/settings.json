@@ -12,6 +12,8 @@
 
   "files.autoSave": "onFocusChange",
 
+  "gitlens.currentLine.enabled": false,
+
   "editor.accessibilitySupport": "off",
   "editor.cursorBlinking": "solid",
   "editor.tabSize": 2,

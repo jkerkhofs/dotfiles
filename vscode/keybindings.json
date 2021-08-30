@@ -114,6 +114,6 @@
   },
   {
     "key": "alt+b",
-    "command": "workbench.action.toggleSidebarVisibility",
+    "command": "workbench.action.toggleSidebarVisibility"
   }
 ]
