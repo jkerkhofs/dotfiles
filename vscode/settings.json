@@ -12,6 +12,9 @@
 
   "files.autoSave": "onFocusChange",
 
+  "git.autofetch": true,
+  "git.confirmSync": false,
+
   "gitlens.currentLine.enabled": false,
 
   "editor.accessibilitySupport": "off",
@@ -20,11 +23,13 @@
   "editor.minimap.enabled": false,
   "editor.linkedEditing": true,
   "editor.cursorSurroundingLines": 10,
+  "editor.fontFamily": "'HACK NF'",
 
   "terminal.external.osxExec": "iterm.app",
   "terminal.integrated.defaultProfile.osx": "zsh",
-  "terminal.integrated.fontFamily": "'MesloLGS NF'",
-
+  "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
+  "terminal.integrated.fontFamily": "'HACK NF'",
+  
   "prettier.printWidth": 120,
   "html.format.wrapLineLength": 100,
   "html.format.wrapAttributes": "aligned-multiple",
@@ -46,6 +51,9 @@
     "editor.wordWrapColumn": 100,
     "editor.wordWrap": "bounded"
   },
+
+  "markdown-preview-enhanced.previewTheme": "one-dark.css",
+  "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true,
 
   "vim.smartRelativeLine": true,
   "vim.leader": ",",
