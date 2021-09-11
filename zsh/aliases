@@ -2,6 +2,7 @@
 
 # aliases
 alias reload=". ~/.config/zsh/.zshrc"
+alias c='clear'
 
 # ls
 if type lsd > /dev/null 2>&1; then
