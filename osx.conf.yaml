@@ -1,0 +1,4 @@
+- link:
+    ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
+    ~/Library/ApplicationSupport/Code/User/settings.json: vscode/settings.json
+    ~/Library/ApplicationSupport/Code/User/keybindings.json: vscode/keybindings.json
