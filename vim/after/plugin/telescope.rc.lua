@@ -11,6 +11,7 @@ vim.api.nvim_set_keymap('n', '<leader>b', '<cmd>Telescope buffers<cr>', opts)
 -- close telescope after first esc
 require('telescope').setup{
   defaults = {
+    file_ignore_patterns = {"node_modules"},
     mappings = {
       i = {
         ["<esc>"] = actions.close,
