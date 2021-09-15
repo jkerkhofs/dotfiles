@@ -25,8 +25,8 @@ ToggleCaps(){
 }
 ~Esc & CapsLock::ToggleCaps()
 
-; Move the cursor to the bottom-right of the screen.
-^/::MouseMove, A_ScreenWidth, A_ScreenHeight
+; Move the cursor to the top-left of the screen.
+#Esc::MouseMove, 0, 0
 
 ; Vimlike movements
 ^h::Send {CtrlUp}{Left}{CtrlDown}
@@ -34,8 +34,11 @@ ToggleCaps(){
 ^k::Send {CtrlUp}{Up}{CtrlDown}
 ^l::Send {CtrlUp}{Right}{CtrlDown}
 
-; Win + backspace to delete.
+; Win + backspace to delete (* to allow shift for permanent delete).
 *#BS::Send {delete}
+
+; Win + Enter to open context menu.
+#Enter::Send {AppsKey}
 
 ; Win + q to Alt + F4 (quit app).
 #q::Send !{F4}
