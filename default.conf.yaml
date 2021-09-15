@@ -3,6 +3,9 @@
       create: true
       relink: true
 
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+
 - clean: ["~"]
 
 - link:
@@ -12,3 +15,4 @@
     ~/.zshenv: zsh/zshenv
     ~/.config/zsh/.zshrc: zsh/zshrc
     ~/.config/tmux/tmux.conf: tmux/tmux.conf
+    ~/.config/lazygit/config.yml: lazygit/config.yml
