@@ -116,7 +116,7 @@ nnoremap <silent> ]t :tabnext<CR>
 nnoremap <silent> [t :tabprevious<CR>
 
 " easier grep searching in project
-command! -nargs=+ Grep execute 'silent grep! -R -F <args>' | cw 20
+command! -nargs=+ Grep execute 'silent grep! -R -F --exclude-dir={node_modules,public,build,.cache,.git} <args>' | cw 20
 nnoremap <leader>gr :Grep<space>
 
 " Navigating quickfix list
