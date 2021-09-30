@@ -28,11 +28,17 @@ ToggleCaps(){
 ; Move the cursor to the top-left of the screen.
 #Esc::MouseMove, 0, 0
 
-; Vimlike movements
+; Ctrl + hjkl for vimlike movements
 ^h::Send {CtrlUp}{Left}{CtrlDown}
 ^j::Send {CtrlUp}{Down}{CtrlDown}
 ^k::Send {CtrlUp}{Up}{CtrlDown}
 ^l::Send {CtrlUp}{Right}{CtrlDown}
+
+; Win + Shift + hjkl for contolling windows
+#+h::Send #{Left}   ; snap left
+#+j::Send #{Down}   ; restore
+#+k::Send #{Up}     ; maximize
+#+l::Send #{Right}  ; snap right
 
 ; Win + backspace to delete (* to allow shift for permanent delete).
 *#BS::Send {delete}
