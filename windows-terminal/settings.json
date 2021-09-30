@@ -25,8 +25,10 @@
         "acrylicOpacity": 0.84999999999999998,
         "colorScheme": "GruvboxMaterialMediumDark",
         "commandline": "powershell.exe",
-        "fontFace": "Hack NF",
-        "fontSize": 11,
+        "font": {
+          "face": "Hack NF",
+          "size": 11
+        },
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "hidden": false,
         "name": "Windows PowerShell",
@@ -55,8 +57,10 @@
         "bellStyle": "none",
         "colorScheme": "GruvboxMaterialMediumDark",
         "commandline": "wsl.exe tmux attach || tmux",
-        "fontFace": "Hack NF",
-        "fontSize": 11,
+        "font": {
+          "face": "Hack NF",
+          "size": 11
+        },
         "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
         "hidden": false,
         "name": "Ubuntu",
