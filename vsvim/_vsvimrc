@@ -102,8 +102,11 @@ nnoremap <C-w>a :vsc Debug.Autos<cr>
 " Show/hide windows
 nnoremap <leader>e :vsc ReSharper.ReSharper_LocateInSolutionOrAssemblyExplorer<cr>
 nnoremap <C-w>e :vsc View.SolutionExplorer<cr>
+nnoremap <C-w>E :vsc View.ErrorList<cr>
 nnoremap <C-w>o :vsc View.Output<cr>
 nnoremap <C-w>t :vsc ReSharper.ReSharper_ShowUnitTestSessions<cr>
 nnoremap <C-w>g :vsc View.TfsTeamExplorer<cr>
 nnoremap <C-w>f :vsc View.FindResults1<cr>
 nnoremap <C-w>r :vsc View.FindReferences1<cr>
+nnoremap <C-w>m :vsc Window.Float<cr>
+nnoremap <C-w>M :vsc Window.MoveToMainDocumentGroup<cr>
