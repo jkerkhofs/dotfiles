@@ -1,5 +1,5 @@
 {
-  "telemetry.enableTelemetry": false,
+  "telemetry.telemetryLevel": "off",
   "window.zoomLevel": 0,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Gruvbox Material Dark",
@@ -27,7 +27,7 @@
 
   "terminal.external.osxExec": "iterm.app",
   "terminal.integrated.defaultProfile.osx": "zsh",
-  "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
   "terminal.integrated.fontFamily": "'HACK NF'",
   
   "prettier.printWidth": 120,
@@ -53,7 +53,7 @@
   },
 
   "markdown-preview-enhanced.previewTheme": "one-dark.css",
-  "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true,
+  "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": false,
 
   "vim.smartRelativeLine": true,
   "vim.leader": ",",
