@@ -4,7 +4,7 @@ if (not status) then return end
 lualine.setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox_material',
+    theme = 'auto',
     disabled_filetypes = {}
   },
   sections = {
