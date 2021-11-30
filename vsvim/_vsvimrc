@@ -67,12 +67,10 @@ nnoremap gw :vsc Debug.QuickWatch<cr>
 
 " Refactorings
 nnoremap <leader>r :vsc ReSharper.ReSharper_Rename<cr>
-nnoremap <leader>a :vsc ReSharper_AltEnter<cr>
-nnoremap <leader>A :vsc ReSharper.ReSharper_RefactorThis<cr>
-nnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<cr>
-nnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<cr>
-vnoremap <A-j> :vsc Edit.MoveSelectedLinesDown<cr>
-vnoremap <A-k> :vsc Edit.MoveSelectedLinesUp<cr>
+noremap <leader>a :vsc ReSharper_AltEnter<cr>
+noremap <leader>A :vsc ReSharper.ReSharper_RefactorThis<cr>
+noremap <A-j> :vsc Edit.MoveSelectedLinesDown<cr>
+noremap <A-k> :vsc Edit.MoveSelectedLinesUp<cr>
 
 " Formatting
 nnoremap <leader>f :vsc ReSharper.ReSharper_ReformatCode<cr>
