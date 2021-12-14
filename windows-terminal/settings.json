@@ -7,11 +7,31 @@
     },
     {
       "command": {
+        "action": "nextTab"
+      },
+      "keys": "ctrl+shift+]"
+    },
+    {
+      "command": {
         "action": "splitPane",
         "split": "auto",
         "splitMode": "duplicate"
       },
       "keys": "alt+shift+d"
+    },
+    {
+      "command": {
+        "action": "prevTab"
+      },
+      "keys": "ctrl+shift+["
+    },
+    {
+      "command": "unbound",
+      "keys": "ctrl+shift+tab"
+    },
+    {
+      "command": "unbound",
+      "keys": "ctrl+tab"
     }
   ],
   "copyFormatting": "none",
@@ -38,7 +58,6 @@
         "name": "Windows PowerShell",
         "padding": "15",
         "scrollbarState": "hidden",
-        "startingDirectory": "C:\\VLM\\",
         "useAcrylic": false
       },
       {
@@ -59,6 +78,12 @@
         "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\jke"
       },
       {
+        "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+        "hidden": false,
+        "name": "Git Bash",
+        "source": "Git"
+      },
+      {
         "commandline": "cmd.exe",
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
         "hidden": true,
@@ -69,12 +94,6 @@
         "hidden": true,
         "name": "Azure Cloud Shell",
         "source": "Windows.Terminal.Azure"
-      },
-      {
-        "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-        "hidden": true,
-        "name": "Git Bash",
-        "source": "Git"
       }
     ]
   },
@@ -312,3 +331,4 @@
   ],
   "theme": "dark"
 }
+
