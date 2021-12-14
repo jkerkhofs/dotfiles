@@ -14,6 +14,7 @@ let g:coc_global_extensions = [
         \ 'coc-lua',
         \ 'coc-snippets',
         \ 'coc-explorer',
+        \ 'coc-markdownlint',
   \ ]
 
 " Use tab and shift tab to jump through snippet
