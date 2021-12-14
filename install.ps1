@@ -3,6 +3,11 @@
 
 # Creating symlinks
 New-Item -ItemType SymbolicLink `
+-Path "C:\Users\$env:UserName\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" `
+-Target "$PSScriptRoot\powershell\Profile.ps1" `
+-Force
+
+New-Item -ItemType SymbolicLink `
 -Path "C:\Users\$env:UserName\AppData\Roaming\Code\User\settings.json" `
 -Target "$PSScriptRoot\vscode\settings.json" `
 -Force
@@ -22,6 +27,15 @@ New-Item -ItemType SymbolicLink `
 -Target "$PSScriptRoot\windows-terminal\settings.json" `
 -Force
 
+New-Item -ItemType SymbolicLink `
+-Path "C:\Users\$env:UserName\.vim" `
+-Target "$PSScriptRoot\vim" `
+-Force
+
+New-Item -ItemType SymbolicLink `
+-Path "C:\Users\$env:UserName\AppData\Local\nvim" `
+-Target "$PSScriptRoot\nvim" `
+-Force
 
 # Create AutoHotKey shortcut in startup dir.
 $WScriptObj = New-Object -ComObject ("WScript.Shell")
