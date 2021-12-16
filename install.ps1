@@ -3,7 +3,7 @@
 
 # Creating symlinks
 New-Item -ItemType SymbolicLink `
--Path "C:\Users\$env:UserName\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1" `
+-Path "C:\Users\$env:UserName\Documents\PowerShell\Profile.ps1" `
 -Target "$PSScriptRoot\powershell\Profile.ps1" `
 -Force
 
