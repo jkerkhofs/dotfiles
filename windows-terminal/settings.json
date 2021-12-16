@@ -44,6 +44,8 @@
     "defaults": {},
     "list": [
       {
+        "backgroundImage": "desktopWallpaper",
+        "backgroundImageOpacity": 0.070000000000000007,
         "bellStyle": "none",
         "colorScheme": "GruvboxMaterialMediumDark",
         "font": {
@@ -59,6 +61,8 @@
         "source": "Windows.Terminal.PowershellCore"
       },
       {
+        "backgroundImage": "desktopWallpaper",
+        "backgroundImageOpacity": 0.070000000000000007,
         "bellStyle": "none",
         "colorScheme": "GruvboxMaterialMediumDark",
         "commandline": "wsl.exe tmux attach || tmux",
