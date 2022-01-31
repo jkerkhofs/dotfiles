@@ -124,14 +124,29 @@ nnoremap <silent> [t :tabprevious<CR>
 set grepprg=git\ grep\ -n\ $*
 
 function! Grep()
+  silent !clear
   let text = input("Search for text: ")
   let folder = input("Search in folder: ")
-  execute "silent grep! '" . text . "' " . folder
+  if has('win64') || has('win32')
+    " Text should be surrounded by double quotes on windows.
+    execute "silent grep! \"" . text . "\" " . folder
+  else
+    " Text should be surrounded by single quotes.
+    " Double quotes would cause variable interpolation on unix.
+    execute "silent grep! '" . text . "' " . folder
+  endif
   execute "cw 20"
 endfunction
 
 function! GrepCWord()
-  execute "silent grep! '" . expand("<cword>") . "' ."
+  if has('win64') || has('win32')
+    " Text should be surrounded by double quotes on windows.
+    execute "silent grep! \"" . expand("<cword>") . "\""
+  else
+    " Text should be surrounded by single quotes.
+    " Double quotes would cause variable interpolation on unix.
+    execute "silent grep! '" . expand("<cword>") . "'"
+  endif
   execute "cw 20"
 endfunction
 
