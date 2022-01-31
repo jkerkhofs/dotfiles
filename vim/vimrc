@@ -52,6 +52,8 @@ set splitright
 set splitbelow
 " Enable mouse support
 set mouse=nv
+" Add '@', '-', '$', '#' characters to keyword list for scss.
+autocmd FileType scss setl iskeyword+=@-@,-,$,#
 "}}}
 
 " Searching {{{
