@@ -54,6 +54,8 @@ set splitbelow
 set mouse=nv
 " Add '@', '-', '$', '#' characters to keyword list for scss.
 autocmd FileType scss setl iskeyword+=@-@,-,$,#
+" Close the quickfix window with esc.
+autocmd FileType qf nnoremap <buffer><silent> <esc> :q<cr>
 "}}}
 
 " Searching {{{
