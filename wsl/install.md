@@ -95,6 +95,18 @@ sudo apt upgrade
   python3 -m pip install --user --upgrade pynvim
   ```
 
+- Install telescope dependencies
+  ```bash
+  sudo apt install ripgrep
+  sudo apt install fd-find
+  ```
+
+- Tree-sitter
+  ```bash
+  npm install -g tree-sitter
+  npm install -g tree-sitter-cli
+  ```
+
 ## Neovim
 
 - Install the neovim appimage
