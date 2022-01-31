@@ -119,9 +119,24 @@ nnoremap <space> <C-w>w
 nnoremap <silent> ]t :tabnext<CR>
 nnoremap <silent> [t :tabprevious<CR>
 
-" easier grep searching in project
-command! -nargs=+ Grep execute 'silent grep! -R -F --exclude-dir={node_modules,public,build,.cache,.git} <args>' | cw 20
-nnoremap <leader>gr :Grep<space>
+" Easier grep searching.
+" Use git grep so everything in gitignore is excluded.
+set grepprg=git\ grep\ -n\ $*
+
+function! Grep()
+  let text = input("Search for text: ")
+  let folder = input("Search in folder: ")
+  execute "silent grep! '" . text . "' " . folder
+  execute "cw 20"
+endfunction
+
+function! GrepCWord()
+  execute "silent grep! '" . expand("<cword>") . "' ."
+  execute "cw 20"
+endfunction
+
+nnoremap <silent> <leader>gr :call Grep() <cr>
+nnoremap <silent> <leader>* :call GrepCWord() <cr>
 
 " Navigating quickfix list
 nnoremap <silent> <C-J> :cnext<CR>
