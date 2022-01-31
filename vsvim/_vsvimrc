@@ -42,6 +42,8 @@ nnoremap <C-w>L :vsc Window.MoveToNextTabGroup<cr>
 " Navigation 
 nnoremap ]t :vsc Window.NextTab<cr>
 nnoremap [t :vsc Window.PreviousTab<cr>
+nnoremap `] :vsc Window.NextTab<cr>
+nnoremap `[ :vsc Window.PreviousTab<cr>
 nnoremap <C-o> :vsc ReSharper.ReSharper_NavigateBackward<cr>
 nnoremap <C-i> :vsc ReSharper.ReSharper_NavigateForward<cr>
 nnoremap <leader><space> :vsc ReSharper.ReSharper_GotoRecentFiles<cr> 
