@@ -120,33 +120,20 @@ nnoremap <silent> ]t :tabnext<CR>
 nnoremap <silent> [t :tabprevious<CR>
 
 " Easier grep searching.
-" Use git grep so everything in gitignore is excluded.
-set grepprg=git\ grep\ -n\ $*
-
 function! Grep()
   silent !clear
   let text = input("Search for text: ")
-  let folder = input("Search in folder: ")
-  if has('win64') || has('win32')
-    " Text should be surrounded by double quotes on windows.
-    execute "silent grep! \"" . text . "\" " . folder
-  else
-    " Text should be surrounded by single quotes.
-    " Double quotes would cause variable interpolation on unix.
-    execute "silent grep! '" . text . "' " . folder
+  if text != ""
+    let folder = input("Search in folder: ", " ")
+    if folder != ""
+      execute "silent Ggrep! --ignore-case " . text . " " . folder
+      execute "cw 20"
+    endif
   endif
-  execute "cw 20"
 endfunction
 
 function! GrepCWord()
-  if has('win64') || has('win32')
-    " Text should be surrounded by double quotes on windows.
-    execute "silent grep! \"" . expand("<cword>") . "\""
-  else
-    " Text should be surrounded by single quotes.
-    " Double quotes would cause variable interpolation on unix.
-    execute "silent grep! '" . expand("<cword>") . "'"
-  endif
+  execute "silent Ggrep! --ignore-case " . expand("<cword>")
   execute "cw 20"
 endfunction
 
