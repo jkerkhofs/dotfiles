@@ -96,12 +96,14 @@ sudo apt upgrade
   ```
 
 - Install telescope dependencies
+
   ```bash
   sudo apt install ripgrep
   sudo apt install fd-find
   ```
 
 - Tree-sitter
+
   ```bash
   npm install -g tree-sitter
   npm install -g tree-sitter-cli
@@ -151,4 +153,22 @@ curl -LO https://github.com/jesseduffield/lazygit/releases/download/v0.29/lazygi
 tar xvf lazygit_0.29_Linux_x86_64.tar.gz lazygit
 rm lazygit_0.29_Linux_x86_64.tar.gz
 sudo mv lazygit /usr/local/bin
+```
+
+## FZF
+
+```bash
+sudo apt install fzf
+```
+
+## Zoxide
+
+```bash
+curl -sS https://webinstall.dev/zoxide | bash
+```
+
+Or for Ubuntu 21.04+
+
+```bash
+sudo apt install zoxide
 ```

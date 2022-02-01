@@ -27,6 +27,8 @@ export LESSHISTFILE="$XDG_CONFIG_HOME/less/.lesshst"
 
 # Some Homebrew formulae have executables in "/usr/local/sbin"
 export PATH="/usr/local/sbin:$PATH"
+# Needed for zoxide
+export PATH="/home/jke/.local/bin:$PATH"
 
 # Get rid of dotnet telemetry.
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
