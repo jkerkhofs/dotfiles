@@ -16,16 +16,11 @@ set clipboard=unnamed
 nnoremap <leader>ve :e C:\Users\jke\_vsvimrc<cr>
 nnoremap <leader>vv :source C:\Users\jke\_vsvimrc<cr>
 
-" Write, close file
+" Write file
 nnoremap <leader>w :w<cr>
-nnoremap <leader>x :q<cr>
 
 " Clear search highlight
 nnoremap <leader><esc> :noh<cr>
-
-" Keep search results in the center of the screen
-" nnoremap n nzz
-" nnoremap N Nzz
 
 " Keep cursor at last position after yanking
 vnoremap y ygv<esc>
