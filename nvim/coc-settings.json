@@ -3,6 +3,7 @@
   "explorer.previewAction.onHover": false,
   "explorer.width": 60,
   "prettier.printWidth": 100,
+  "colors.filetypes": ["css", "scss"],
   "snippets.extends": {
     "javascriptreact": ["javascript"],
     "scss": ["css"]
