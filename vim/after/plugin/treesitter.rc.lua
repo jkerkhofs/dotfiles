@@ -5,7 +5,28 @@ end
 
 local ts = require 'nvim-treesitter.configs'
 ts.setup {
-  ensure_installed = 'maintained',
+  ensure_installed = {
+    'bash',
+    'c_sharp',
+    'comment',
+    'css',
+    'graphql',
+    'help',
+    'html',
+    'http',
+    'javascript',
+    'jsdoc',
+    'json',
+    'lua',
+    'markdown',
+    'regex',
+    'scss',
+    'toml',
+    'tsx',
+    'typescript',
+    'vim',
+    'yaml'
+  },
   highlight = {
     enable = true
   },
