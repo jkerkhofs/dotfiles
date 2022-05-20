@@ -2,9 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "zsh/spaceship-prompt"]
-	path = zsh/spaceship-prompt
-	url = https://github.com/spaceship-prompt/spaceship-prompt/
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
@@ -17,3 +14,6 @@
 [submodule "tmux/plugins/tmux-sensible"]
 	path = tmux/plugins/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible
+[submodule "zsh/plugins/pure"]
+	path = zsh/plugins/pure
+	url = https://github.com/sindresorhus/pure.git

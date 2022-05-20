@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-fpath=($DOTFILES/zsh/plugins $fpath)
+fpath=($DOTFILES/zsh/plugins $DOTFILES/zsh/plugins/pure $fpath)
 
 # Navigating
 setopt AUTO_CD                  # Go to folder path without using cd.
@@ -18,9 +18,9 @@ export KEYTIMEOUT=1
 # Change cursor
 autoload -Uz cursor_mode; cursor_mode
 
-# spaceship prompt
+# Pure prompt
 autoload -U promptinit; promptinit
-prompt spaceship
+prompt pure
 
 # Keybindings
 bindkey '^r' history-incremental-search-backward
