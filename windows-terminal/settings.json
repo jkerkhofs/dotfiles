@@ -1,4 +1,5 @@
 {
+  "$help": "https://aka.ms/terminal-documentation",
   "$schema": "https://aka.ms/terminal-profiles-schema",
   "actions": [
     {
@@ -37,7 +38,7 @@
   "copyFormatting": "none",
   "copyOnSelect": false,
   "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-  "experimental.rendering.forceFullRepaint": true,
+  "experimental.rendering.forceFullRepaint": false,
   "language": "en-US",
   "launchMode": "maximized",
   "profiles": {
@@ -86,7 +87,6 @@
         "source": "Git"
       },
       {
-        "commandline": "cmd.exe",
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
         "hidden": true,
         "name": "Command Prompt"
@@ -148,7 +148,7 @@
     },
     {
       "background": "#282828",
-      "black": "#665C54",
+      "black": "#282828",
       "blue": "#7DAEA3",
       "brightBlack": "#928374",
       "brightBlue": "#7DAEA3",
