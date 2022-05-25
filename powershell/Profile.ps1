@@ -1,5 +1,6 @@
 Set-Alias la ls
 Set-Alias vim nvim
+Set-Alias lgit lazygit
 
 # Setting the global node_path
 # $env:NODE_PATH = npm root -g

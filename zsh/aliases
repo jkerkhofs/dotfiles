@@ -23,8 +23,8 @@ if type nvim > /dev/null 2>&1; then
 fi
 
 # Git aliases
+alias lgit='lazygit'
 alias g='git'
-alias gl='lazygit'
 alias gst='git status'
 alias gstw='watch -c -t git status -sb'
 alias gd='git diff'
