@@ -170,6 +170,10 @@ Plug 'matze/vim-move' "Line/block movements with A-hjkl
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
+"Session management
+Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-prosession' "
+
 if has("nvim")
   " Lualine
   Plug 'hoob3rt/lualine.nvim'
