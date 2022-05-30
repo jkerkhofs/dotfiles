@@ -143,6 +143,12 @@ nnoremap <silent> <leader>* :call GrepCWord() <cr>
 " Navigating quickfix list
 nnoremap <silent> <C-J> :cnext<CR>
 nnoremap <silent> <C-K> :cprevious<CR>
+
+if has('win32') || has('win64')
+  " Disable suspend on Windows as it just freezes nvim and leaves you in a
+  " blocked state.
+  nmap <C-z> <Nop>
+endif
 " }}}
 
 " Native plugins {{{ 
