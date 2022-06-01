@@ -9,6 +9,15 @@ oh-my-posh init pwsh --config "$(scoop prefix oh-my-posh)\themes\pure.omp.json" 
 function SetCursorToBlock { Write-Host -NoNewLine "`e[2 q" }
 function SetCursorToLine { Write-Host -NoNewLine "`e[6 q" }
 function ResetCursor { SetCursorToLine }
+function SetGitProjectAsWindowTitle {
+  $gitTopLevel = (git rev-parse --show-toplevel) 2> $null
+  if ($gitTopLevel) {
+    $project = Split-Path (Resolve-Path $gitTopLevel) -Leaf
+    if ($project) {
+      $Host.UI.RawUI.WindowTitle = $project + " - " + $args
+    }
+  }
+}
 
 
 # Initialize cursor (disable cursor blink)
@@ -28,6 +37,7 @@ Set-Alias c clear
 Set-Alias lgit lazygit
 
 function vim {
+  SetGitProjectAsWindowTitle "vim"
   nvim $args
   ResetCursor
 }
@@ -61,8 +71,9 @@ function notes {
     }
   } | Out-Null
 
-  vim
+  nvim
 
+  ResetCursor
   Stop-Job -Name notes
   Remove-Job -Name notes
   cd $previousDir
