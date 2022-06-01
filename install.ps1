@@ -44,5 +44,9 @@ $shortcut.TargetPath = "C:\Program Files\AutoHotkey\AutoHotkeyU64_UIA.exe" # Sho
 $shortcut.Arguments = "$PSScriptRoot\autohotkey\AutoHotKey.ahk"
 $shortcut.Save()
 
+# Installing powershell modules
+Install-Module -Name Terminal-Icons
+Install-Module -Name PSReadLine -AllowPrerelease -Force
+
 
 # (Optional) Reset execution policy: Set-ExecutionPolicy Default
