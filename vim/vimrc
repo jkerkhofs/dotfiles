@@ -203,6 +203,9 @@ if has("nvim")
   " CoC
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+  " Refactoring
+  Plug 'ThePrimeagen/refactoring.nvim'
+
   " Snippets
   Plug 'honza/vim-snippets'
 
