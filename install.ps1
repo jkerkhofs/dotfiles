@@ -37,6 +37,11 @@ New-Item -ItemType SymbolicLink `
 -Target "$PSScriptRoot\nvim" `
 -Force
 
+New-Item -ItemType SymbolicLink `
+-Path "C:\Users\$env:UserName\AppData\Local\Microsoft\PowerToys\Keyboard Manager\default.json" `
+-Target "$PSScriptRoot\powertoys\keyboard-manager.json" `
+-Force
+
 # Create AutoHotKey shortcut in startup dir.
 $WScriptObj = New-Object -ComObject ("WScript.Shell")
 $shortcut = $WscriptObj.CreateShortcut("C:\Users\$env:UserName\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoHotKey.lnk")

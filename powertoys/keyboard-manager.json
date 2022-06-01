@@ -1,0 +1,40 @@
+{
+  "remapKeys": { "inProcess": [] },
+  "remapShortcuts": {
+    "global": [
+      { "originalKeys": "162;118", "newRemapKeys": "177" },
+      { "originalKeys": "162;119", "newRemapKeys": "179" },
+      { "originalKeys": "162;120", "newRemapKeys": "176" },
+      { "originalKeys": "162;121", "newRemapKeys": "173" },
+      { "originalKeys": "162;122", "newRemapKeys": "174" },
+      { "originalKeys": "162;123", "newRemapKeys": "175" },
+      { "originalKeys": "260;48", "newRemapKeys": "260;17;48" },
+      { "originalKeys": "260;49", "newRemapKeys": "260;17;49" },
+      { "originalKeys": "260;50", "newRemapKeys": "260;17;50" },
+      { "originalKeys": "260;51", "newRemapKeys": "260;17;51" },
+      { "originalKeys": "260;52", "newRemapKeys": "260;17;52" },
+      { "originalKeys": "260;53", "newRemapKeys": "260;17;53" },
+      { "originalKeys": "260;54", "newRemapKeys": "260;17;54" },
+      { "originalKeys": "260;55", "newRemapKeys": "260;17;55" },
+      { "originalKeys": "260;56", "newRemapKeys": "260;17;56" },
+      { "originalKeys": "260;57", "newRemapKeys": "260;17;57" },
+      { "originalKeys": "260;17;48", "newRemapKeys": "260;48" },
+      { "originalKeys": "260;17;49", "newRemapKeys": "260;49" },
+      { "originalKeys": "260;17;50", "newRemapKeys": "260;50" },
+      { "originalKeys": "260;17;51", "newRemapKeys": "260;51" },
+      { "originalKeys": "260;17;52", "newRemapKeys": "260;52" },
+      { "originalKeys": "260;17;53", "newRemapKeys": "260;53" },
+      { "originalKeys": "260;17;54", "newRemapKeys": "260;54" },
+      { "originalKeys": "260;17;55", "newRemapKeys": "260;55" },
+      { "originalKeys": "260;17;56", "newRemapKeys": "260;56" },
+      { "originalKeys": "260;17;57", "newRemapKeys": "260;57" }
+    ],
+    "appSpecific": [
+      { "originalKeys": "17;219", "newRemapKeys": "18;37", "targetApp": "msedge" },
+      { "originalKeys": "17;221", "newRemapKeys": "18;39", "targetApp": "msedge" },
+      { "originalKeys": "17;16;219", "newRemapKeys": "17;16;9", "targetApp": "msedge" },
+      { "originalKeys": "17;16;221", "newRemapKeys": "17;9", "targetApp": "msedge" }
+    ]
+  }
+}
+
