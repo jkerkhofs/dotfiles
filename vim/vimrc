@@ -178,15 +178,17 @@ Plug 'tpope/vim-repeat'
 
 "Session management
 Plug 'tpope/vim-obsession'
-Plug 'dhruvasagar/vim-prosession' "
+Plug 'dhruvasagar/vim-prosession'
 
 if has("nvim")
+  " Dependency for other plugins
+  Plug 'nvim-lua/plenary.nvim'
+
   " Lualine
   Plug 'hoob3rt/lualine.nvim'
 
   " Treesitter
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-  Plug 'nvim-treesitter/playground'
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
   Plug 'windwp/nvim-ts-autotag'
 
@@ -205,8 +207,6 @@ if has("nvim")
   Plug 'honza/vim-snippets'
 
   " Telescope
-  Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
 
   " File explorer
