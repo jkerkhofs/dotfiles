@@ -1,6 +1,9 @@
 # set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
+# Setting the global node_path
+$env:NODE_PATH = "C:\Users\$($env:UserName)\scoop\apps\nvm\current\nodejs\nodejs"
+
 oh-my-posh init pwsh --config "$PSScriptRoot\pure.jke.omp.json" | Invoke-Expression
 
 
@@ -116,10 +119,6 @@ function work {
 function new-tab {
   wt -w 0 nt -p PowerShell -d $pwd $args
 }
-
-
-# Setting the global node_path
-$env:NODE_PATH = npm root -g
 
 
 # Zoxide
