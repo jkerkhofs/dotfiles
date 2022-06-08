@@ -38,6 +38,11 @@ New-Item -ItemType SymbolicLink `
 -Force
 
 New-Item -ItemType SymbolicLink `
+-Path "C:\Users\$env:UserName\AppData\Local\lf\lfrc" `
+-Target "$PSScriptRoot\lf\lfrc.ps1" `
+-Force
+
+New-Item -ItemType SymbolicLink `
 -Path "C:\Users\$env:UserName\AppData\Local\Microsoft\PowerToys\Keyboard Manager\default.json" `
 -Target "$PSScriptRoot\powertoys\keyboard-manager.json" `
 -Force
