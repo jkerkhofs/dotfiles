@@ -1,16 +1,21 @@
-# set PowerShell to UTF-8
+# Set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
 # Setting the global node_path
 $env:NODE_PATH = "C:\Users\$($env:UserName)\scoop\apps\nvm\current\nodejs\nodejs"
 
+# Prompt
 oh-my-posh init pwsh --config "$PSScriptRoot\pure.jke.omp.json" | Invoke-Expression
 
+# Zoxide
+Invoke-Expression (& {
+    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
+    (zoxide init --hook $hook powershell | Out-String)
+  })
 
 # Helper functions
 function SetCursorToBlock { Write-Host -NoNewLine "`e[2 q" }
 function SetCursorToLine { Write-Host -NoNewLine "`e[6 q" }
-function ResetCursor { SetCursorToLine }
 function GetGitProjectName {
   $gitTopLevel = (git rev-parse --show-toplevel) 2> $null
   $projectName = ""
@@ -28,10 +33,6 @@ function SetGitProjectAsWindowTitle {
   }
 }
 
-
-# Initialize cursor (disable cursor blink)
-SetCursorToLine
-
 # PSReadLine
 Set-PSReadLineOption -BellStyle None
 Set-PSReadLineOption -PredictionSource History
@@ -40,15 +41,21 @@ Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler {
   if ($args[0] -eq 'Command') { SetCursorToBlock } else { SetCursorToLine }
 }
 
+# Initialize cursor (disable cursor blink)
+SetCursorToLine
 
 # Aliases
 Set-Alias c clear
-Set-Alias lgit lazygit
+
+function lgit {
+  lazygit
+  SetCursorToLine
+}
 
 function vim {
   SetGitProjectAsWindowTitle "vim"
   nvim $args
-  ResetCursor
+  SetCursorToLine
 }
 
 function la { ls -Force $args }
@@ -98,7 +105,7 @@ function notes {
 
   nvim
 
-  ResetCursor
+  SetCursorToLine
   Stop-Job -Name notes
   Remove-Job -Name notes
   cd $previousDir
@@ -119,10 +126,3 @@ function work {
 function new-tab {
   wt -w 0 nt -p PowerShell -d $pwd $args
 }
-
-
-# Zoxide
-Invoke-Expression (& {
-    $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
-    (zoxide init --hook $hook powershell | Out-String)
-  })
