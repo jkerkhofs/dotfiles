@@ -7,5 +7,6 @@
   "snippets.extends": {
     "javascriptreact": ["javascript"],
     "scss": ["css"]
-  }
+  },
+  "powershell.integratedConsole.showOnStartup": false
 }

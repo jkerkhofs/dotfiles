@@ -15,6 +15,7 @@ let g:coc_global_extensions = [
         \ 'coc-snippets',
         \ 'coc-explorer',
         \ 'coc-markdownlint',
+        \ 'coc-powershell',
   \ ]
 
 " Use tab and shift tab to jump through snippet
