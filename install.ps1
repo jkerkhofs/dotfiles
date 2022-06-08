@@ -60,7 +60,6 @@ $shortcut.Arguments = "$PSScriptRoot\autohotkey\AutoHotKey.ahk"
 $shortcut.Save()
 
 # Installing powershell modules
-Install-Module -Name Terminal-Icons
 Install-Module -Name PSReadLine -AllowPrerelease -Force
 
 
