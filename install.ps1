@@ -8,6 +8,11 @@ New-Item -ItemType SymbolicLink `
 -Force
 
 New-Item -ItemType SymbolicLink `
+-Path "C:\Users\$env:UserName\Documents\PowerShell\pure.jke.omp.json" `
+-Target "$PSScriptRoot\powershell\pure.jke.omp.json" `
+-Force
+
+New-Item -ItemType SymbolicLink `
 -Path "C:\Users\$env:UserName\AppData\Roaming\Code\User\settings.json" `
 -Target "$PSScriptRoot\vscode\settings.json" `
 -Force

@@ -2,7 +2,7 @@
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
 Import-Module Terminal-Icons
-oh-my-posh init pwsh --config "$(scoop prefix oh-my-posh)\themes\pure.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$PSScriptRoot\pure.jke.omp.json" | Invoke-Expression
 
 
 # Helper functions
