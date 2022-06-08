@@ -45,16 +45,22 @@
     {
       "command": {
         "action": "splitPane",
-        "split": "right"
+        "split": "right",
+        "splitMode": "duplicate"
       },
       "keys": "ctrl+shift+plus"
     },
     {
       "command": {
         "action": "splitPane",
-        "split": "down"
+        "split": "down",
+        "splitMode": "duplicate"
       },
       "keys": "ctrl+shift+minus"
+    },
+    {
+      "command": "duplicateTab",
+      "keys": "ctrl+shift+t"
     },
     {
       "command": {
