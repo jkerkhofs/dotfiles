@@ -56,6 +56,16 @@ set mouse=nv
 autocmd FileType scss setl iskeyword+=@-@,-,$,#
 " Close the quickfix window with esc.
 autocmd FileType qf nnoremap <buffer><silent> <esc> :q<cr>
+
+" Use PowerShell when on Windows
+if has('win32') || has('win64')
+  set shell=powershell\ -NoLogo\ -NoProfile\ -NonInteractive
+  set shellcmdflag=-command
+  set shellquote= " space char
+  set shellxquote= " space char
+  set shellpipe=\| 
+  set shellredir=\|\ Out-File\ -Encoding\ UTF8
+endif
 "}}}
 
 " Searching {{{
