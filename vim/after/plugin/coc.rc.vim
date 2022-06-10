@@ -69,7 +69,7 @@ nmap <silent> ]e <Plug>(coc-diagnostic-next)
 nmap <silent> ]g <Plug>(coc-git-nextchunk)
 nmap <silent> [g <Plug>(coc-git-prevchunk)
 " show chunk diff at current position
-nmap <silent> <leader>gh <Plug>(coc-git-chunkinfo)
+nmap <silent> <leader>hg <Plug>(coc-git-chunkinfo)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
