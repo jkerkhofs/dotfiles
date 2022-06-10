@@ -145,10 +145,23 @@ nnoremap <silent> <C-J> :cnext<CR>
 nnoremap <silent> <C-K> :cprevious<CR>
 
 if has('win32') || has('win64')
-  " Disable suspend on Windows as it just freezes nvim and leaves you in a
-  " blocked state.
+  " Disable suspend on Windows as it just freezes nvim and leaves you in a blocked state.
   nmap <C-z> <Nop>
 endif
+" }}}
+
+" Commands {{{
+
+" Delete (wipeout) all hidden buffers
+function DeleteHiddenBuffers()
+  let tpbl=[]
+  call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+  for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+    silent execute 'bwipeout' buf
+  endfor
+endfunction
+command! DeleteHiddenBuffers call DeleteHiddenBuffers()
+
 " }}}
 
 " Native plugins {{{ 
