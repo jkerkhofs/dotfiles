@@ -113,19 +113,3 @@ function notes {
   Remove-Job -Name notes
   cd $previousDir
 }
-
-# Open workspace with vim, lazygit, shell
-function work {
-  # open new tab
-  new-tab
-  # open new tab with lazygit
-  new-tab lazygit
-  # move focus back two tabs
-  wt -w 0 ft -p `; ft -p
-  vim
-}
-
-# New Tab
-function new-tab {
-  wt -w 0 nt -p PowerShell -d $pwd $args
-}
