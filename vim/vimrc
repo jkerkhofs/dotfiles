@@ -198,6 +198,7 @@ Plug 'tpope/vim-fugitive' "Git
 Plug 'matze/vim-move' "Line/block movements with A-hjkl
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'voldikss/vim-floaterm'
 
 "Session management
 Plug 'tpope/vim-obsession'
