@@ -155,7 +155,7 @@ nnoremap <silent> <C-J> :cnext<CR>
 nnoremap <silent> <C-K> :cprevious<CR>
 
 " Lazygit
-nnoremap <leader>lg :FloatermNew --height=0.9 --width=0.9 --autoclose=2 --title=Lazygit lazygit<cr>
+nnoremap <silent> <leader>lg :FloatermNew --height=0.9 --width=0.9 --autoclose=2 --title=Lazygit lazygit<CR>
 
 if has('win32') || has('win64')
   " Disable suspend on Windows as it just freezes nvim and leaves you in a blocked state.
