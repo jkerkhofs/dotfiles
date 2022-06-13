@@ -23,7 +23,7 @@ ToggleCaps(){
     SetStoreCapsLockMode, On
     return
 }
-~Esc & CapsLock::ToggleCaps()
+>!#CapsLock::ToggleCaps()
 
 ; Move the cursor to the top-left of the screen.
 #Esc::MouseMove, 0, 0
