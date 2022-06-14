@@ -19,28 +19,28 @@
         "action": "moveFocus",
         "direction": "left"
       },
-      "keys": "ctrl+shift+h"
+      "keys": "shift+left"
     },
     {
       "command": {
         "action": "moveFocus",
         "direction": "down"
       },
-      "keys": "ctrl+shift+j"
+      "keys": "shift+down"
     },
     {
       "command": {
         "action": "moveFocus",
         "direction": "up"
       },
-      "keys": "ctrl+shift+k"
+      "keys": "shift+up"
     },
     {
       "command": {
         "action": "moveFocus",
         "direction": "right"
       },
-      "keys": "ctrl+shift+l"
+      "keys": "shift+right"
     },
     {
       "command": {
@@ -79,28 +79,28 @@
         "action": "resizePane",
         "direction": "left"
       },
-      "keys": "ctrl+alt+shift+h"
+      "keys": "alt+shift+left"
     },
     {
       "command": {
         "action": "resizePane",
         "direction": "down"
       },
-      "keys": "ctrl+alt+shift+j"
+      "keys": "alt+shift+down"
     },
     {
       "command": {
         "action": "resizePane",
         "direction": "up"
       },
-      "keys": "ctrl+alt+shift+k"
+      "keys": "alt+shift+up"
     },
     {
       "command": {
         "action": "resizePane",
         "direction": "right"
       },
-      "keys": "ctrl+alt+shift+l"
+      "keys": "alt+shift+right"
     },
     {
       "command": "togglePaneZoom",

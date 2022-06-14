@@ -5,60 +5,22 @@ CoordMode, Mouse, Screen ; Move the mouse relative to the screen.
 SetCapsLockState, AlwaysOff ; Force Capslock to stay off.
 
 ; Map Capslock to Control.
-*Capslock::Send {Blind}{LControl down}
+*CapsLock::Send {Blind}{Ctrl down}
 
 ; Map press & release of Capslock with no other key to Esc.
-*Capslock up::
-    Send {Blind}{LControl up}
+*CapsLock up::
+    Send {Blind}{Ctrl up}
     if A_PRIORKEY = CapsLock
     {
         Send {Esc}
     }
     return
 
-ToggleCaps(){
-    ; this is needed because by default, AHK turns CapsLock off before doing Send.
-    SetStoreCapsLockMode, Off
-    Send {CapsLock}
-    SetStoreCapsLockMode, On
-    return
-}
->!#CapsLock::ToggleCaps()
-
 ; Move the cursor to the top-left of the screen.
 #Esc::MouseMove, 0, 0
 
-; Ctrl + hjkl for vimlike movements
-^h::Send {CtrlUp}{Left}{CtrlDown}
-^j::Send {CtrlUp}{Down}{CtrlDown}
-^k::Send {CtrlUp}{Up}{CtrlDown}
-^l::Send {CtrlUp}{Right}{CtrlDown}
-
-; Win + Shift + hjkl for contolling windows
-#+h::Send #{Left}   ; snap left
-#+j::Send #{Down}   ; restore
-#+k::Send #{Up}     ; maximize
-#+l::Send #{Right}  ; snap right
-
-; Win + backspace to delete (* to allow shift for permanent delete).
-*#BS::Send {delete}
-
-; Win + Enter to open context menu.
-#Enter::Send {AppsKey}
-
-; Win + q to Alt + F4 (quit app).
-#q::Send !{F4}
-
 ; RightAlt + $, for euro sign.
 >!$::Send {U+20AC}
-
-; Media Keys
-^F7::Send {Media_Prev}
-^F8::Send {Media_Play_Pause}
-^F9::Send {Media_Next}
-^F10::Send {Volume_Mute}
-^F11::Send {Volume_Down}
-^F12::Send {Volume_Up}
 
 ; Screen brightness
 ^F1:: AdjustScreenBrightness(-10)
