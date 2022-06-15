@@ -70,7 +70,7 @@ function e {
 }
 
 # File: find and open file
-function f { fzf --tac --header="Open file" | Invoke-Item }
+function f { fzf --tac --multi --bind ctrl-t:toggle-all --header="Open file" | Invoke-Item }
 
 # Yank File Name: find and yank filename
 function yfn {
