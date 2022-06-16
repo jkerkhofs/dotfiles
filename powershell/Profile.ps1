@@ -1,7 +1,8 @@
 # Set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
-# Setting the global node_path
+# Environment variables
+$env:SHELL = "pwsh"
 $env:NODE_PATH = "C:\Users\$($env:UserName)\scoop\apps\nvm\current\nodejs\nodejs"
 
 # Prompt
@@ -69,24 +70,19 @@ function e {
   explorer.exe $args
 }
 
-# File: find and open file
-function f { fzf --tac --multi --bind ctrl-t:toggle-all --header="Open file" | Invoke-Item }
-
-# Yank File Name: find and yank filename
-function yfn {
-  $path = ""
-  if ($args) { $path = Resolve-Path $args }
-  else { $path = fzf --tac --header="Yank filename" | Resolve-Path }
-  $path | Split-Path -Leaf | Set-Clipboard
+# Find and open file
+function f {
+  fd --type f | sort | fzf --tac --no-sort --multi `
+    --bind "ctrl-t:toggle-all" `
+    --bind "ctrl-x:deselect-all" `
+    --bind "ctrl-y:execute-silent(Resolve-Path {} | Split-Path -Leaf | Set-Clipboard)+change-prompt(Filename copied > )" `
+    --bind "ctrl-p:execute-silent(Resolve-Path {} | Set-Clipboard)+change-prompt(Path copied > )" `
+    --bind "ctrl-s:toggle-sort" `
+    --bind "enter:execute-multi(echo {} | Invoke-Item)"
 }
 
-# Yank File Path: find and yank filepath
-function yfp {
-  $path = ""
-  if ($args) { $path = Resolve-Path $args }
-  else { $path = fzf --tac --header="Yank filepath" | Resolve-Path }
-  $path | Set-Clipboard
-}
+# Find and go to directory
+function fz { fd --type d | fzf | Set-Location }
 
 # Open notes project in vim while auto pulling/pushing from git in the background every 5 min.
 # Cleans up background job after quiting vim.
