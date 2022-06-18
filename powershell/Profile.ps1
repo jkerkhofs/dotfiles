@@ -71,18 +71,24 @@ function e {
 }
 
 # Find and open file
+# enter: open file
+# ctrl+space: go to directory
+# ctrl+y: copy filename
+# alt-y: copy full path
 function f {
   fd --type f | sort | fzf --tac --no-sort --multi `
+    --bind "ctrl-u:half-page-up" `
+    --bind "ctrl-d:half-page-down" `
     --bind "ctrl-t:toggle-all" `
+    --bind "ctrl-a:select-all" `
     --bind "ctrl-x:deselect-all" `
-    --bind "ctrl-y:execute-silent(Resolve-Path {} | Split-Path -Leaf | Set-Clipboard)+change-prompt(Filename copied > )" `
-    --bind "ctrl-p:execute-silent(Resolve-Path {} | Set-Clipboard)+change-prompt(Path copied > )" `
     --bind "ctrl-s:toggle-sort" `
+    --bind "ctrl-space:accept" `
+    --bind "ctrl-y:execute-silent(Resolve-Path {} | Split-Path -Leaf | Set-Clipboard)+change-prompt(Filename copied > )" `
+    --bind "alt-y:execute-silent(Resolve-Path {} | Set-Clipboard)+change-prompt(Path copied > )" `
     --bind "enter:execute-multi(echo {} | Invoke-Item)"
+  | Split-Path -Parent | Set-Location
 }
-
-# Find and go to directory
-function fz { fd --type d | fzf | Set-Location }
 
 # Open notes project in vim while auto pulling/pushing from git in the background every 5 min.
 # Cleans up background job after quiting vim.
