@@ -72,8 +72,8 @@ function e {
 
 # Find and open file
 # enter: open file
-# ctrl+space: go to directory
-# ctrl+y: copy filename
+# ctrl-space: go to directory
+# ctrl-y: copy filename
 # alt-y: copy full path
 function f {
   fd --type f | sort | fzf --tac --no-sort --multi `
