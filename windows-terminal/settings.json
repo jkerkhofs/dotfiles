@@ -4,6 +4,18 @@
   "actions": [
     {
       "command": {
+        "action": "duplicateTab"
+      },
+      "keys": "ctrl+t"
+    },
+    {
+      "command": {
+        "action": "closePane"
+      },
+      "keys": "ctrl+w"
+    },
+    {
+      "command": {
         "action": "nextTab"
       },
       "keys": "ctrl+shift+]"
@@ -57,10 +69,6 @@
         "splitMode": "duplicate"
       },
       "keys": "ctrl+shift+minus"
-    },
-    {
-      "command": "duplicateTab",
-      "keys": "ctrl+shift+t"
     },
     {
       "command": {
