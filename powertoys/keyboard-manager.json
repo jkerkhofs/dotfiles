@@ -41,6 +41,8 @@
       { "originalKeys": "260;17;57", "newRemapKeys": "260;57" }
     ],
     "appSpecific": [
+      { "originalKeys": "17;68", "newRemapKeys": "32", "targetApp": "msedge" },
+      { "originalKeys": "17;85", "newRemapKeys": "16;32", "targetApp": "msedge" },
       { "originalKeys": "17;219", "newRemapKeys": "18;37", "targetApp": "msedge" },
       { "originalKeys": "17;221", "newRemapKeys": "18;39", "targetApp": "msedge" },
       { "originalKeys": "17;16;219", "newRemapKeys": "17;16;9", "targetApp": "msedge" },
