@@ -44,12 +44,11 @@ Set-PsReadLineOption -EditMode Vi
 Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler {
   if ($args[0] -eq 'Command') { SetCursorToBlock } else { SetCursorToLine }
 }
+# Map Ctrl-Shift-l to ClearScreen. Note: Ctrl-l is mapped to RightArrow via PowerToys.
+Set-PSReadlineKeyHandler -Key Shift+RightArrow -Function ClearScreen
 
 # Initialize cursor (disable cursor blink)
 SetCursorToLine
-
-# Aliases
-Set-Alias c clear
 
 function lgit {
   lazygit
