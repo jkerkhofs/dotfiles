@@ -57,14 +57,16 @@ autocmd FileType scss setl iskeyword+=@-@,-,$,#
 " Close the quickfix window with esc.
 autocmd FileType qf nnoremap <buffer><silent> <esc> :q<cr>
 
+silent function! IsWindows() abort
+  return (has('win32') || has('win64'))
+endfunction
+
 " Use PowerShell when on Windows
-if has('win32') || has('win64')
-  set shell=powershell\ -NoLogo\ -NoProfile\ -NonInteractive
-  set shellcmdflag=-command
+if IsWindows()
+  set shell=pwsh
+  set shellcmdflag=-NoLogo\ -NoProfile\ -NonInteractive\ -command
   set shellquote= " space char
   set shellxquote= " space char
-  set shellpipe=\| 
-  set shellredir=\|\ Out-File\ -Encoding\ UTF8
 endif
 "}}}
 
@@ -157,7 +159,7 @@ nnoremap <silent> <S-Up> :cprevious<CR>
 " Lazygit
 nnoremap <silent> <leader>lg :FloatermNew --height=0.9 --width=0.9 --autoclose=2 --title=Lazygit lazygit<CR>
 
-if has('win32') || has('win64')
+if IsWindows()
   " Disable suspend on Windows as it just freezes nvim and leaves you in a blocked state.
   nmap <C-z> <Nop>
 endif
