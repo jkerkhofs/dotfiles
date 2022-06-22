@@ -5,6 +5,7 @@
 $env:SHELL = "pwsh"
 $env:LANG = "en_US.utf8"
 $env:NODE_PATH = "C:\Users\$($env:UserName)\scoop\apps\nvm\current\nodejs\nodejs"
+$env:_PSFZF_FZF_DEFAULT_OPTS = "--bind ctrl-s:toggle-sort --bind ctrl-u:half-page-up --bind ctrl-d:half-page-down"
 
 # Prompt
 oh-my-posh init pwsh --config "$PSScriptRoot\pure.jke.omp.json" | Invoke-Expression
@@ -46,6 +47,11 @@ Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler {
   if ($args[0] -eq 'Command') { SetCursorToBlock } else { SetCursorToLine }
 }
 Set-PSReadlineKeyHandler -Key Ctrl-l -Function ClearScreen
+
+# PSFzf
+Import-Module PSFzf
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
+Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 # Initialize cursor (disable cursor blink)
 SetCursorToLine

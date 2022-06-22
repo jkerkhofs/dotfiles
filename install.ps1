@@ -57,6 +57,7 @@ $shortcut.Save()
 # Installing powershell modules
 Install-Module -Name PSReadLine -AllowPrerelease -Force
 Install-Module -Name PSColor
+Install-Module -Name PSFzf
 
 
 # (Optional) Reset execution policy: Set-ExecutionPolicy Default
