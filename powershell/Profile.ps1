@@ -3,6 +3,7 @@
 
 # Environment variables
 $env:SHELL = "pwsh"
+$env:LANG = "en_US.utf8"
 $env:NODE_PATH = "C:\Users\$($env:UserName)\scoop\apps\nvm\current\nodejs\nodejs"
 
 # Prompt
