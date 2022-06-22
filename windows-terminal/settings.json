@@ -6,13 +6,13 @@
       "command": {
         "action": "duplicateTab"
       },
-      "keys": "ctrl+t"
+      "keys": "ctrl+shift+t"
     },
     {
       "command": {
         "action": "closePane"
       },
-      "keys": "ctrl+w"
+      "keys": "ctrl+shift+w"
     },
     {
       "command": {
