@@ -248,6 +248,7 @@
   Plug 'tpope/vim-repeat'
   Plug 'voldikss/vim-floaterm'
   Plug 'tyru/open-browser.vim'
+  Plug 'dkarter/bullets.vim'
 
   "Session management
   Plug 'tpope/vim-obsession'
