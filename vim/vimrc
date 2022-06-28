@@ -85,6 +85,8 @@ if IsWindows()
   set shellcmdflag=-NoLogo\ -NoProfile\ -NonInteractive\ -command
   set shellquote= " space char
   set shellxquote= " space char
+  set shellpipe=\|
+  set shellredir=\|\ Out-File\ -Encoding\ UTF8
 endif
 "}}}
 
