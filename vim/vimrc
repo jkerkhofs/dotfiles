@@ -179,6 +179,11 @@ nnoremap <silent> <S-Up> :cprevious<CR>
 " Lazygit
 nnoremap <silent> <leader>lg :FloatermNew --height=0.9 --width=0.9 --autoclose=2 --title=Lazygit lazygit<CR>
 
+" Open in browser
+let g:openbrowser_format_message = { 'msg': "" }
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+
 if IsWindows()
   " Disable suspend on Windows as it just freezes nvim and leaves you in a blocked state.
   nmap <C-z> <Nop>
@@ -201,6 +206,10 @@ command! DeleteHiddenBuffers call DeleteHiddenBuffers()
 
 " Native plugins {{{ 
 packadd! matchit " enable the matchit plugin (e.g. to find the matching html tags)
+
+" Disable netrw plugin
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
 " }}}
 
 " {{{ Plugins
@@ -219,6 +228,7 @@ Plug 'matze/vim-move' "Line/block movements with A-hjkl
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'voldikss/vim-floaterm'
+Plug 'tyru/open-browser.vim'
 
 "Session management
 Plug 'tpope/vim-obsession'
@@ -235,6 +245,7 @@ if has("nvim")
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
   Plug 'windwp/nvim-ts-autotag'
+  Plug 'ThePrimeagen/refactoring.nvim'
 
   " Commenting
   Plug 'tpope/vim-commentary'
@@ -246,9 +257,6 @@ if has("nvim")
 
   " CoC
   Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
-
-  " Refactoring
-  Plug 'ThePrimeagen/refactoring.nvim'
 
   " Snippets
   Plug 'honza/vim-snippets'
