@@ -1,276 +1,297 @@
 " General settings {{{
-set nocompatible
-syntax enable
-filetype plugin on
-set hidden
-" change the mapleader from \ to , (This has to be set before <leader> is used.)
-let mapleader=","
-" Always show the signcolumn, otherwise it would shift the text each time
-set signcolumn=yes
-set number 
-set rnu
-" Use spaces instead of tabs
-set expandtab 
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-" Don't line wrap mid-word.
-set lbr 
-" Give more space for displaying messages.
-set cmdheight=2
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-" Don't show the intro
-set shortmess+=I
-" more powerful backspacing
-set backspace=indent,eol,start  
-" disable audio bell
-set belloff=all 
-" Save 1,000 items in history
-set history=1000 
-" Show the line and column number of the cursor position
-set ruler 
-" Display the incomplete commands in the bottom right-hand side of your screen.  
-set showcmd 
-" Display completion matches on your status line
-set wildmenu 
-" Show a few lines of context around the cursor
-set scrolloff=10 
-" Copy the indentation from the current line.
-set autoindent 
-" Enable smart autoindenting.
-set smartindent 
-" Open vertical splits right of the current one.
-set splitright
-" Open horizontal splits below the current one.
-set splitbelow
-" Enable mouse support
-set mouse=nv
 
-augroup General
-  autocmd!
-  " Disable relative numbers on insert mode.
-  autocmd InsertEnter * :set norelativenumber
-  autocmd InsertLeave * :set relativenumber
-augroup END
+  set nocompatible
+  syntax enable
+  filetype plugin on
+  set hidden
+  " change the mapleader from \ to , (This has to be set before <leader> is used.)
+  let mapleader=","
+  " Always show the signcolumn, otherwise it would shift the text each time
+  set signcolumn=yes
+  set number
+  set rnu
+  " Use spaces instead of tabs
+  set expandtab
+  set tabstop=2
+  set shiftwidth=2
+  set softtabstop=2
+  " Don't line wrap mid-word.
+  set lbr
+  " Give more space for displaying messages.
+  set cmdheight=2
+  " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+  " delays and poor user experience.
+  set updatetime=300
+  " Don't pass messages to |ins-completion-menu|.
+  set shortmess+=c
+  " Don't show the intro
+  set shortmess+=I
+  " more powerful backspacing
+  set backspace=indent,eol,start
+  " disable audio bell
+  set belloff=all
+  " Save 1,000 items in history
+  set history=1000
+  " Show the line and column number of the cursor position
+  set ruler
+  " Display the incomplete commands in the bottom right-hand side of your screen.
+  set showcmd
+  " Display completion matches on your status line
+  set wildmenu
+  " Show a few lines of context around the cursor
+  set scrolloff=10
+  " Copy the indentation from the current line.
+  set autoindent
+  " Enable smart autoindenting.
+  set smartindent
+  " Open vertical splits right of the current one.
+  set splitright
+  " Open horizontal splits below the current one.
+  set splitbelow
+  " Enable mouse support
+  set mouse=nv
 
-augroup filetype_scss
-  autocmd!
-  " Add '@', '-', '$', '#' characters to keyword list for scss.
-  autocmd FileType scss setl iskeyword+=@-@,-,$,#
-augroup END
+  augroup General
+    autocmd!
+    " Disable relative numbers on insert mode.
+    autocmd InsertEnter * :set norelativenumber
+    autocmd InsertLeave * :set relativenumber
+  augroup END
 
-augroup filetype_qf
-  autocmd!
-  " Close the quickfix window with esc.
-  autocmd FileType qf nnoremap <buffer><silent> <esc> :q<cr>
-augroup END
+  augroup filetype_scss
+    autocmd!
+    " Add '@', '-', '$', '#' characters to keyword list for scss.
+    autocmd FileType scss setl iskeyword+=@-@,-,$,#
+  augroup END
 
-augroup filetype_markdown
-  autocmd!
-  " Exclude brackets for filename detection in markdown.
-  autocmd FileType markdown setl isfname-=[,]
-augroup END
+  augroup filetype_qf
+    autocmd!
+    " Close the quickfix window with esc.
+    autocmd FileType qf nnoremap <buffer><silent> <esc> :q<cr>
+  augroup END
 
-silent function! IsWindows() abort
-  return (has('win32') || has('win64'))
-endfunction
+  augroup filetype_markdown
+    autocmd!
+    " Exclude brackets for filename detection in markdown.
+    autocmd FileType markdown setl isfname-=[,]
+  augroup END
 
-" Use PowerShell when on Windows
-if IsWindows()
-  set shell=pwsh
-  set shellcmdflag=-NoLogo\ -NoProfile\ -NonInteractive\ -command
-  set shellquote= " space char
-  set shellxquote= " space char
-  set shellpipe=\|
-  set shellredir=\|\ Out-File\ -Encoding\ UTF8
-endif
-"}}}
+  silent function! IsWindows() abort
+    return (has('win32') || has('win64'))
+  endfunction
+
+  " Use PowerShell when on Windows
+  if IsWindows()
+    set shell=pwsh
+    set shellcmdflag=-NoLogo\ -NoProfile\ -NonInteractive\ -command
+    set shellquote= " space char
+    set shellxquote= " space char
+    set shellpipe=\|
+    set shellredir=\|\ Out-File\ -Encoding\ UTF8
+  endif
+
+" }}}
+
 
 " Searching {{{
-" Highlight search matches
-set hlsearch 
-" Enable incremental searching
-set incsearch 
-set wildignore+=*/node_modules/*
-set wildignore+=*/public/*
-set wildignore+=*/build/*
-" Ignore case when searching
-set ignorecase
-" Override the 'ignorecase' option if the search pattern contains upper case characters.
-set smartcase
-" Search down into subfolders
-" - Provides tab-completion for all file-related tasks
-" - Hit tab to :find by partial match
-" - Use * to make it fuzzy
-" - TIP: :b lets you autocomplete any open buffer
-set path=.,**
+
+  " Highlight search matches
+  set hlsearch
+  " Enable incremental searching
+  set incsearch
+  set wildignore+=*/node_modules/*
+  set wildignore+=*/public/*
+  set wildignore+=*/build/*
+  " Ignore case when searching
+  set ignorecase
+  " Override the 'ignorecase' option if the search pattern contains upper case characters.
+  set smartcase
+  " Search down into subfolders
+  " - Provides tab-completion for all file-related tasks
+  " - Hit tab to :find by partial match
+  " - Use * to make it fuzzy
+  " - TIP: :b lets you autocomplete any open buffer
+  set path=.,**
+
 " }}}
+
 
 " Theme settings {{{
-set termguicolors
-set bg=dark
-highlight Normal guibg=NONE ctermbg=NONE
+
+  set termguicolors
+  set bg=dark
+  highlight Normal guibg=NONE ctermbg=NONE
+
 " }}}
+
 
 " Backups {{{
-set backup
-set backupdir=~/.vim/tmp/backup//
-set swapfile
-set directory=~/.vim/tmp/swap//
-" set undofile
-" set undodir=~/.vim/tmp/undo//
+
+  set backup
+  set backupdir=~/.vim/tmp/backup//
+  set swapfile
+  set directory=~/.vim/tmp/swap//
+  " set undofile
+  " set undodir=~/.vim/tmp/undo//
+
 " }}}
+
 
 " Mappings {{{
-nnoremap <leader>ve :e ~/.vim/vimrc<CR>
-nnoremap <leader>vv :source ~/.vim/vimrc<bar>noh<CR>
-nnoremap <leader>w :w<CR>
-nnoremap <leader><esc> :noh<CR>
 
-if !has("nvim")
-" Open default file explorer
-  nmap <silent> <leader>e :Lexplore<CR>
-endif
+  nnoremap <leader>ve :e ~/.vim/vimrc<CR>
+  nnoremap <leader>vv :source ~/.vim/vimrc<bar>noh<CR>
+  nnoremap <leader>w :w<CR>
+  nnoremap <leader><esc> :noh<CR>
 
-" place cursor at the end after yanking selection
-vnoremap y ygv<esc>
-
-" quicker window movement. 
-" Note: C-hjkl are mapped to left/down/up/right at OS level.
-nnoremap <left> <C-w>h
-nnoremap <down> <C-w>j
-nnoremap <up> <C-w>k
-nnoremap <right> <C-w>l
-nnoremap <space> <C-w>w
-
-" navigating tabs
-nnoremap <silent> ]t :tabnext<CR>
-nnoremap <silent> [t :tabprevious<CR>
-
-" Easier grep searching.
-function! Grep()
-  silent !clear
-  let text = input("Search for text: ")
-  if text != ""
-    let folder = input("Search in folder: ", " ")
-    if folder != ""
-      execute "silent Ggrep! --ignore-case " . text . " " . folder
-      execute "cw 20"
-    endif
+  if !has("nvim")
+  " Open default file explorer
+    nmap <silent> <leader>e :Lexplore<CR>
   endif
-endfunction
 
-function! GrepCWord()
-  execute "silent Ggrep! --ignore-case " . expand("<cword>")
-  execute "cw 20"
-endfunction
+  " place cursor at the end after yanking selection
+  vnoremap y ygv<esc>
 
-nnoremap <silent> <leader>gr :call Grep() <cr>
-nnoremap <silent> <leader>* :call GrepCWord() <cr>
+  " faster window movement.
+  " Note: C-hjkl are mapped to left/down/up/right at OS level.
+  nnoremap <left> <C-w>h
+  nnoremap <down> <C-w>j
+  nnoremap <up> <C-w>k
+  nnoremap <right> <C-w>l
+  nnoremap <space> <C-w>w
 
-" Navigating quickfix list
-nnoremap <silent> <S-Down> :cnext<CR>
-nnoremap <silent> <S-Up> :cprevious<CR>
+  " navigating tabs
+  nnoremap <silent> ]t :tabnext<CR>
+  nnoremap <silent> [t :tabprevious<CR>
 
-" Lazygit
-nnoremap <silent> <leader>lg :FloatermNew --height=0.9 --width=0.9 --autoclose=2 --title=Lazygit lazygit<CR>
+  " Easier grep searching.
+  function! Grep()
+    silent !clear
+    let text = input("Search for text: ")
+    if text != ""
+      let folder = input("Search in folder: ", " ")
+      if folder != ""
+        execute "silent Ggrep! --ignore-case " . text . " " . folder
+        execute "cw 20"
+      endif
+    endif
+  endfunction
 
-" Open in browser
-let g:openbrowser_format_message = { 'msg': "" }
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
+  function! GrepCWord()
+    execute "silent Ggrep! --ignore-case " . expand("<cword>")
+    execute "cw 20"
+  endfunction
 
-if IsWindows()
-  " Disable suspend on Windows as it just freezes nvim and leaves you in a blocked state.
-  nmap <C-z> <Nop>
-endif
+  nnoremap <silent> <leader>gr :call Grep() <cr>
+  nnoremap <silent> <leader>* :call GrepCWord() <cr>
+
+  " Navigating quickfix list
+  nnoremap <silent> <S-Down> :cnext<CR>
+  nnoremap <silent> <S-Up> :cprevious<CR>
+
+  " Lazygit
+  nnoremap <silent> <leader>lg :FloatermNew --height=0.9 --width=0.9 --autoclose=2 --title=Lazygit lazygit<CR>
+
+  " Open in browser
+  let g:openbrowser_format_message = { 'msg': "" }
+  nmap gx <Plug>(openbrowser-smart-search)
+  vmap gx <Plug>(openbrowser-smart-search)
+
+  if IsWindows()
+    " Disable suspend on Windows as it just freezes nvim and leaves you in a blocked state.
+    nmap <C-z> <Nop>
+  endif
+
 " }}}
+
 
 " Commands {{{
 
-" Delete (wipeout) all hidden buffers
-function DeleteHiddenBuffers()
-  let tpbl=[]
-  call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
-  for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
-    silent execute 'bwipeout' buf
-  endfor
-endfunction
-command! DeleteHiddenBuffers call DeleteHiddenBuffers()
+  " Delete (wipeout) all hidden buffers
+  function DeleteHiddenBuffers()
+    let tpbl=[]
+    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+    for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+      silent execute 'bwipeout' buf
+    endfor
+  endfunction
+  command! DeleteHiddenBuffers call DeleteHiddenBuffers()
 
 " }}}
+
 
 " Native plugins {{{ 
-packadd! matchit " enable the matchit plugin (e.g. to find the matching html tags)
 
-" Disable netrw plugin
-let g:loaded_netrw       = 1
-let g:loaded_netrwPlugin = 1
+  packadd! matchit " enable the matchit plugin (e.g. to find the matching html tags)
+
+  " Disable netrw plugin
+  let g:loaded_netrw       = 1
+  let g:loaded_netrwPlugin = 1
+
 " }}}
+
 
 " {{{ Plugins
-" auto-install vim-plug
 
-let plug_vim = expand('~').'/.vim/autoload/plug.vim'
-if empty(glob(expand(plug_vim)))
-  execute '!curl -fLo '.plug_vim.' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-endif
+  " auto-install vim-plug
+  let plug_vim = expand('~').'/.vim/autoload/plug.vim'
+  if empty(glob(expand(plug_vim)))
+    execute '!curl -fLo '.plug_vim.' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  endif
 
-call plug#begin('~/.vim/plugged')
+  call plug#begin('~/.vim/plugged')
 
-Plug 'sainnhe/gruvbox-material' "Theme
-Plug 'tpope/vim-fugitive' "Git 
-Plug 'matze/vim-move' "Line/block movements with A-hjkl
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'voldikss/vim-floaterm'
-Plug 'tyru/open-browser.vim'
+  Plug 'sainnhe/gruvbox-material' "Theme
+  Plug 'tpope/vim-fugitive' "Git
+  Plug 'matze/vim-move' "Line/block movements with A-hjkl
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat'
+  Plug 'voldikss/vim-floaterm'
+  Plug 'tyru/open-browser.vim'
 
-"Session management
-Plug 'tpope/vim-obsession'
-Plug 'dhruvasagar/vim-prosession'
+  "Session management
+  Plug 'tpope/vim-obsession'
+  Plug 'dhruvasagar/vim-prosession'
 
-if has("nvim")
-  " Dependency for other plugins
-  Plug 'nvim-lua/plenary.nvim'
+  if has("nvim")
+    " Dependency for other plugins
+    Plug 'nvim-lua/plenary.nvim'
 
-  " Lualine
-  Plug 'hoob3rt/lualine.nvim'
+    " Lualine
+    Plug 'hoob3rt/lualine.nvim'
 
-  " Treesitter
-  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-  Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-  Plug 'windwp/nvim-ts-autotag'
-  Plug 'ThePrimeagen/refactoring.nvim'
+    " Treesitter
+    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+    Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+    Plug 'windwp/nvim-ts-autotag'
+    Plug 'ThePrimeagen/refactoring.nvim'
 
-  " Commenting
-  Plug 'tpope/vim-commentary'
+    " Commenting
+    Plug 'tpope/vim-commentary'
 
-  " LSP
-  " Plug 'neovim/nvim-lspconfig'
-  " Plug 'kabouzeid/nvim-lspinstall'
-  " Plug 'hrsh7th/nvim-compe'
+    " LSP
+    " Plug 'neovim/nvim-lspconfig'
+    " Plug 'kabouzeid/nvim-lspinstall'
+    " Plug 'hrsh7th/nvim-compe'
 
-  " CoC
-  Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
+    " CoC
+    Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
 
-  " Snippets
-  Plug 'honza/vim-snippets'
+    " Snippets
+    Plug 'honza/vim-snippets'
 
-  " Telescope
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+    " Telescope
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
-  " File explorer
-  Plug 'kyazdani42/nvim-web-devicons' " for file icons
-  " Plug 'kyazdani42/nvim-tree.lua'
-endif
+    " File explorer
+    Plug 'kyazdani42/nvim-web-devicons' " for file icons
+    " Plug 'kyazdani42/nvim-tree.lua'
+  endif
 
-call plug#end()
+  call plug#end()
+
 " }}}
+
 
 " vim:foldmethod=marker
