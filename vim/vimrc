@@ -69,6 +69,12 @@ augroup filetype_qf
   autocmd FileType qf nnoremap <buffer><silent> <esc> :q<cr>
 augroup END
 
+augroup filetype_markdown
+  autocmd!
+  " Exclude brackets for filename detection in markdown.
+  autocmd FileType markdown setl isfname-=[,]
+augroup END
+
 silent function! IsWindows() abort
   return (has('win32') || has('win64'))
 endfunction
