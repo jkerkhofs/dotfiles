@@ -9,9 +9,6 @@ let mapleader=","
 set signcolumn=yes
 set number 
 set rnu
-" Disable relative numbers on insert mode.
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
 " Use spaces instead of tabs
 set expandtab 
 set tabstop=2
@@ -52,10 +49,25 @@ set splitright
 set splitbelow
 " Enable mouse support
 set mouse=nv
-" Add '@', '-', '$', '#' characters to keyword list for scss.
-autocmd FileType scss setl iskeyword+=@-@,-,$,#
-" Close the quickfix window with esc.
-autocmd FileType qf nnoremap <buffer><silent> <esc> :q<cr>
+
+augroup General
+  autocmd!
+  " Disable relative numbers on insert mode.
+  autocmd InsertEnter * :set norelativenumber
+  autocmd InsertLeave * :set relativenumber
+augroup END
+
+augroup filetype_scss
+  autocmd!
+  " Add '@', '-', '$', '#' characters to keyword list for scss.
+  autocmd FileType scss setl iskeyword+=@-@,-,$,#
+augroup END
+
+augroup filetype_qf
+  autocmd!
+  " Close the quickfix window with esc.
+  autocmd FileType qf nnoremap <buffer><silent> <esc> :q<cr>
+augroup END
 
 silent function! IsWindows() abort
   return (has('win32') || has('win64'))
