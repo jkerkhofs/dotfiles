@@ -1,12 +1,19 @@
 {
+  "notification.disabledProgressSources": ["*"],
+
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
   "explorer.width": 60,
+
   "prettier.printWidth": 100,
-  "colors.filetypes": ["css", "scss"],
+
   "snippets.extends": {
     "javascriptreact": ["javascript"],
     "scss": ["css"]
   },
-  "powershell.integratedConsole.showOnStartup": false
+
+  "powershell.integratedConsole.showOnStartup": false,
+
+  "Lua.telemetry.enable": false,
+  "Lua.diagnostics.globals": ["vim"]
 }
