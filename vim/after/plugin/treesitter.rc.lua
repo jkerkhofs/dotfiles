@@ -19,6 +19,7 @@ ts.setup {
     'json',
     'lua',
     'markdown',
+    'markdown_inline',
     'regex',
     'scss',
     'toml',
