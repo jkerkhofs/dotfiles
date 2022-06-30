@@ -56,6 +56,8 @@
     " Disable relative numbers on insert mode.
     autocmd InsertEnter * :set norelativenumber
     autocmd InsertLeave * :set relativenumber
+    " Clear jumplist to avoid jumping to another session/project.
+    autocmd VimEnter * :clearjumps
   augroup END
 
   augroup filetype_scss
