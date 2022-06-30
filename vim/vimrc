@@ -50,6 +50,8 @@
   set splitbelow
   " Enable mouse support
   set mouse=nv
+  " Use system clipboard by default
+  set clipboard+=unnamedplus
 
   augroup General
     autocmd!
