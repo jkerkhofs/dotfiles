@@ -144,7 +144,7 @@
   nnoremap <leader>ve :e ~/.vim/vimrc<CR>
   nnoremap <leader>vv :source ~/.vim/vimrc<bar>noh<CR>
   nnoremap <leader>w :w<CR>
-  nnoremap <leader><esc> :noh<CR>
+  nnoremap <leader><esc> :noh<bar>echon''<CR>
 
   if !has("nvim")
   " Open default file explorer
