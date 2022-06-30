@@ -25,7 +25,6 @@ ts.setup {
     'toml',
     'tsx',
     'typescript',
-    'vim',
     'yaml'
   },
   highlight = {
