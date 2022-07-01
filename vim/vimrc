@@ -170,27 +170,6 @@
   nnoremap <silent> ]t :tabnext<CR>
   nnoremap <silent> [t :tabprevious<CR>
 
-  " Easier grep searching.
-  function! Grep()
-    silent !clear
-    let text = input("Search for text: ")
-    if text != ""
-      let folder = input("Search in folder: ", " ")
-      if folder != ""
-        execute "silent Ggrep! --ignore-case " . text . " " . folder
-        execute "cw 20"
-      endif
-    endif
-  endfunction
-
-  function! GrepCWord()
-    execute "silent Ggrep! --ignore-case " . expand("<cword>")
-    execute "cw 20"
-  endfunction
-
-  nnoremap <silent> <leader>gr :call Grep() <cr>
-  nnoremap <silent> <leader>* :call GrepCWord() <cr>
-
   " Navigating quickfix list
   nnoremap <silent> <S-Down> :cnext<CR>
   nnoremap <silent> <S-Up> :cprevious<CR>
