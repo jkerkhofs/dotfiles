@@ -50,8 +50,6 @@
   set splitbelow
   " Enable mouse support
   set mouse=nv
-  " Use system clipboard by default
-  set clipboard+=unnamedplus
 
   augroup General
     autocmd!
@@ -155,6 +153,10 @@
 
   " place cursor at the end after yanking selection
   vnoremap y ygv<esc>
+
+  " Y to yank to system clipboard.
+  nnoremap Y "+y
+  vnoremap Y "+y
 
   " faster window movement.
   " Note: C-hjkl are mapped to left/down/up/right at OS level.
