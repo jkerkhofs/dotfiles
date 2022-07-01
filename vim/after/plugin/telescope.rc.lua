@@ -2,13 +2,30 @@ if not vim.g.loaded_telescope then
   return
 end
 
+local setKeymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 local actions = require('telescope.actions')
+local tb = require('telescope.builtin')
 
-vim.api.nvim_set_keymap('n', '<leader><Space>', '<cmd>Telescope find_files<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader>b', '<cmd>Telescope buffers<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>Telescope registers<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader>gg', '<cmd>Telescope live_grep<cr>', opts)
+function vim.getVisualSelection()
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg('v')
+	vim.fn.setreg('v', {})
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ''
+	end
+end
+
+setKeymap('n', '<leader><Space>', ':Telescope find_files<cr>', opts)
+setKeymap('v', '<leader><Space>', function() tb.find_files({ default_text = "'" .. vim.getVisualSelection() }) end, opts)
+setKeymap('n', '<leader>b', ':Telescope buffers<cr>', opts)
+setKeymap('n', '<leader>p', ':Telescope registers<cr>', opts)
+setKeymap('n', '<leader>g', ':Telescope live_grep<cr>', opts)
+setKeymap('v', '<leader>g', function() tb.live_grep({ default_text = vim.getVisualSelection() }) end, opts)
 
 require('telescope').setup{
   defaults = {
