@@ -178,7 +178,6 @@
   nnoremap <silent> <leader>lg :FloatermNew --height=0.9 --width=0.9 --autoclose=2 --title=Lazygit lazygit<CR>
 
   " Open in browser
-  let g:openbrowser_format_message = { 'msg': "" }
   nmap gx <Plug>(openbrowser-smart-search)
   vmap gx <Plug>(openbrowser-smart-search)
 
@@ -276,6 +275,18 @@
   endif
 
   call plug#end()
+
+" }}}
+
+
+" {{{ Plugin config
+
+  " open-browser.vim
+  let g:openbrowser_format_message = { 'msg': "" }
+
+  " bullets.vim
+  let g:bullets_outline_levels = ['num', 'abc', 'std-']
+  let g:bullets_checkbox_markers = ' x'
 
 " }}}
 
