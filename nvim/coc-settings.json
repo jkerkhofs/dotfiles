@@ -4,6 +4,7 @@
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
   "explorer.width": 60,
+  "explorer.keyMappings.global": { "<esc>": false },
 
   "prettier.printWidth": 100,
 
