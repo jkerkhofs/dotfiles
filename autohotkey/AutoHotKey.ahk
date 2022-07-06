@@ -182,6 +182,25 @@ BrightnessOSD() {
       Send ^w
     Return
 
+  ; CapsLock + Shift + f => Open favorites
+  CapsLock & f::
+    If GetKeyState("Shift","P")
+      Send ^+o
+    else
+      Send ^f
+    Return
+
+  ; CapsLock + Shift + h => Open history
+  CapsLock & h::
+    If GetKeyState("Shift","P")
+      Send ^h
+    else
+      Send ^h
+    Return
+
+  ; CapsLock + Enter => focus address bar
+  CapsLock & Enter::Send !d
+
   ; CapsLock + Shift + [ => navigates tabs
   ; CapsLock + [ => goes back in history
   CapsLock & [::
