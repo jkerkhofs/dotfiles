@@ -195,7 +195,7 @@ BrightnessOSD() {
     If GetKeyState("Shift","P")
       Send ^h
     else
-      Send ^h
+      Send {Blind}{Left}
     Return
 
   ; CapsLock + Enter => focus address bar
