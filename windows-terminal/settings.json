@@ -3,16 +3,14 @@
   "$schema": "https://aka.ms/terminal-profiles-schema",
   "actions": [
     {
-      "command": {
-        "action": "duplicateTab"
-      },
+      "command": "duplicateTab",
       "keys": "ctrl+shift+t"
     },
     {
       "command": {
-        "action": "closePane"
+        "action": "prevTab"
       },
-      "keys": "ctrl+shift+w"
+      "keys": "ctrl+shift+["
     },
     {
       "command": {
@@ -22,9 +20,28 @@
     },
     {
       "command": {
-        "action": "prevTab"
+        "action": "moveFocus",
+        "direction": "up"
       },
-      "keys": "ctrl+shift+["
+      "keys": "shift+up"
+    },
+    {
+      "command": "closePane",
+      "keys": "ctrl+shift+w"
+    },
+    {
+      "command": {
+        "action": "moveFocus",
+        "direction": "right"
+      },
+      "keys": "shift+right"
+    },
+    {
+      "command": {
+        "action": "resizePane",
+        "direction": "down"
+      },
+      "keys": "alt+shift+down"
     },
     {
       "command": {
@@ -42,17 +59,10 @@
     },
     {
       "command": {
-        "action": "moveFocus",
-        "direction": "up"
+        "action": "resizePane",
+        "direction": "left"
       },
-      "keys": "shift+up"
-    },
-    {
-      "command": {
-        "action": "moveFocus",
-        "direction": "right"
-      },
-      "keys": "shift+right"
+      "keys": "alt+shift+left"
     },
     {
       "command": {
@@ -85,20 +95,6 @@
     {
       "command": {
         "action": "resizePane",
-        "direction": "left"
-      },
-      "keys": "alt+shift+left"
-    },
-    {
-      "command": {
-        "action": "resizePane",
-        "direction": "down"
-      },
-      "keys": "alt+shift+down"
-    },
-    {
-      "command": {
-        "action": "resizePane",
         "direction": "up"
       },
       "keys": "alt+shift+up"
@@ -122,60 +118,44 @@
   "copyFormatting": "none",
   "copyOnSelect": false,
   "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+  "disableAnimations": true,
   "experimental.rendering.forceFullRepaint": false,
   "language": "en-US",
   "launchMode": "maximized",
   "profiles": {
     "defaults": {
+      "backgroundImage": "desktopWallpaper",
+      "backgroundImageOpacity": 0.070000000000000007,
+      "bellStyle": "none",
       "colorScheme": "GruvboxMaterialMediumDark",
       "cursorShape": "bar",
       "font": {
         "face": "Hack NF",
         "size": 11
-      }
+      },
+      "intenseTextStyle": "all",
+      "padding": "15",
+      "scrollbarState": "hidden"
     },
     "list": [
       {
-        "backgroundImage": "desktopWallpaper",
-        "backgroundImageOpacity": 0.070000000000000007,
-        "bellStyle": "none",
-        "colorScheme": "GruvboxMaterialMediumDark",
         "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -nologo",
-        "cursorShape": "bar",
-        "font": {
-          "face": "Hack NF",
-          "size": 11
-        },
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
         "hidden": false,
-        "intenseTextStyle": "all",
         "name": "PowerShell",
-        "padding": "15",
-        "scrollbarState": "hidden",
         "source": "Windows.Terminal.PowershellCore"
       },
       {
-        "backgroundImage": "desktopWallpaper",
-        "backgroundImageOpacity": 0.070000000000000007,
-        "bellStyle": "none",
-        "colorScheme": "GruvboxMaterialMediumDark",
         "commandline": "wsl.exe tmux attach || tmux",
-        "font": {
-          "face": "Hack NF",
-          "size": 11
-        },
         "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
         "hidden": false,
-        "intenseTextStyle": "all",
         "name": "Ubuntu",
-        "padding": "15",
-        "scrollbarState": "hidden",
         "source": "Windows.Terminal.Wsl",
         "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\jke"
       },
       {
         "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-        "hidden": false,
+        "hidden": true,
         "name": "Git Bash",
         "source": "Git"
       },
@@ -432,3 +412,4 @@
   "tabSwitcherMode": "disabled",
   "theme": "dark"
 }
+
