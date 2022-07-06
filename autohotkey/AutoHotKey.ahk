@@ -35,6 +35,18 @@ CapsLock & k::Send {Blind}{Up}
 CapsLock & l::Send {Blind}{Right}
 CapsLock & d::Send {Blind}{PgDn}
 CapsLock & u::Send {Blind}{PgUp}
+CapsLock & i::
+  If GetKeyState("Shift","P")
+    Send {Home}
+  else
+    Send {Blind}^i
+  Return
+CapsLock & a::
+  If GetKeyState("Shift","P")
+    Send {End}
+  else
+    Send {Blind}^a
+  Return
 
 ; Map CapsLock + d|u back to Ctrl + d|u for vim-like apps
 #IfWinActive ahk_group VimApps
@@ -49,10 +61,8 @@ CapsLock & e::Send {Blind}^e
 CapsLock & r::Send {Blind}^r
 CapsLock & t::Send {Blind}^t
 CapsLock & y::Send {Blind}^y
-CapsLock & i::Send {Blind}^i
 CapsLock & o::Send {Blind}^o
 CapsLock & p::Send {Blind}^p
-CapsLock & a::Send {Blind}^a
 CapsLock & s::Send {Blind}^s
 CapsLock & f::Send {Blind}^f
 CapsLock & g::Send {Blind}^g
