@@ -199,7 +199,7 @@ BrightnessOSD() {
     Return
 
   ; CapsLock + Enter => focus address bar
-  CapsLock & Enter::Send !d
+  CapsLock & Enter::Send {F4}
 
   ; CapsLock + Shift + [ => navigates tabs
   ; CapsLock + [ => goes back in history
@@ -219,8 +219,8 @@ BrightnessOSD() {
       Send !{Right}
     Return
 
-  ; CapsLock + Space => toggle focus between settings button and webpage
-  CapsLock & Space::Send {F10}
+  ; CapsLock + Tab => toggle focus between webpage, tabs and address bar
+  CapsLock & Tab::Send {F6}
 #IfWinActive
 
 
