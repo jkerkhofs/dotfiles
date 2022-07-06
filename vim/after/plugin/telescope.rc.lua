@@ -20,14 +20,21 @@ function vim.getVisualSelection()
 	end
 end
 
+function vim.getVisualSelectionForFilename()
+  local selection = vim.getVisualSelection()
+  -- replace all forward slashes with backslashes
+  selection = selection:gsub("/", "\\")
+  -- prepend a single quote for doing an exact match (fzf)
+  return "'" .. selection
+end
+
 setKeymap('n', '<leader><Space>', ':Telescope find_files<cr>', opts)
 setKeymap('n', '<leader>b', ':Telescope buffers<cr>', opts)
 setKeymap('n', '<leader>p', ':Telescope registers<cr>', opts)
 setKeymap('n', '<leader>g', ':Telescope live_grep<cr>', opts)
 
 -- Find files based on selection.
--- Uses single quote prefix for an exact match (fzf) and replaces all forward slashes with backslashes for path-matching.
-setKeymap('v', '<leader><Space>', function() tb.find_files({ default_text = "'" .. vim.getVisualSelection():gsub("/", "\\") }) end, opts)
+setKeymap('v', '<leader><Space>', function() tb.find_files({ default_text = vim.getVisualSelectionForFilename() }) end, opts)
 
 -- Live grep based on selection.
 setKeymap('v', '<leader>g', function() tb.live_grep({ default_text = vim.getVisualSelection() }) end, opts)
