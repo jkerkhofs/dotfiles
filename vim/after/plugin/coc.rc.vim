@@ -96,6 +96,13 @@ nmap <leader>r <Plug>(coc-rename)
 nmap <leader>f  <Plug>(coc-format)
 xmap <leader>f  <Plug>(coc-format-selected)
 
+function! s:organizeImportsAndFormatDoc()
+  call CocAction('runCommand', 'editor.action.organizeImport')
+  call CocAction('runCommand', 'editor.action.formatDocument')
+endfunction
+
+nmap <silent> <leader>F :call <SID>organizeImportsAndFormatDoc()<CR>
+
 " Applying codeAction
 " Example: `<leader>aap` for current paragraph
 xmap <silent> <leader>a  <Plug>(coc-codeaction-selected)
