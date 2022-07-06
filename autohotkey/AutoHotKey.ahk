@@ -200,8 +200,8 @@ BrightnessOSD() {
       Send !{Right}
     Return
 
-  ; CapsLock + Space moves focus to webpage
-  CapsLock & Space::Send {F10}{F10}
+  ; CapsLock + Space => toggle focus between settings button and webpage
+  CapsLock & Space::Send {F10}
 #IfWinActive
 
 
