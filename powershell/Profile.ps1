@@ -41,12 +41,15 @@ function SetGitProjectAsWindowTitle {
 
 # PSReadLine
 Set-PSReadLineOption -BellStyle None
-Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+Set-PSReadLineOption -PredictionViewStyle InlineView
+Set-PSReadLineOption -Colors @{ InlinePrediction = "#928374" }
 Set-PsReadLineOption -EditMode Vi
 Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler {
   if ($args[0] -eq 'Command') { SetCursorToBlock } else { SetCursorToLine }
 }
 Set-PSReadlineKeyHandler -Key Ctrl-l -Function ClearScreen
+Set-PSReadLineKeyHandler -Key Ctrl-Enter -Function SwitchPredictionView
 
 # PSFzf
 Import-Module PSFzf
