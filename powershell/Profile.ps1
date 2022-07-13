@@ -7,6 +7,9 @@ $env:LANG = "en_US.utf8"
 $env:NODE_PATH = "C:\Users\$($env:UserName)\scoop\apps\nvm\current\nodejs\nodejs"
 $env:_PSFZF_FZF_DEFAULT_OPTS = "--bind ctrl-s:toggle-sort --bind ctrl-u:half-page-up --bind ctrl-d:half-page-down"
 
+# Settings
+$PSStyle.Progress.UseOSCIndicator = $true
+
 # Prompt
 oh-my-posh init pwsh --config "$PSScriptRoot\pure.jke.omp.json" | Invoke-Expression
 
@@ -43,7 +46,7 @@ function SetGitProjectAsWindowTitle {
 Set-PSReadLineOption -BellStyle None
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadLineOption -PredictionViewStyle InlineView
-Set-PSReadLineOption -Colors @{ InlinePrediction = "#928374" }
+Set-PSReadLineOption -Colors @{ InlinePrediction = "#685d52" }
 Set-PsReadLineOption -EditMode Vi
 Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler {
   if ($args[0] -eq 'Command') { SetCursorToBlock } else { SetCursorToLine }
