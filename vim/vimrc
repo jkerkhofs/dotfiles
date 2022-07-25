@@ -190,6 +190,64 @@
 " }}}
 
 
+" Line/selection movement mappings {{{
+
+  function! MoveLineUp()
+    call MoveLineOrVisualUp(".", "")
+    normal ==
+  endfunction
+
+  function! MoveLineDown()
+    call MoveLineOrVisualDown(".", "")
+    normal ==
+  endfunction
+
+  function! MoveVisualUp()
+    call MoveLineOrVisualUp("'<", "'<,'>")
+    normal gv=gv
+  endfunction
+
+  function! MoveVisualDown()
+    call MoveLineOrVisualDown("'>", "'<,'>")
+    normal gv=gv
+  endfunction
+
+  function! MoveLineOrVisualUp(line_getter, range)
+    let l_num = line(a:line_getter)
+    if l_num - v:count1 - 1 < 0
+      let move_arg = "0"
+    else
+      let move_arg = a:line_getter." -".(v:count1 + 1)
+    endif
+    call MoveLineOrVisualUpOrDown(a:range."move ".move_arg)
+  endfunction
+
+  function! MoveLineOrVisualDown(line_getter, range)
+    let l_num = line(a:line_getter)
+    if l_num + v:count1 > line("$")
+      let move_arg = "$"
+    else
+      let move_arg = a:line_getter." +".v:count1
+    endif
+    call MoveLineOrVisualUpOrDown(a:range."move ".move_arg)
+  endfunction
+
+  function! MoveLineOrVisualUpOrDown(move_arg)
+    let col_num = virtcol(".")
+    execute "silent! ".a:move_arg
+    execute "normal! ".col_num."|"
+  endfunction
+
+  nnoremap <silent> <A-j> :<C-u>call MoveLineDown()<CR>
+  nnoremap <silent> <A-k> :<C-u>call MoveLineUp()<CR>
+  inoremap <silent> <A-j> <C-o>:call MoveLineDown()<CR>
+  inoremap <silent> <A-k> <C-o>:call MoveLineUp()<CR>
+  vnoremap <silent> <A-j> :<C-u>call MoveVisualDown()<CR>
+  vnoremap <silent> <A-k> :<C-u>call MoveVisualUp()<CR>
+
+" }}}
+
+
 " Commands {{{
 
   " Close (wipeout) all hidden buffers
@@ -228,7 +286,6 @@
 
   Plug 'sainnhe/gruvbox-material' "Theme
   Plug 'tpope/vim-fugitive' "Git
-  Plug 'matze/vim-move' "Line/block movements with A-hjkl
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
   Plug 'voldikss/vim-floaterm'
