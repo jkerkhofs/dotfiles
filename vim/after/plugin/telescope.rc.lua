@@ -4,6 +4,7 @@ end
 
 local setKeymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
+local telescope = require('telescope')
 local actions = require('telescope.actions')
 local tb = require('telescope.builtin')
 
@@ -32,6 +33,9 @@ setKeymap('n', '<leader><Space>', ':Telescope find_files<cr>', opts)
 setKeymap('n', '<leader>b', ':Telescope buffers<cr>', opts)
 setKeymap('n', '<leader>p', ':Telescope registers<cr>', opts)
 setKeymap('n', '<leader>g', ':Telescope live_grep<cr>', opts)
+setKeymap('n', 'gr', ':Telescope coc references path_display={\'tail\'}<cr>', opts)
+-- path_display='smart' ATM only checks for forward slashes in path instead of OS-specific path seperator.
+-- setKeymap('n', 'gr', ':Telescope coc references path_display={\'smart\'}<cr>', opts)
 
 -- Find files based on selection.
 setKeymap('v', '<leader><Space>', function() tb.find_files({ default_text = vim.getVisualSelectionForFilename() }) end, opts)
@@ -60,4 +64,5 @@ require('telescope').setup{
   }
 }
 
-require('telescope').load_extension('fzf')
+telescope.load_extension('fzf')
+telescope.load_extension('coc')
