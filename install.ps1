@@ -56,6 +56,7 @@ $shortcut.Save()
 
 # Installing powershell modules
 Install-Module -Name PSReadLine -AllowPrerelease -Force
+Install-Module -Name CompletionPredictor
 Install-Module -Name PSColor
 Install-Module -Name PSFzf
 

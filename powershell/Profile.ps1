@@ -42,6 +42,9 @@ function SetGitProjectAsWindowTitle {
   }
 }
 
+# CompletionPredictor
+Import-Module CompletionPredictor
+
 # PSReadLine
 Set-PSReadLineOption -BellStyle None
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
@@ -51,8 +54,9 @@ Set-PsReadLineOption -EditMode Vi
 Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler {
   if ($args[0] -eq 'Command') { SetCursorToBlock } else { SetCursorToLine }
 }
+Set-PSReadLineKeyHandler -Key Ctrl-j -Function SwitchPredictionView
+Set-PSReadLineKeyHandler -Key Ctrl-k -Function ShowCommandHelp
 Set-PSReadlineKeyHandler -Key Ctrl-l -Function ClearScreen
-Set-PSReadLineKeyHandler -Key Ctrl-Enter -Function SwitchPredictionView
 
 # PSFzf
 Import-Module PSFzf
