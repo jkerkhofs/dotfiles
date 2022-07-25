@@ -115,17 +115,31 @@ CapsLock & Backspace::Send {Blind}^{Backspace}
 ; Move the cursor to the top-left of the screen.
 #Esc::MouseMove, 0, 0
 
+; Function Keys
+CapsLock & F1::F1
+CapsLock & F2::F2
+CapsLock & F3::F3
+CapsLock & F4::F4
+CapsLock & F5::F5
+CapsLock & F6::F6
+CapsLock & F7::F7
+CapsLock & F8::F8
+CapsLock & F9::F9
+CapsLock & F10::F10
+CapsLock & F11::F11
+CapsLock & F12::F12
+
 ; Media Keys
-CapsLock & F7::Send {Media_Prev}
-CapsLock & F8::Send {Media_Play_Pause}
-CapsLock & F9::Send {Media_Next}
-CapsLock & F10::Send {Volume_Mute}
-CapsLock & F11::Send {Volume_Down}
-CapsLock & F12::Send {Volume_Up}
+F7::Send {Media_Prev}
+F8::Send {Media_Play_Pause}
+F9::Send {Media_Next}
+F10::Send {Volume_Mute}
+F11::Send {Volume_Down}
+F12::Send {Volume_Up}
 
 ; Screen brightness
-CapsLock & F1:: AdjustScreenBrightness(-10)
-CapsLock & F2:: AdjustScreenBrightness(10)
+F1:: AdjustScreenBrightness(-10)
+F2:: AdjustScreenBrightness(10)
 
 AdjustScreenBrightness(step) {
 	static service := "winmgmts:{impersonationLevel=impersonate}!\\.\root\WMI"
