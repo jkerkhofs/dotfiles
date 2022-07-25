@@ -215,6 +215,27 @@ BrightnessOSD() {
   ; CapsLock + Enter => focus address bar
   CapsLock & Enter::Send {F4}
 
+  ; CapsLock + Space => open developer tools
+  CapsLock & Space::Send ^+i
+
+  ; CapsLock + Shift + o => Ctrl + Shift + o
+  ; CapsLock + o => goes back in history
+  CapsLock & o::
+    If GetKeyState("Shift","P")
+      Send {Blind}^o
+    else
+      Send !{Left}
+    Return
+
+  ; CapsLock + Shift + i => Home
+  ; CapsLock + i => goes forward in history
+  CapsLock & i::
+    If GetKeyState("Shift","P")
+      Send {Home}
+    else
+      Send !{Right}
+    Return
+
   ; CapsLock + Shift + [ => navigates tabs
   ; CapsLock + [ => goes back in history
   CapsLock & [::
