@@ -143,6 +143,7 @@
   nnoremap <leader>ve :e ~/.vim/vimrc<CR>
   nnoremap <leader>vv :source ~/.vim/vimrc<bar>noh<CR>
   nnoremap <leader>w :w<CR>
+  nnoremap <leader>W :e ++ff=dos<CR>:setlocal ff=unix<CR>:w<CR>
 
   " Esc in normal mode clears hlsearch and command line message.
   nnoremap <silent> <esc> :noh<bar>echon''<CR>
