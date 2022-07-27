@@ -11,13 +11,9 @@ lualine.setup {
     lualine_a = {'mode'},
     lualine_b = {'branch'},
     lualine_c = {'filename'},
-    lualine_x = {
-      'g:coc_status',
-      'encoding',
-      'filetype'
-    },
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_x = {'g:coc_status'},
+    lualine_y = {'filetype', 'encoding', 'fileformat'},
+    lualine_z = {'progress','location'}
   },
   inactive_sections = {
     lualine_a = {},
