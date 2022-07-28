@@ -8,8 +8,35 @@ GroupAdd, VimApps, ahk_exe WindowsTerminal.exe
 GroupAdd, VimApps, ahk_exe devenv.exe
 GroupAdd, VimApps, ahk_exe Code.exe
 
+; Enable this to hide the mouse while typing.
+; Tip: disable the "hide pointer while typing" feature in windows to avoid glitches.
+AutoHideMouse := true
+; The margin (in px) from the top and the left of the screen where the mouse will be moved while hidden.
+; The top-left corner is the safest place to position the mouse without causing unwanted side effects.
+; This margin should be greater than 0 to detect mouse movements in all directions to make it visible again.
+MousePosMargin := 1
+GlobalPosX := 0
+GlobalPosY := 0
+
+if (AutoHideMouse) {
+  ; Ensure the cursor is made visible when the script exits.
+  OnExit("ShowCursor")
+
+  ; Initialize the mouse cursor
+  SystemCursor("Init")
+
+  ; For every defined key, register a call to hide the mouse cursor
+  anyKeys = ``1234567890-=qwertyuiop[]asdfghjkl;'\zxcvbnm,./
+  Loop Parse, anyKeys
+    HotKey ~*%A_LoopField%, HideCursor
+  return
+}
+
 ; Map CapsLock to Esc
-CapsLock::Esc
+CapsLock::
+  Send {Esc}
+  HideCursor()
+return
 
 ; Fix glitches with CapsLock-modifier combos
 !CapsLock::Return
@@ -112,9 +139,6 @@ CapsLock & Backspace::Send {Blind}^{Backspace}
 #+k::Send #{Up}     ; maximize
 #+l::Send #{Right}  ; snap right
 
-; Move the cursor to the top-left of the screen.
-#Esc::MouseMove, 0, 0
-
 ; Function Keys
 CapsLock & F1::F1
 CapsLock & F2::F2
@@ -141,43 +165,6 @@ F12::Send {Volume_Up}
 F1:: AdjustScreenBrightness(-10)
 F2:: AdjustScreenBrightness(10)
 
-AdjustScreenBrightness(step) {
-	static service := "winmgmts:{impersonationLevel=impersonate}!\\.\root\WMI"
-	monitors := ComObjGet(service).ExecQuery("SELECT * FROM WmiMonitorBrightness WHERE Active=TRUE")
-	monMethods := ComObjGet(service).ExecQuery("SELECT * FROM wmiMonitorBrightNessMethods WHERE Active=TRUE")
-	For i In monitors {
-		curr := i.CurrentBrightness
-		Break
-	}
-	toSet := curr + step
-	If (toSet < 0)
-		toSet := 0
-	If (toSet > 100)
-		toSet := 100
-	For i In monMethods {
-		i.WmiSetBrightness(1, toSet)
-		Break
-	}
-	BrightnessOSD()
-}
-
-BrightnessOSD() {
-	static PostMessagePtr := DllCall("GetProcAddress", "Ptr", DllCall("GetModuleHandle", "Str", "user32.dll", "Ptr"), "AStr", A_IsUnicode ? "PostMessageW" : "PostMessageA", "Ptr")
-	 ,WM_SHELLHOOK := DllCall("RegisterWindowMessage", "Str", "SHELLHOOK", "UInt")
-	static FindWindow := DllCall("GetProcAddress", "Ptr", DllCall("GetModuleHandle", "Str", "user32.dll", "Ptr"), "AStr", A_IsUnicode ? "FindWindowW" : "FindWindowA", "Ptr")
-	HWND := DllCall(FindWindow, "Str", "NativeHWNDHost", "Str", "", "Ptr")
-	If !(HWND) {
-		Try If ((shellProvider := ComObjCreate("{C2F03A33-21F5-47FA-B4BB-156362A2F239}", "{00000000-0000-0000-C000-000000000046}"))) {
-			Try If ((flyoutDisp := ComObjQuery(shellProvider, "{41f9d2fb-7834-4ab6-8b1b-73e74064b465}", "{41f9d2fb-7834-4ab6-8b1b-73e74064b465}"))) {
-				DllCall(NumGet(NumGet(flyoutDisp+0)+3*A_PtrSize), "Ptr", flyoutDisp, "Int", 0, "UInt", 0)
-				 ,ObjRelease(flyoutDisp)
-			}
-			ObjRelease(shellProvider)
-		}
-		HWND := DllCall(FindWindow, "Str", "NativeHWNDHost", "Str", "", "Ptr")
-	}
-	DllCall(PostMessagePtr, "Ptr", HWND, "UInt", WM_SHELLHOOK, "Ptr", 0x37, "Ptr", 0)
-}
 
 #IfWinActive ahk_exe msedge.exe
   ; Open new tab (regardless of shift)
@@ -443,3 +430,118 @@ Return
         Send {U+00DC}
     }
 Return
+
+
+AdjustScreenBrightness(step) {
+	static service := "winmgmts:{impersonationLevel=impersonate}!\\.\root\WMI"
+	monitors := ComObjGet(service).ExecQuery("SELECT * FROM WmiMonitorBrightness WHERE Active=TRUE")
+	monMethods := ComObjGet(service).ExecQuery("SELECT * FROM wmiMonitorBrightNessMethods WHERE Active=TRUE")
+	For i In monitors {
+		curr := i.CurrentBrightness
+		Break
+	}
+	toSet := curr + step
+	If (toSet < 0)
+		toSet := 0
+	If (toSet > 100)
+		toSet := 100
+	For i In monMethods {
+		i.WmiSetBrightness(1, toSet)
+		Break
+	}
+	BrightnessOSD()
+}
+
+BrightnessOSD() {
+	static PostMessagePtr := DllCall("GetProcAddress", "Ptr", DllCall("GetModuleHandle", "Str", "user32.dll", "Ptr"), "AStr", A_IsUnicode ? "PostMessageW" : "PostMessageA", "Ptr")
+	 ,WM_SHELLHOOK := DllCall("RegisterWindowMessage", "Str", "SHELLHOOK", "UInt")
+	static FindWindow := DllCall("GetProcAddress", "Ptr", DllCall("GetModuleHandle", "Str", "user32.dll", "Ptr"), "AStr", A_IsUnicode ? "FindWindowW" : "FindWindowA", "Ptr")
+	HWND := DllCall(FindWindow, "Str", "NativeHWNDHost", "Str", "", "Ptr")
+	If !(HWND) {
+		Try If ((shellProvider := ComObjCreate("{C2F03A33-21F5-47FA-B4BB-156362A2F239}", "{00000000-0000-0000-C000-000000000046}"))) {
+			Try If ((flyoutDisp := ComObjQuery(shellProvider, "{41f9d2fb-7834-4ab6-8b1b-73e74064b465}", "{41f9d2fb-7834-4ab6-8b1b-73e74064b465}"))) {
+				DllCall(NumGet(NumGet(flyoutDisp+0)+3*A_PtrSize), "Ptr", flyoutDisp, "Int", 0, "UInt", 0)
+				 ,ObjRelease(flyoutDisp)
+			}
+			ObjRelease(shellProvider)
+		}
+		HWND := DllCall(FindWindow, "Str", "NativeHWNDHost", "Str", "", "Ptr")
+	}
+	DllCall(PostMessagePtr, "Ptr", HWND, "UInt", WM_SHELLHOOK, "Ptr", 0x37, "Ptr", 0)
+}
+
+ShowCursor() {
+  global AutoHideMouse
+  global GlobalPosX
+  global GlobalPosY
+  if (AutoHideMouse) {
+    MouseMove, GlobalPosX, GlobalPosY
+    SystemCursor("On")
+    SetTimer, CheckMouseMovement, Off
+  }
+}
+
+CheckMouseMovement() {
+  global MousePosMargin
+  MouseGetPos posX, posY
+  if (posX != MousePosMargin && posY != MousePosMargin)
+  {
+    ShowCursor()
+  }
+}
+
+HideCursor() {
+  global AutoHideMouse
+  global GlobalPosX
+  global GlobalPosY
+  global MousePosMargin
+  if (AutoHideMouse) {
+    ; Get the current mouse position, and store its coordinates
+    MouseGetPos posX, posY
+
+    if (posX != MousePosMargin && posY != MousePosMargin) {
+      GlobalPosX := posX
+      GlobalPosY := posY
+      SystemCursor("Off")
+      MouseMove, MousePosMargin, MousePosMargin
+      ; Set a timer to check if the mouse is still idle
+      SetTimer, CheckMouseMovement, 100
+    }
+  }
+}
+
+SystemCursor(OnOff=1)   ; INIT = "I","Init"; OFF = 0,"Off"; TOGGLE = -1,"T","Toggle"; ON = others
+{
+  static AndMask, XorMask, $, h_cursor
+    ,c0,c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13 ; system cursors
+    , b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13   ; blank cursors
+    , h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13   ; handles of default cursors
+
+  if (OnOff = "Init" or OnOff = "I" or $ = "")       ; init when requested or at first call
+  {
+    $ = h                                          ; active default cursors
+    VarSetCapacity( h_cursor,4444, 1 )
+    VarSetCapacity( AndMask, 32*4, 0xFF )
+    VarSetCapacity( XorMask, 32*4, 0 )
+    system_cursors = 32512,32513,32514,32515,32516,32642,32643,32644,32645,32646,32648,32649,32650
+    StringSplit c, system_cursors, `,
+    Loop %c0%
+    {
+      h_cursor   := DllCall( "LoadCursor", "uint",0, "uint",c%A_Index% )
+      h%A_Index% := DllCall( "CopyImage",  "uint",h_cursor, "uint",2, "int",0, "int",0, "uint",0 )
+      b%A_Index% := DllCall("CreateCursor","uint",0, "int",0, "int",0
+          , "int",32, "int",32, "uint",&AndMask, "uint",&XorMask )
+    }
+  }
+
+  if (OnOff = 0 or OnOff = "Off" or $ = "h" and (OnOff < 0 or OnOff = "Toggle" or OnOff = "T"))
+    $ = b  ; use blank cursors
+  else
+    $ = h  ; use the saved cursors
+
+  Loop %c0%
+  {
+    h_cursor := DllCall( "CopyImage", "uint",%$%%A_Index%, "uint",2, "int",0, "int",0, "uint",0 )
+    DllCall( "SetSystemCursor", "uint",h_cursor, "uint",c%A_Index% )
+  }
+}
