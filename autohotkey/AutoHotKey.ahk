@@ -1,5 +1,6 @@
 #NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
 #Warn ; Enable warnings to assist with detecting common errors.
+#InstallMouseHook ; This is required for the A_TimeIdleMouse feature (see HideCursor() function).
 SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
 CoordMode, Mouse, Screen ; Move the mouse relative to the screen.
 SetCapsLockState, AlwaysOff ; Force CapsLock to stay off.
@@ -10,15 +11,16 @@ GroupAdd, VimApps, ahk_exe Code.exe
 
 ; Enable this to hide the mouse while typing.
 ; Tip: disable the "hide pointer while typing" feature in windows to avoid glitches.
-AutoHideMouse := true
+IsAutoHideMouseEnabled := true
 ; The margin (in px) from the top and the left of the screen where the mouse will be moved while hidden.
 ; The top-left corner is the safest place to position the mouse without causing unwanted side effects.
 ; This margin should be greater than 0 to detect mouse movements in all directions to make it visible again.
 MousePosMargin := 1
 GlobalPosX := 0
 GlobalPosY := 0
+IsCursorVisible := true
 
-if (AutoHideMouse) {
+if (IsAutoHideMouseEnabled) {
   ; Ensure the cursor is made visible when the script exits.
   OnExit("ShowCursor")
 
@@ -36,6 +38,12 @@ if (AutoHideMouse) {
 CapsLock::
   Send {Esc}
   HideCursor()
+return
+
+; Left Win + Esc to toggle AutoHideMouse feature on or off.
+LWin & Esc::
+  ShowCursor()
+  IsAutoHideMouseEnabled := !IsAutoHideMouseEnabled
 return
 
 ; Fix glitches with CapsLock-modifier combos
@@ -471,13 +479,30 @@ BrightnessOSD() {
 }
 
 ShowCursor() {
-  global AutoHideMouse
-  global GlobalPosX
-  global GlobalPosY
-  if (AutoHideMouse) {
+  global IsAutoHideMouseEnabled, GlobalPosX, GlobalPosY, IsCursorVisible
+  if (IsAutoHideMouseEnabled && !IsCursorVisible) {
     MouseMove, GlobalPosX, GlobalPosY
     SystemCursor("On")
+    IsCursorVisible := true
     SetTimer, CheckMouseMovement, Off
+  }
+}
+
+HideCursor() {
+  global IsAutoHideMouseEnabled, GlobalPosX, GlobalPosY, MousePosMargin, IsCursorVisible
+  if (IsAutoHideMouseEnabled && IsCursorVisible && A_TimeIdleMouse > 500) {
+    ; Get the current mouse position, and store its coordinates
+    MouseGetPos posX, posY
+
+    if (posX != MousePosMargin && posY != MousePosMargin) {
+      GlobalPosX := posX
+      GlobalPosY := posY
+      SystemCursor("Off")
+      IsCursorVisible := false
+      MouseMove, MousePosMargin, MousePosMargin
+      ; Set a timer to check if the mouse is still idle
+      SetTimer, CheckMouseMovement, 50
+    }
   }
 }
 
@@ -487,26 +512,6 @@ CheckMouseMovement() {
   if (posX != MousePosMargin && posY != MousePosMargin)
   {
     ShowCursor()
-  }
-}
-
-HideCursor() {
-  global AutoHideMouse
-  global GlobalPosX
-  global GlobalPosY
-  global MousePosMargin
-  if (AutoHideMouse) {
-    ; Get the current mouse position, and store its coordinates
-    MouseGetPos posX, posY
-
-    if (posX != MousePosMargin && posY != MousePosMargin) {
-      GlobalPosX := posX
-      GlobalPosY := posY
-      SystemCursor("Off")
-      MouseMove, MousePosMargin, MousePosMargin
-      ; Set a timer to check if the mouse is still idle
-      SetTimer, CheckMouseMovement, 100
-    }
   }
 }
 
@@ -520,17 +525,16 @@ SystemCursor(OnOff=1)   ; INIT = "I","Init"; OFF = 0,"Off"; TOGGLE = -1,"T","Tog
   if (OnOff = "Init" or OnOff = "I" or $ = "")       ; init when requested or at first call
   {
     $ = h                                          ; active default cursors
-    VarSetCapacity( h_cursor,4444, 1 )
-    VarSetCapacity( AndMask, 32*4, 0xFF )
-    VarSetCapacity( XorMask, 32*4, 0 )
+    VarSetCapacity(h_cursor, 4444, 1)
+    VarSetCapacity(AndMask, 32*4, 0xFF)
+    VarSetCapacity(XorMask, 32*4, 0)
     system_cursors = 32512,32513,32514,32515,32516,32642,32643,32644,32645,32646,32648,32649,32650
     StringSplit c, system_cursors, `,
     Loop %c0%
     {
-      h_cursor   := DllCall( "LoadCursor", "uint",0, "uint",c%A_Index% )
-      h%A_Index% := DllCall( "CopyImage",  "uint",h_cursor, "uint",2, "int",0, "int",0, "uint",0 )
-      b%A_Index% := DllCall("CreateCursor","uint",0, "int",0, "int",0
-          , "int",32, "int",32, "uint",&AndMask, "uint",&XorMask )
+      h_cursor   := DllCall("LoadCursor", "uint", 0, "uint", c%A_Index%)
+      h%A_Index% := DllCall("CopyImage", "uint", h_cursor, "uint", 2, "int", 0, "int", 0, "uint", 0)
+      b%A_Index% := DllCall("CreateCursor", "uint", 0, "int", 0, "int", 0, "int", 32, "int", 32, "uint", &AndMask, "uint", &XorMask)
     }
   }
 
@@ -541,7 +545,7 @@ SystemCursor(OnOff=1)   ; INIT = "I","Init"; OFF = 0,"Off"; TOGGLE = -1,"T","Tog
 
   Loop %c0%
   {
-    h_cursor := DllCall( "CopyImage", "uint",%$%%A_Index%, "uint",2, "int",0, "int",0, "uint",0 )
-    DllCall( "SetSystemCursor", "uint",h_cursor, "uint",c%A_Index% )
+    h_cursor := DllCall("CopyImage", "uint", %$%%A_Index%, "uint", 2, "int", 0, "int", 0, "uint", 0)
+    DllCall("SetSystemCursor", "uint", h_cursor, "uint", c%A_Index%)
   }
 }
