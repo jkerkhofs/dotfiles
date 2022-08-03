@@ -1,10 +1,13 @@
 #NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
 #Warn ; Enable warnings to assist with detecting common errors.
+#SingleInstance Force ; Skips the dialog box and replaces the old instance automatically.
 #InstallMouseHook ; This is required for the A_TimeIdleMouse feature (see HideCursor() function).
 SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
 CoordMode, Mouse, Screen ; Move the mouse relative to the screen.
+SetDefaultMouseSpeed, 0 ; Move the mouse instantly.
 SetCapsLockState, AlwaysOff ; Force CapsLock to stay off.
-SetKeyDelay 0 ; Set key delay to lowest recommended value.
+SetKeyDelay, 0 ; Set key delay to lowest recommended value.
+SetMouseDelay, 0 ; Set mouse delay to smallest possible delay.
 GroupAdd, VimApps, ahk_exe WindowsTerminal.exe
 GroupAdd, VimApps, ahk_exe devenv.exe
 GroupAdd, VimApps, ahk_exe Code.exe
@@ -16,34 +19,40 @@ IsAutoHideMouseEnabled := true
 ; The top-left corner is the safest place to position the mouse without causing unwanted side effects.
 ; This margin should be greater than 0 to detect mouse movements in all directions to make it visible again.
 MousePosMargin := 1
-GlobalPosX := 0
-GlobalPosY := 0
+GlobalPosX := MousePosMargin
+GlobalPosY := MousePosMargin
 IsCursorVisible := true
 
-if (IsAutoHideMouseEnabled) {
-  ; Ensure the cursor is made visible when the script exits.
-  OnExit("ShowCursor")
+; Ensure the cursor is made visible when the script exits.
+OnExit("ShowCursor")
 
-  ; Initialize the mouse cursor
-  SystemCursor("Init")
+; Initialize the mouse cursor
+SystemCursor("Init")
 
-  ; For every defined key, register a call to hide the mouse cursor
-  anyKeys = ``1234567890-=qwertyuiop[]asdfghjkl;'\zxcvbnm,./
-  Loop Parse, anyKeys
-    HotKey ~*%A_LoopField%, HideCursor
-  return
-}
+; For every defined key, register a call to hide the mouse cursor
+anyKeys = ``1234567890-=qwertyuiop[]asdfghjkl;'\zxcvbnm,./
+Loop Parse, anyKeys
+  HotKey ~*%A_LoopField%, HideCursorHotkeyHandler
+return
 
 ; Map CapsLock to Esc
 CapsLock::
   Send {Esc}
-  HideCursor()
+  HideCursorHotkeyHandler()
 return
 
-; Left Win + Esc to toggle AutoHideMouse feature on or off.
-LWin & Esc::
-  ShowCursor()
-  IsAutoHideMouseEnabled := !IsAutoHideMouseEnabled
+; Press Ctrl 2 times to toggle cursor visibility.
+; Press Ctrl 3 times to enable/disable auto-hide mouse feature.
+Ctrl::
+if (A_ThisHotkey = A_PriorHotkey && A_TimeSincePriorHotkey < 500) {
+  CtrlPressedCount += 1
+  if (CtrlPressedCount = 2)
+    ToggleCursor()
+  if (CtrlPressedCount = 3)
+    ToggleAutoHideMouse()
+} else {
+  CtrlPressedCount := 1
+}
 return
 
 ; Fix glitches with CapsLock-modifier combos
@@ -478,39 +487,63 @@ BrightnessOSD() {
 	DllCall(PostMessagePtr, "Ptr", HWND, "UInt", WM_SHELLHOOK, "Ptr", 0x37, "Ptr", 0)
 }
 
+ToggleAutoHideMouse() {
+  global
+  if (IsAutoHideMouseEnabled) {
+    ShowCursor()
+    IsAutoHideMouseEnabled := false
+    MsgBox, 0, Info, Auto-hide mouse disabled., 3
+  }
+  else {
+    IsAutoHideMouseEnabled := true
+    HideCursor()
+    MsgBox, 0, Info, Auto-hide mouse enabled., 3
+  }
+}
+
+ToggleCursor() {
+  global
+  if (IsCursorVisible)
+    HideCursor()
+  else
+    ShowCursor()
+}
+
 ShowCursor() {
-  global IsAutoHideMouseEnabled, GlobalPosX, GlobalPosY, IsCursorVisible
-  if (IsAutoHideMouseEnabled && !IsCursorVisible) {
-    MouseMove, GlobalPosX, GlobalPosY
-    SystemCursor("On")
+  global
+  if (!IsCursorVisible) {
     IsCursorVisible := true
     SetTimer, CheckMouseMovement, Off
+    MouseMove, GlobalPosX, GlobalPosY
+    SystemCursor("On")
+  }
+}
+
+HideCursorHotkeyHandler() {
+  global
+  if (IsAutoHideMouseEnabled) {
+    HideCursor()
   }
 }
 
 HideCursor() {
-  global IsAutoHideMouseEnabled, GlobalPosX, GlobalPosY, MousePosMargin, IsCursorVisible
-  if (IsAutoHideMouseEnabled && IsCursorVisible && A_TimeIdleMouse > 500) {
-    ; Get the current mouse position, and store its coordinates
-    MouseGetPos posX, posY
-
-    if (posX != MousePosMargin && posY != MousePosMargin) {
-      GlobalPosX := posX
-      GlobalPosY := posY
-      SystemCursor("Off")
+  global
+  if (IsCursorVisible && A_TimeIdleMouse > 500) {
+    MouseGetPos PosX, PosY
+    if (PosX > MousePosMargin && PosY > MousePosMargin) {
       IsCursorVisible := false
+      GlobalPosX := PosX
+      GlobalPosY := PosY
+      SystemCursor("Off")
       MouseMove, MousePosMargin, MousePosMargin
-      ; Set a timer to check if the mouse is still idle
       SetTimer, CheckMouseMovement, 50
     }
   }
 }
 
 CheckMouseMovement() {
-  global MousePosMargin
-  MouseGetPos posX, posY
-  if (posX != MousePosMargin && posY != MousePosMargin)
-  {
+  global
+  if (!IsCursorVisible && A_TimeIdleMouse < 500) {
     ShowCursor()
   }
 }
