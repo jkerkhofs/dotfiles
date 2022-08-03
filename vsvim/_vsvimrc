@@ -20,7 +20,7 @@ nnoremap <leader>vv :source C:\Users\jke\_vsvimrc<cr>
 nnoremap <leader>w :w<cr>
 
 " Clear search highlight
-nnoremap <leader><esc> :noh<cr>
+nnoremap <esc> :noh<cr>
 
 " Keep cursor at last position after yanking
 vnoremap y ygv<esc>
