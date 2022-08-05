@@ -61,7 +61,7 @@ Set-PSReadlineKeyHandler -Key Ctrl-l -Function ClearScreen
 # PSFzf
 Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
-Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+# Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
 # Initialize cursor (disable cursor blink)
 SetCursorToLine
