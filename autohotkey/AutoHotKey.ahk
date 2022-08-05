@@ -6,14 +6,14 @@ SendMode Input ; Recommended for new scripts due to its superior speed and relia
 CoordMode, Mouse, Screen ; Move the mouse relative to the screen.
 SetDefaultMouseSpeed, 0 ; Move the mouse instantly.
 SetCapsLockState, AlwaysOff ; Force CapsLock to stay off.
-SetKeyDelay, 0 ; Set key delay to lowest recommended value.
-SetMouseDelay, 0 ; Set mouse delay to smallest possible delay.
+SetKeyDelay, -1 ; No key delay.
+SetMouseDelay, -1 ; No mouse delay.
+Process, Priority,, High ; Raise the script's priority.
 GroupAdd, VimApps, ahk_exe WindowsTerminal.exe
 GroupAdd, VimApps, ahk_exe devenv.exe
 GroupAdd, VimApps, ahk_exe Code.exe
 
 ; Enable this to hide the mouse while typing.
-; Tip: disable the "hide pointer while typing" feature in windows to avoid glitches.
 IsAutoHideMouseEnabled := true
 ; The margin (in px) from the top and the left of the screen where the mouse will be moved while hidden.
 ; The top-left corner is the safest place to position the mouse without causing unwanted side effects.
@@ -22,6 +22,7 @@ MousePosMargin := 1
 GlobalPosX := MousePosMargin
 GlobalPosY := MousePosMargin
 IsCursorVisible := true
+InputTimerInterval := 50
 
 ; Ensure the cursor is made visible when the script exits.
 OnExit("ShowCursor")
@@ -29,25 +30,15 @@ OnExit("ShowCursor")
 ; Initialize the mouse cursor
 SystemCursor("Init")
 
-; For every defined key, register a call to hide the mouse cursor
-anyKeys = ``1234567890-=qwertyuiop[]asdfghjkl;'\zxcvbnm,./
-Loop Parse, anyKeys
-  HotKey ~*%A_LoopField%, HideCursorHotkeyHandler
-return
+InitAutoHideMouse()
 
 ; Map CapsLock to Esc
-CapsLock::
-  Send {Esc}
-  HideCursorHotkeyHandler()
-return
+CapsLock::Esc
 
-; Press Ctrl 2 times to toggle cursor visibility.
-; Press Ctrl 3 times to enable/disable auto-hide mouse feature.
+; Press Ctrl 3 times to toggle auto-hide mouse feature.
 Ctrl::
 if (A_ThisHotkey = A_PriorHotkey && A_TimeSincePriorHotkey < 500) {
   CtrlPressedCount += 1
-  if (CtrlPressedCount = 2)
-    ToggleCursor()
   if (CtrlPressedCount = 3)
     ToggleAutoHideMouse()
 } else {
@@ -487,64 +478,62 @@ BrightnessOSD() {
 	DllCall(PostMessagePtr, "Ptr", HWND, "UInt", WM_SHELLHOOK, "Ptr", 0x37, "Ptr", 0)
 }
 
+InitAutoHideMouse() {
+  global
+  if (IsAutoHideMouseEnabled) {
+    SetTimer, CheckForInput, %InputTimerInterval%
+  }
+}
+
 ToggleAutoHideMouse() {
   global
   if (IsAutoHideMouseEnabled) {
-    ShowCursor()
     IsAutoHideMouseEnabled := false
+    SetTimer, CheckForInput, Off
+    ShowCursor()
     MsgBox, 0, Info, Auto-hide mouse disabled., 3
   }
   else {
     IsAutoHideMouseEnabled := true
     HideCursor()
+    SetTimer, CheckForInput, %InputTimerInterval%
     MsgBox, 0, Info, Auto-hide mouse enabled., 3
   }
 }
 
-ToggleCursor() {
+CheckForInput() {
   global
-  if (IsCursorVisible)
-    HideCursor()
-  else
-    ShowCursor()
+  if (IsCursorVisible) {
+    ; Hide the cursor while typing and the mouse hasn't moved for a short period.
+    if (A_TimeIdleKeyboard < InputTimerInterval && A_TimeIdleMouse > 500) {
+      HideCursor()
+    }
+  } else {
+    ; Show the cursor while moving the mouse.
+    if (A_TimeIdleMouse < InputTimerInterval) {
+      ShowCursor()
+    }
+  }
 }
 
 ShowCursor() {
   global
   if (!IsCursorVisible) {
     IsCursorVisible := true
-    SetTimer, CheckMouseMovement, Off
+    BlockInput, On ; Make sure no other input interferes with the MouseMove
     MouseMove, GlobalPosX, GlobalPosY
+    BlockInput, Off
     SystemCursor("On")
-  }
-}
-
-HideCursorHotkeyHandler() {
-  global
-  if (IsAutoHideMouseEnabled) {
-    HideCursor()
   }
 }
 
 HideCursor() {
   global
-  if (IsCursorVisible && A_TimeIdleMouse > 500) {
-    MouseGetPos PosX, PosY
-    if (PosX > MousePosMargin && PosY > MousePosMargin) {
-      IsCursorVisible := false
-      GlobalPosX := PosX
-      GlobalPosY := PosY
-      SystemCursor("Off")
-      MouseMove, MousePosMargin, MousePosMargin
-      SetTimer, CheckMouseMovement, 50
-    }
-  }
-}
-
-CheckMouseMovement() {
-  global
-  if (!IsCursorVisible && A_TimeIdleMouse < 500) {
-    ShowCursor()
+  if (IsCursorVisible) {
+    IsCursorVisible := false
+    SystemCursor("Off")
+    MouseGetPos GlobalPosX, GlobalPosY
+    MouseMove, MousePosMargin, MousePosMargin
   }
 }
 
