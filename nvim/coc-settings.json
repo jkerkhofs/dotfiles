@@ -16,5 +16,7 @@
   "powershell.integratedConsole.showOnStartup": false,
 
   "Lua.telemetry.enable": false,
-  "Lua.diagnostics.globals": ["vim"]
+  "Lua.diagnostics.globals": ["vim"],
+
+  "coc.preferences.rootPatterns": ["tsconfig.json", "package.json", ".git"]
 }
