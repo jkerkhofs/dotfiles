@@ -245,6 +245,33 @@ F2:: AdjustScreenBrightness(10)
 #IfWinActive
 
 
+#IfWinActive ahk_exe devenv.exe
+  ; CapsLock + [ => navigates tabs
+  CapsLock & [::
+    If GetKeyState("Shift","P")
+      Send {Blind}^[
+    else
+      Send ^{PgUp}
+    Return
+
+  ; CapsLock + ] => navigates tabs
+  CapsLock & ]::
+    If GetKeyState("Shift","P")
+      Send {Blind}^]
+    else
+      Send ^{PgDn}
+    Return
+
+  ; CapsLock + Shift + w => close tab
+  CapsLock & w::
+    If GetKeyState("Shift","P")
+      Send ^{F4}
+    else
+      Send {Blind}^w
+    Return
+#IfWinActive
+
+
 ;-----------------------------------------------------------------------------------;
 ; RightAlt mapping for accents, umlauts, ...                                        ;
 ; Based on https://gist.github.com/danidiaz/583824e50e3667ab50963cc30c7df0ec        ;
