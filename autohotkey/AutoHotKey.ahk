@@ -141,6 +141,9 @@ CapsLock & Backspace::Send {Blind}^{Backspace}
 ; Win + q to Alt + F4 (quit app).
 #q::Send !{F4}
 
+; Cycle through open windows
+#[::Send !{Esc}
+#]::Send !+{Esc}
 
 ; Function Keys
 CapsLock & F1::F1
