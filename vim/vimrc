@@ -160,13 +160,18 @@
   nnoremap Y "+y
   vnoremap Y "+y
 
-  " faster window movement.
   " Note: C-hjkl are mapped to left/down/up/right at OS level.
+  " faster window movement.
   nnoremap <left> <C-w>h
   nnoremap <down> <C-w>j
   nnoremap <up> <C-w>k
   nnoremap <right> <C-w>l
   nnoremap <space> <C-w>w
+  " faster window resizing
+  nnoremap <silent> <A-left> :<C-U>ObviousResizeLeft 5<CR>
+  nnoremap <silent> <A-down> :<C-U>ObviousResizeDown 5<CR>
+  nnoremap <silent> <A-up> :<C-U>ObviousResizeUp 5<CR>
+  nnoremap <silent> <A-right> :<C-U>ObviousResizeRight 5<CR>
 
   " navigating tabs
   nnoremap <silent> ]t :tabnext<CR>
@@ -292,6 +297,7 @@
   Plug 'voldikss/vim-floaterm'
   Plug 'tyru/open-browser.vim'
   Plug 'dkarter/bullets.vim'
+  Plug 'talek/obvious-resize'
 
   "Session management
   Plug 'tpope/vim-obsession'
