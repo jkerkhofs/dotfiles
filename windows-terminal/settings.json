@@ -10,13 +10,13 @@
       "command": {
         "action": "prevTab"
       },
-      "keys": "ctrl+shift+["
+      "keys": "ctrl+["
     },
     {
       "command": {
         "action": "nextTab"
       },
-      "keys": "ctrl+shift+]"
+      "keys": "ctrl+]"
     },
     {
       "command": {
