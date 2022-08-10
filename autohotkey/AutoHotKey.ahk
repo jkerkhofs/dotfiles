@@ -141,11 +141,6 @@ CapsLock & Backspace::Send {Blind}^{Backspace}
 ; Win + q to Alt + F4 (quit app).
 #q::Send !{F4}
 
-; Win + Shift + h|j|k|l for contolling windows
-#+h::Send #{Left}   ; snap left
-#+j::Send #{Down}   ; restore
-#+k::Send #{Up}     ; maximize
-#+l::Send #{Right}  ; snap right
 
 ; Function Keys
 CapsLock & F1::F1
