@@ -3,7 +3,7 @@
 
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
-  "explorer.width": 60,
+  "explorer.width": 50,
   "explorer.keyMappings.global": { "<esc>": false },
   "explorer.sources": [
     {
