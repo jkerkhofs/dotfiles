@@ -192,27 +192,17 @@ F2:: AdjustScreenBrightness(10)
       Send ^w
     Return
 
-  ; CapsLock + Shift + f => Open favorites
-  CapsLock & f::
-    If GetKeyState("Shift","P")
-      Send ^+o
-    else
-      Send ^f
-    Return
-
-  ; CapsLock + Shift + h => Open history
-  CapsLock & h::
-    If GetKeyState("Shift","P")
-      Send ^h
-    else
-      Send {Blind}{Left}
-    Return
-
   ; CapsLock + Enter => focus address bar
   CapsLock & Enter::Send {F4}
 
-  ; CapsLock + Space => open developer tools
-  CapsLock & Space::Send ^+i
+  ; CapsLock + Shift + Space => open developer tools
+  ; CapsLock + Space => open tab search
+  CapsLock & Space::
+    If GetKeyState("Shift","P")
+      Send {F12}
+    else
+      Send ^+a
+    Return
 
   ; CapsLock + Shift + o => Ctrl + Shift + o
   ; CapsLock + o => goes back in history
@@ -232,22 +222,22 @@ F2:: AdjustScreenBrightness(10)
       Send !{Right}
     Return
 
-  ; CapsLock + Shift + [ => navigates tabs
-  ; CapsLock + [ => goes back in history
+  ; CapsLock + Shift + [ => goes back in history
+  ; CapsLock + [ => navigates tabs
   CapsLock & [::
     If GetKeyState("Shift","P")
-      Send ^+{Tab}
-    else
       Send !{Left}
+    else
+      Send ^+{Tab}
     Return
 
-  ; CapsLock + Shift + [ => navigates tabs
-  ; CapsLock + [ => goes forward in history
+  ; CapsLock + Shift + [ => goes forward in history
+  ; CapsLock + [ => navigates tabs
   CapsLock & ]::
     If GetKeyState("Shift","P")
-      Send ^{Tab}
-    else
       Send !{Right}
+    else
+      Send ^{Tab}
     Return
 
   ; CapsLock + Tab => toggle focus between webpage, tabs and address bar
