@@ -319,7 +319,7 @@
     " Plug 'hrsh7th/nvim-compe'
 
     " CoC
-    Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile' }
+    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
     " Snippets
     Plug 'honza/vim-snippets'
