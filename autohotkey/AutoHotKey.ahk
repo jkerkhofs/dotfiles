@@ -173,6 +173,9 @@ F2:: AdjustScreenBrightness(10)
 
 
 #IfWinActive ahk_exe msedge.exe
+  ; Refresh (F5 is more reliable than Ctrl+r)
+  CapsLock & r::F5
+
   ; Open new tab (regardless of shift)
   CapsLock & t::
     If GetKeyState("Shift","P")
