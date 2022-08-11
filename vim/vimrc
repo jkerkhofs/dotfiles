@@ -290,54 +290,47 @@
 
   call plug#begin('~/.vim/plugged')
 
-  Plug 'sainnhe/gruvbox-material' "Theme
-  Plug 'tpope/vim-fugitive' "Git
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-repeat'
-  Plug 'voldikss/vim-floaterm'
-  Plug 'tyru/open-browser.vim'
-  Plug 'dkarter/bullets.vim'
-  Plug 'talek/obvious-resize'
-
-  "Session management
-  Plug 'tpope/vim-obsession'
-  Plug 'dhruvasagar/vim-prosession'
+  Plug 'sainnhe/gruvbox-material' "Gruvbox with Material Palette
+  Plug 'tpope/vim-fugitive' "A Git wrapper so awesome, it should be illegal
+  Plug 'tpope/vim-surround' "Delete/change/add parentheses/quotes/XML-tags/much more with ease
+  Plug 'tpope/vim-repeat' "Enable repeating supported plugin maps with '.'
+  Plug 'voldikss/vim-floaterm' "Terminal manager for (neo)vim
+  Plug 'tyru/open-browser.vim' "Open URI with your favorite browser from your most favorite editor
+  Plug 'dkarter/bullets.vim' "A Vim/NeoVim plugin for automated bullet lists
+  Plug 'talek/obvious-resize' "A plugin for easy resizing of Vim windows
+  Plug 'tpope/vim-obsession' "Continuously updated session files
+  Plug 'dhruvasagar/vim-prosession' "Handle vim sessions like a pro
 
   if has("nvim")
-    " Dependency for other plugins
-    Plug 'nvim-lua/plenary.nvim'
+    " Dependencies
+    Plug 'nvim-lua/plenary.nvim' "All the lua functions I don't want to write twice
+    Plug 'kyazdani42/nvim-web-devicons' "Lua `fork` of vim-web-devicons for neovim
 
-    " Lualine
-    Plug 'hoob3rt/lualine.nvim'
+    " Statusline
+    Plug 'hoob3rt/lualine.nvim' "A blazing fast and easy to configure neovim statusline plugin written in pure lua
 
-    " Treesitter
-    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-    Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-    Plug 'windwp/nvim-ts-autotag'
-    Plug 'ThePrimeagen/refactoring.nvim'
+    " Abstract Syntax Tree
+    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } "Nvim Treesitter configurations and abstraction layer
+    Plug 'JoosepAlviste/nvim-ts-context-commentstring' "Neovim treesitter plugin for setting the commentstring based on the cursor location in a file
+    Plug 'windwp/nvim-ts-autotag' "Use treesitter to auto close and auto rename html tag
+    Plug 'ThePrimeagen/refactoring.nvim' "The Refactoring library based off the Refactoring book by Martin Fowler
 
-    " Commenting
-    Plug 'tpope/vim-commentary'
+    " Comments
+    Plug 'tpope/vim-commentary' "Comment stuff out
 
-    " LSP
-    " Plug 'neovim/nvim-lspconfig'
-    " Plug 'kabouzeid/nvim-lspinstall'
-    " Plug 'hrsh7th/nvim-compe'
-
-    " CoC
-    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+    " LSP (& more)
+    Plug 'neoclide/coc.nvim', { 'branch': 'release' } "Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers
 
     " Snippets
-    Plug 'honza/vim-snippets'
+    Plug 'honza/vim-snippets' "Vim-snipmate default snippets
 
-    " Telescope
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-    Plug 'fannheyward/telescope-coc.nvim'
+    " Fuzzy finder
+    Plug 'nvim-telescope/telescope.nvim' "Find, Filter, Preview, Pick. All lua, all the time
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } "FZF sorter for telescope written in c
+    Plug 'fannheyward/telescope-coc.nvim' "Coc.nvim integration for telescope.nvim
 
     " File explorer
-    Plug 'kyazdani42/nvim-web-devicons' " for file icons
-    " Plug 'kyazdani42/nvim-tree.lua'
+    " Plug 'kyazdani42/nvim-tree.lua' "A file explorer tree for neovim written in lua
   endif
 
   call plug#end()
