@@ -176,6 +176,18 @@ F2:: AdjustScreenBrightness(10)
   ; Refresh (F5 is more reliable than Ctrl+r)
   CapsLock & r::F5
 
+  ; CapsLock + Enter => focus address bar
+  CapsLock & Enter::F4
+
+  ; CapsLock + Space => open tab search
+  CapsLock & Space::^+a
+
+  ; CapsLock + ; => open developer tools
+  CapsLock & `;::F12
+
+  ; CapsLock + Tab => toggle focus between webpage, tabs and address bar
+  CapsLock & Tab::F6
+
   ; Open new tab (regardless of shift)
   CapsLock & t::
     If GetKeyState("Shift","P")
@@ -192,19 +204,6 @@ F2:: AdjustScreenBrightness(10)
       Send ^w
     Return
 
-  ; CapsLock + Enter => focus address bar
-  CapsLock & Enter::Send {F4}
-
-  ; CapsLock + Shift + Space => open developer tools
-  ; CapsLock + Space => open tab search
-  CapsLock & Space::
-    If GetKeyState("Shift","P")
-      Send {F12}
-    else
-      Send ^+a
-    Return
-
-  ; CapsLock + Shift + o => Ctrl + Shift + o
   ; CapsLock + o => goes back in history
   CapsLock & o::
     If GetKeyState("Shift","P")
@@ -213,7 +212,7 @@ F2:: AdjustScreenBrightness(10)
       Send !{Left}
     Return
 
-  ; CapsLock + Shift + i => Home
+  ; CapsLock + Shift + i => Home (globally defined)
   ; CapsLock + i => goes forward in history
   CapsLock & i::
     If GetKeyState("Shift","P")
@@ -222,26 +221,21 @@ F2:: AdjustScreenBrightness(10)
       Send !{Right}
     Return
 
-  ; CapsLock + Shift + [ => goes back in history
   ; CapsLock + [ => navigates tabs
   CapsLock & [::
     If GetKeyState("Shift","P")
-      Send !{Left}
+      Send {Blind}^[
     else
       Send ^+{Tab}
     Return
 
-  ; CapsLock + Shift + [ => goes forward in history
-  ; CapsLock + [ => navigates tabs
+  ; CapsLock + ] => navigates tabs
   CapsLock & ]::
     If GetKeyState("Shift","P")
-      Send !{Right}
+      Send {Blind}^]
     else
       Send ^{Tab}
     Return
-
-  ; CapsLock + Tab => toggle focus between webpage, tabs and address bar
-  CapsLock & Tab::Send {F6}
 #IfWinActive
 
 
