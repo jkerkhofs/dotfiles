@@ -15,12 +15,8 @@ GroupAdd, VimApps, ahk_exe Code.exe
 
 ; Enable this to hide the mouse while typing.
 IsAutoHideMouseEnabled := true
-; The margin (in px) from the top and the left of the screen where the mouse will be moved while hidden.
-; The top-left corner is the safest place to position the mouse without causing unwanted side effects.
-; This margin should be greater than 0 to detect mouse movements in all directions to make it visible again.
-MousePosMargin := 1
-GlobalPosX := MousePosMargin
-GlobalPosY := MousePosMargin
+GlobalPosX := 0
+GlobalPosY := 0
 IsCursorVisible := true
 InputTimerInterval := 50
 
@@ -564,7 +560,7 @@ HideCursor() {
     IsCursorVisible := false
     SystemCursor("Off")
     MouseGetPos GlobalPosX, GlobalPosY
-    MouseMove, MousePosMargin, MousePosMargin
+    MouseMove, A_ScreenWidth / 2, A_ScreenHeight
   }
 }
 
