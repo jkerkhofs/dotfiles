@@ -267,25 +267,6 @@ F2:: AdjustScreenBrightness(10)
 #IfWinActive
 
 
-#IfWinActive ahk_exe life.exe
-  ; CapsLock + [ => navigate accouts
-  CapsLock & [::
-    If GetKeyState("Shift","P")
-      Send {Blind}^[
-    else
-      Send ^+[
-    Return
-
-  ; CapsLock + ] => navigate accouts
-  CapsLock & ]::
-    If GetKeyState("Shift","P")
-      Send {Blind}^]
-    else
-      Send ^+]
-    Return
-#IfWinActive
-
-
 ;-----------------------------------------------------------------------------------;
 ; RightAlt mapping for accents, umlauts, ...                                        ;
 ; Based on https://gist.github.com/danidiaz/583824e50e3667ab50963cc30c7df0ec        ;
