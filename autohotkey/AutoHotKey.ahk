@@ -12,6 +12,8 @@ Process, Priority,, High ; Raise the script's priority.
 GroupAdd, VimApps, ahk_exe WindowsTerminal.exe
 GroupAdd, VimApps, ahk_exe devenv.exe
 GroupAdd, VimApps, ahk_exe Code.exe
+GroupAdd, Browsers, ahk_exe msedge.exe
+GroupAdd, Browsers, ahk_exe firefox.exe
 
 ; Enable this to hide the mouse while typing.
 IsAutoHideMouseEnabled := true
@@ -168,22 +170,7 @@ F1:: AdjustScreenBrightness(-10)
 F2:: AdjustScreenBrightness(10)
 
 
-#IfWinActive ahk_exe msedge.exe
-  ; Refresh (F5 is more reliable than Ctrl+r)
-  CapsLock & r::F5
-
-  ; CapsLock + Enter => focus address bar
-  CapsLock & Enter::F4
-
-  ; CapsLock + Space => open tab search
-  CapsLock & Space::^+a
-
-  ; CapsLock + ; => open developer tools
-  CapsLock & `;::F12
-
-  ; CapsLock + Tab => toggle focus between webpage, tabs and address bar
-  CapsLock & Tab::F6
-
+#IfWinActive ahk_group Browsers
   ; Open new tab (regardless of shift)
   CapsLock & t::
     If GetKeyState("Shift","P")
@@ -232,6 +219,24 @@ F2:: AdjustScreenBrightness(10)
     else
       Send ^{Tab}
     Return
+#IfWinActive
+
+
+#IfWinActive ahk_exe msedge.exe
+  ; Refresh (F5 is more reliable than Ctrl+r)
+  CapsLock & r::F5
+
+  ; CapsLock + Enter => focus address bar
+  CapsLock & Enter::F4
+
+  ; CapsLock + Space => open tab search
+  CapsLock & Space::^+a
+
+  ; CapsLock + ; => open developer tools
+  CapsLock & `;::F12
+
+  ; CapsLock + Tab => toggle focus between webpage, tabs and address bar
+  CapsLock & Tab::F6
 #IfWinActive
 
 
