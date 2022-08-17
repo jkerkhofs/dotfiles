@@ -267,7 +267,7 @@ F2:: AdjustScreenBrightness(10)
 #IfWinActive
 
 
-#IfWinActive ahk_exe life.exe
+#IfWinActive ahk_exe singlebox.exe
   ; CapsLock + [ => navigate accouts
   CapsLock & [::
     If GetKeyState("Shift","P")
