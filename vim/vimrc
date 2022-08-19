@@ -300,6 +300,7 @@
   Plug 'talek/obvious-resize' "A plugin for easy resizing of Vim windows
   Plug 'tpope/vim-obsession' "Continuously updated session files
   Plug 'dhruvasagar/vim-prosession' "Handle vim sessions like a pro
+  Plug 'AndrewRadev/splitjoin.vim' "Switch between single-line and multiline forms of code
 
   if has("nvim")
     " Dependencies
