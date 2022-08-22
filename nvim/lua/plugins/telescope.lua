@@ -1,5 +1,6 @@
 local status, telescope = pcall(require, "telescope")
 if (not status) then return end
+
 local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
 local utils = require('telescope.utils')
@@ -8,16 +9,16 @@ local setKeymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 function vim.getVisualSelection()
-	vim.cmd('noau normal! "vy"')
-	local text = vim.fn.getreg('v')
-	vim.fn.setreg('v', {})
+  vim.cmd('noau normal! "vy"')
+  local text = vim.fn.getreg('v')
+  vim.fn.setreg('v', {})
 
-	text = string.gsub(text, "\n", "")
-	if #text > 0 then
-		return text
-	else
-		return ''
-	end
+  text = string.gsub(text, "\n", "")
+  if #text > 0 then
+    return text
+  else
+    return ''
+  end
 end
 
 function vim.getVisualSelectionForFilename()
@@ -28,7 +29,7 @@ function vim.getVisualSelectionForFilename()
   return "'" .. selection
 end
 
-telescope.setup{
+telescope.setup {
   defaults = {
     mappings = {
       i = {
@@ -49,8 +50,12 @@ telescope.setup{
   }
 }
 
-telescope.load_extension('fzf')
-telescope.load_extension('coc')
+if (pcall(require, "telescope-fzf-native")) then
+  telescope.load_extension('fzf')
+end
+if (pcall(require, "telescope-coc")) then
+  telescope.load_extension('coc')
+end
 
 setKeymap('n', '<leader><Space>', ':Telescope find_files<cr>', opts)
 setKeymap('n', '<leader>b', ':Telescope buffers<cr>', opts)
@@ -62,7 +67,8 @@ setKeymap('n', 'gr', ':Telescope coc references path_display={\'tail\'}<cr>', op
 -- setKeymap('n', 'gr', ':Telescope coc references path_display={\'smart\'}<cr>', opts)
 
 -- Find files based on selection.
-setKeymap('v', '<leader><Space>', function() builtin.find_files({ default_text = vim.getVisualSelectionForFilename() }) end, opts)
+setKeymap('v', '<leader><Space>',
+  function() builtin.find_files({ default_text = vim.getVisualSelectionForFilename() }) end, opts)
 
 -- Live grep based on selection.
 setKeymap('v', '<leader>g', function() builtin.live_grep({ default_text = vim.getVisualSelection() }) end, opts)

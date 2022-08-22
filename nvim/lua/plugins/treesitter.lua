@@ -1,10 +1,7 @@
-if not vim.g.loaded_nvim_treesitter then
-  print("Treesitter is not loaded")
-  return
-end
+local status, treesitter_configs = pcall(require, "nvim-treesitter.configs")
+if (not status) then return end
 
-local ts = require 'nvim-treesitter.configs'
-ts.setup {
+treesitter_configs.setup {
   ensure_installed = {
     'bash',
     'c_sharp',

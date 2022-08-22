@@ -148,10 +148,8 @@
   " Esc in normal mode clears hlsearch and command line message.
   nnoremap <silent> <esc> :noh<bar>echon''<CR>
 
-  if !has("nvim")
   " Open default file explorer
-    nmap <silent> <leader>e :Lexplore<CR>
-  endif
+  nmap <silent> <leader>e :Lexplore<CR>
 
   " place cursor at the end after yanking selection
   vnoremap y ygv<esc>
@@ -167,11 +165,6 @@
   nnoremap <up> <C-w>k
   nnoremap <right> <C-w>l
   nnoremap <space> <C-w>w
-  " faster window resizing
-  nnoremap <silent> <A-left> :<C-U>ObviousResizeLeft 5<CR>
-  nnoremap <silent> <A-down> :<C-U>ObviousResizeDown 5<CR>
-  nnoremap <silent> <A-up> :<C-U>ObviousResizeUp 5<CR>
-  nnoremap <silent> <A-right> :<C-U>ObviousResizeRight 5<CR>
 
   " navigating tabs
   nnoremap <silent> ]t :tabnext<CR>
@@ -181,15 +174,8 @@
   nnoremap <silent> <S-Down> :cnext<CR>
   nnoremap <silent> <S-Up> :cprevious<CR>
 
-  " Lazygit
-  nnoremap <silent> <leader>lg :FloatermNew --height=0.9 --width=0.9 --autoclose=2 --title=Lazygit lazygit<CR>
-
-  " Open in browser
-  nmap gx <Plug>(openbrowser-smart-search)
-  vmap gx <Plug>(openbrowser-smart-search)
-
   if IsWindows()
-    " Disable suspend on Windows as it just freezes nvim and leaves you in a blocked state.
+    " Disable suspend on Windows as it just freezes vim and leaves you in a blocked state.
     nmap <C-z> <Nop>
   endif
 
@@ -272,81 +258,6 @@
 " Native plugins {{{ 
 
   packadd! matchit " enable the matchit plugin (e.g. to find the matching html tags)
-
-  " Disable netrw plugin
-  let g:loaded_netrw       = 1
-  let g:loaded_netrwPlugin = 1
-
-" }}}
-
-
-" {{{ Plugins
-
-  " auto-install vim-plug
-  let plug_vim = expand('~').'/.vim/autoload/plug.vim'
-  if empty(glob(expand(plug_vim)))
-    execute '!curl -fLo '.plug_vim.' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  endif
-
-  call plug#begin('~/.vim/plugged')
-
-  Plug 'sainnhe/gruvbox-material' "Gruvbox with Material Palette
-  Plug 'tpope/vim-fugitive' "A Git wrapper so awesome, it should be illegal
-  Plug 'tpope/vim-surround' "Delete/change/add parentheses/quotes/XML-tags/much more with ease
-  Plug 'tpope/vim-repeat' "Enable repeating supported plugin maps with '.'
-  Plug 'voldikss/vim-floaterm' "Terminal manager for (neo)vim
-  Plug 'tyru/open-browser.vim' "Open URI with your favorite browser from your most favorite editor
-  Plug 'dkarter/bullets.vim' "A Vim/NeoVim plugin for automated bullet lists
-  Plug 'talek/obvious-resize' "A plugin for easy resizing of Vim windows
-  Plug 'tpope/vim-obsession' "Continuously updated session files
-  Plug 'dhruvasagar/vim-prosession' "Handle vim sessions like a pro
-  Plug 'AndrewRadev/splitjoin.vim' "Switch between single-line and multiline forms of code
-
-  if has("nvim")
-    " Dependencies
-    Plug 'nvim-lua/plenary.nvim' "All the lua functions I don't want to write twice
-    Plug 'kyazdani42/nvim-web-devicons' "Lua `fork` of vim-web-devicons for neovim
-
-    " Statusline
-    Plug 'hoob3rt/lualine.nvim' "A blazing fast and easy to configure neovim statusline plugin written in pure lua
-
-    " Abstract Syntax Tree
-    Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' } "Nvim Treesitter configurations and abstraction layer
-    Plug 'JoosepAlviste/nvim-ts-context-commentstring' "Neovim treesitter plugin for setting the commentstring based on the cursor location in a file
-    Plug 'windwp/nvim-ts-autotag' "Use treesitter to auto close and auto rename html tag
-    Plug 'ThePrimeagen/refactoring.nvim' "The Refactoring library based off the Refactoring book by Martin Fowler
-
-    " Comments
-    Plug 'tpope/vim-commentary' "Comment stuff out
-
-    " LSP (& more)
-    Plug 'neoclide/coc.nvim', { 'branch': 'release' } "Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers
-
-    " Snippets
-    Plug 'honza/vim-snippets' "Vim-snipmate default snippets
-
-    " Fuzzy finder
-    Plug 'nvim-telescope/telescope.nvim' "Find, Filter, Preview, Pick. All lua, all the time
-    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' } "FZF sorter for telescope written in c
-    Plug 'fannheyward/telescope-coc.nvim' "Coc.nvim integration for telescope.nvim
-
-    " File explorer
-    " Plug 'kyazdani42/nvim-tree.lua' "A file explorer tree for neovim written in lua
-  endif
-
-  call plug#end()
-
-" }}}
-
-
-" {{{ Plugin config
-
-  " open-browser.vim
-  let g:openbrowser_format_message = { 'msg': "" }
-
-  " bullets.vim
-  let g:bullets_outline_levels = ['num', 'abc', 'std-']
-  let g:bullets_checkbox_markers = ' x'
 
 " }}}
 

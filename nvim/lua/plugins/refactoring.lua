@@ -1,7 +1,11 @@
-require('refactoring').setup({})
+local status_refactoring, refactoring = pcall(require, "refactoring")
+local status_telescope, telescope = pcall(require, "telescope")
+if not (status_refactoring or status_telescope) then return end
+
+refactoring.setup({})
 
 -- load refactoring Telescope extension
-require("telescope").load_extension("refactoring")
+telescope.load_extension("refactoring")
 
 -- remap to open the Telescope refactoring menu in visual mode
 vim.api.nvim_set_keymap(
