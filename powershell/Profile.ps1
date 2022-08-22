@@ -75,6 +75,7 @@ function vim {
   SetGitProjectAsWindowTitle "vim"
   nvim $args
   SetCursorToLine
+  clear
 }
 
 function la { ls -Force $args }
@@ -129,4 +130,5 @@ function notes {
   Stop-Job -Name notes
   Remove-Job -Name notes
   cd $previousDir
+  clear
 }
