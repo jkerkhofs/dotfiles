@@ -50,12 +50,8 @@ telescope.setup {
   }
 }
 
-if (pcall(require, "telescope-fzf-native")) then
-  telescope.load_extension('fzf')
-end
-if (pcall(require, "telescope-coc")) then
-  telescope.load_extension('coc')
-end
+telescope.load_extension('fzf')
+telescope.load_extension('coc')
 
 setKeymap('n', '<leader><Space>', ':Telescope find_files<cr>', opts)
 setKeymap('n', '<leader>b', ':Telescope buffers<cr>', opts)
