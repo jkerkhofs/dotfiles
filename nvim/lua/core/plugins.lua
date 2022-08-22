@@ -114,20 +114,23 @@ return require('packer').startup(function(use)
   use {
     -- Find, Filter, Preview, Pick. All lua, all the time
     'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-fzf-native.nvim',
+      'fannheyward/telescope-coc.nvim'
+    },
     config = function() require('plugins.telescope') end
   }
   use
   {
     -- FZF sorter for telescope written in c
     'nvim-telescope/telescope-fzf-native.nvim',
-    requires = { 'nvim-telescope/telescope.nvim' },
     run = 'make'
   }
   use {
     -- Coc integration for telescope.nvim
     'fannheyward/telescope-coc.nvim',
-    requires = { 'nvim-telescope/telescope.nvim', 'neoclide/coc.nvim' }
+    requires = { 'neoclide/coc.nvim' }
   }
 
 
