@@ -7,6 +7,15 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd [[packadd packer.nvim]]
 end
 
+local au_id = vim.api.nvim_create_augroup("Plugins", { clear = true })
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  desc = 'Automatically run PackerCompile whenever this file updates',
+  group = au_id,
+  pattern = "plugins.lua",
+  command = "source <afile> | PackerCompile"
+})
+
 return require('packer').startup(function(use)
   use {
     -- Packer can manage itself
@@ -146,6 +155,7 @@ return require('packer').startup(function(use)
   -- Execute a CocUpdate after each packer update
   vim.api.nvim_create_autocmd("User", {
     desc = 'Update coc extensions on install, update, clean, and sync',
+    group = au_id,
     pattern = 'PackerComplete',
     command = 'CocUpdate',
   })
