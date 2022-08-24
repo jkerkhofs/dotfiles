@@ -53,6 +53,10 @@ return
 ^+CapsLock::Return
 #+CapsLock::Return
 
+; RightAlt is being used in mappings for accents, umlauts, ...
+; To prevent unwanted behaviour, do nothing when pressing only RightAlt.
+RAlt::Return
+
 ; RightAlt + Shift + CapsLock to toggle CapsLock
 >!+CapsLock::
   If GetKeyState("CapsLock", "T") = 1
