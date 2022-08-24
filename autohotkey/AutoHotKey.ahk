@@ -53,8 +53,8 @@ return
 ^+CapsLock::Return
 #+CapsLock::Return
 
-; Right Alt + CapsLock to toggle CapsLock
->!CapsLock::
+; RightAlt + Shift + CapsLock to toggle CapsLock
+>!+CapsLock::
   If GetKeyState("CapsLock", "T") = 1
     SetCapsLockState, AlwaysOff
   Else
