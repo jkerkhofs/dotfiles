@@ -33,17 +33,6 @@ InitAutoHideMouse()
 ; Map CapsLock to Esc
 CapsLock::Esc
 
-; Press Ctrl 3 times to toggle auto-hide mouse feature.
-Ctrl::
-if (A_ThisHotkey = A_PriorHotkey && A_TimeSincePriorHotkey < 500) {
-  CtrlPressedCount += 1
-  if (CtrlPressedCount = 3)
-    ToggleAutoHideMouse()
-} else {
-  CtrlPressedCount := 1
-}
-return
-
 ; Fix glitches with CapsLock-modifier combos
 !CapsLock::Return
 ^CapsLock::Return
@@ -56,6 +45,9 @@ return
 ; RightAlt is being used in mappings for accents, umlauts, ...
 ; To prevent unwanted behaviour, do nothing when pressing only RightAlt.
 RAlt::Return
+
+; RightAlt + Shift + Esc to toggle auto-hide mouse feature
+>!+Esc::ToggleAutoHideMouse()
 
 ; RightAlt + Shift + CapsLock to toggle CapsLock
 >!+CapsLock::
