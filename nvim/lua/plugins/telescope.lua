@@ -70,4 +70,8 @@ setKeymap('v', '<leader><Space>',
 setKeymap('v', '<leader>g', function() builtin.live_grep({ default_text = vim.getVisualSelection() }) end, opts)
 
 -- Find (other) files relative to current buffer
-setKeymap('n', '<leader>o', function() builtin.find_files({ cwd = utils.buffer_dir() }) end, opts)
+setKeymap('n', '<leader>o', function() builtin.find_files({
+    cwd = utils.buffer_dir(),
+    find_command = { 'rg', '--files', '--max-depth=1' }
+  })
+end, opts)
