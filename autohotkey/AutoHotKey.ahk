@@ -548,8 +548,10 @@ ShowCursor() {
   global
   if (!IsCursorVisible) {
     IsCursorVisible := true
-    BlockInput, On ; Make sure no other input interferes with the MouseMove
-    MouseMove, GlobalPosX, GlobalPosY
+    ; Make sure no other input interferes with the MouseMove
+    BlockInput, On
+    ; Use DllCall instead of MouseMove for better multi-monitor support.
+    DllCall("SetCursorPos", "int", GlobalPosX, "int", GlobalPosY)
     BlockInput, Off
     SystemCursor("On")
   }
@@ -561,7 +563,8 @@ HideCursor() {
     IsCursorVisible := false
     SystemCursor("Off")
     MouseGetPos GlobalPosX, GlobalPosY
-    MouseMove, A_ScreenWidth / 2, A_ScreenHeight
+    ; Move mouse to the top-left corner where it's least in the way.
+    DllCall("SetCursorPos", "int", 0, "int", 0)
   }
 }
 
