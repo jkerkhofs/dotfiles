@@ -139,6 +139,9 @@ CapsLock & Backspace::Send {Blind}^{Backspace}
 #[::Send !{Esc}
 #]::Send !+{Esc}
 
+; LeftWin + Tab acts as AltTab
+<#Tab::AltTab
+
 ; Function Keys
 CapsLock & F1::F1
 CapsLock & F2::F2
