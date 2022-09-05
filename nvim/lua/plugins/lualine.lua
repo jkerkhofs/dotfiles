@@ -8,24 +8,31 @@ lualine.setup {
     disabled_filetypes = {}
   },
   sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch'},
-    lualine_c = {'filename'},
-    lualine_x = {'g:coc_status'},
-    lualine_y = {'filetype', 'encoding', 'fileformat'},
-    lualine_z = {'progress','location'}
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch' },
+    lualine_c = { 'filename' },
+    lualine_x = { 'g:coc_status' },
+    lualine_y = { 'filetype', 'encoding', 'fileformat' },
+    lualine_z = { 'progress', 'location' }
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_c = { 'filename' },
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {},
-  extensions = {'fugitive'}
+  tabline = {
+    lualine_a = {
+      { 'tabs', mode = 2, max_length = vim.o.columns },
+    },
+  },
+  extensions = { 'fugitive' }
 }
 
 -- hide the default vim mode
 vim.o.showmode = false
+
+-- reset showtabline to "1" as lualine sets it to "2" in the "set_tabline" setup function
+vim.o.showtabline = 1
