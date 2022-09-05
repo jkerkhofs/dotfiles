@@ -15,20 +15,16 @@ GroupAdd, VimApps, ahk_exe Code.exe
 GroupAdd, Browsers, ahk_exe msedge.exe
 GroupAdd, Browsers, ahk_exe firefox.exe
 
-; Enable this to hide the mouse while typing.
-IsAutoHideMouseEnabled := true
+; Enable this to hide the cursor while typing.
+IsAutoHideCursorEnabled := true
 GlobalPosX := 0
 GlobalPosY := 0
 IsCursorVisible := true
-InputTimerInterval := 50
 
 ; Ensure the cursor is made visible when the script exits.
 OnExit("ShowCursor")
 
-; Initialize the mouse cursor
-SystemCursor("Init")
-
-InitAutoHideMouse()
+InitAutoHideCursor()
 
 ; Map CapsLock to Esc
 CapsLock::Esc
@@ -47,7 +43,7 @@ CapsLock::Esc
 RAlt::Return
 
 ; RightAlt + Shift + Esc to toggle auto-hide mouse feature
->!+Esc::ToggleAutoHideMouse()
+>!+Esc::ToggleAutoHideCursor()
 
 ; RightAlt + Shift + CapsLock to toggle CapsLock
 >!+CapsLock::
@@ -509,40 +505,45 @@ BrightnessOSD() {
 	DllCall(PostMessagePtr, "Ptr", HWND, "UInt", WM_SHELLHOOK, "Ptr", 0x37, "Ptr", 0)
 }
 
-InitAutoHideMouse() {
+InitAutoHideCursor() {
   global
-  if (IsAutoHideMouseEnabled) {
-    SetTimer, CheckForInput, %InputTimerInterval%
-  }
+  ; Initialize the mouse cursor
+  SystemCursor("Init")
+  AutoHideCursor()
 }
 
-ToggleAutoHideMouse() {
+ToggleAutoHideCursor() {
   global
-  if (IsAutoHideMouseEnabled) {
-    IsAutoHideMouseEnabled := false
-    SetTimer, CheckForInput, Off
+  if (IsAutoHideCursorEnabled) {
+    IsAutoHideCursorEnabled := false
     ShowCursor()
-    MsgBox, 0, Info, Auto-hide mouse disabled., 3
+    MsgBox, 0, Info, Auto-hide cursor disabled., 3
   }
   else {
-    IsAutoHideMouseEnabled := true
-    HideCursor()
-    SetTimer, CheckForInput, %InputTimerInterval%
-    MsgBox, 0, Info, Auto-hide mouse enabled., 3
+    IsAutoHideCursorEnabled := true
+    AutoHideCursor()
+    MsgBox, 0, Info, Auto-hide cursor enabled., 3
   }
 }
 
-CheckForInput() {
+AutoHideCursor() {
   global
+  if (!IsAutoHideCursorEnabled) {
+    Return
+  }
   if (IsCursorVisible) {
-    ; Hide the cursor while typing and the mouse hasn't moved for a short period.
-    if (A_TimeIdleKeyboard < InputTimerInterval && A_TimeIdleMouse > 500) {
+    ; Hide cursor while typing and mouse hasn't moved for a short period.
+    if (A_TimeIdleKeyboard < 50 && A_TimeIdleMouse > 500) {
       HideCursor()
     }
+    SetTimer, AutoHideCursor, -20
   } else {
-    ; Show the cursor while moving the mouse.
-    if (A_TimeIdleMouse < InputTimerInterval) {
+    ; Show cursor when mouse is moving.
+    if (A_TimeIdleMouse < 50) {
       ShowCursor()
+      SetTimer, AutoHideCursor, -500
+    } else {
+      SetTimer, AutoHideCursor, -20
     }
   }
 }
@@ -551,11 +552,16 @@ ShowCursor() {
   global
   if (!IsCursorVisible) {
     IsCursorVisible := true
-    ; Make sure no other input interferes with the MouseMove
-    BlockInput, On
+    ; Give the current thread enough time to finish.
+    Critical, 200
+    ; Move the cursor back to the original location.
     ; Use DllCall instead of MouseMove for better multi-monitor support.
     DllCall("SetCursorPos", "int", GlobalPosX, "int", GlobalPosY)
-    BlockInput, Off
+    ; Sleep for a short period to make sure the cursor is in the right location before allowing mouse movements.
+    Sleep, 20
+    ; Enable mouse movements.
+    BlockInput, MouseMoveOff
+    ; Show the cursor.
     SystemCursor("On")
   }
 }
@@ -564,9 +570,14 @@ HideCursor() {
   global
   if (IsCursorVisible) {
     IsCursorVisible := false
+    ; Block mouse movements until the cursor is made visible again.
+    ; A_TimeIdleMouse will still detect physical movement even though mouse movements are blocked.
+    BlockInput, MouseMove
+    ; Hide the cursor.
     SystemCursor("Off")
+    ; Save the original cursor location.
     MouseGetPos GlobalPosX, GlobalPosY
-    ; Move mouse to the top-left corner where it's least in the way.
+    ; Move cursor to the top-left corner to avoid UI side effects (hover, focus, ...).
     DllCall("SetCursorPos", "int", 0, "int", 0)
   }
 }
