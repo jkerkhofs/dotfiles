@@ -80,6 +80,8 @@ function vim {
 
 function la { ls -Force $args }
 
+function l { lf -single $args }
+
 # Explorer
 function e {
   if (!$args) { $args = Get-Location }
