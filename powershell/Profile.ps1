@@ -5,7 +5,15 @@
 $env:SHELL = "pwsh"
 $env:LANG = "en_US.utf8"
 $env:NODE_PATH = "C:\Users\$($env:UserName)\scoop\apps\nvm\current\nodejs\nodejs"
-$env:_PSFZF_FZF_DEFAULT_OPTS = "--bind ctrl-s:toggle-sort --bind ctrl-u:half-page-up --bind ctrl-d:half-page-down"
+$env:FZF_DEFAULT_OPTS = @'
+    --bind "ctrl-u:half-page-up"
+    --bind "ctrl-d:half-page-down"
+    --bind "ctrl-space:toggle"
+    --bind "ctrl-t:toggle-all"
+    --bind "del:deselect-all"
+    --bind "ctrl-s:toggle-sort"
+    --bind "shift-right:accept"
+'@
 
 # Settings
 $PSStyle.Progress.UseOSCIndicator = $true
@@ -89,19 +97,11 @@ function e {
 }
 
 # Find and open file
-# enter: open file
-# ctrl-space: go to directory
 # ctrl-y: copy filename
 # alt-y: copy full path
+# enter: open file
 function f {
   fd --type f | sort | fzf --tac --no-sort --multi `
-    --bind "ctrl-u:half-page-up" `
-    --bind "ctrl-d:half-page-down" `
-    --bind "ctrl-t:toggle-all" `
-    --bind "ctrl-a:select-all" `
-    --bind "ctrl-x:deselect-all" `
-    --bind "ctrl-s:toggle-sort" `
-    --bind "ctrl-space:accept" `
     --bind "ctrl-y:execute-silent(Resolve-Path {} | Split-Path -Leaf | Set-Clipboard)+change-prompt(Filename copied > )" `
     --bind "alt-y:execute-silent(Resolve-Path {} | Set-Clipboard)+change-prompt(Path copied > )" `
     --bind "enter:execute-multi(echo {} | Invoke-Item)"
