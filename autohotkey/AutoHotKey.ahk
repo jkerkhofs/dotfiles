@@ -262,13 +262,13 @@ F2:: AdjustScreenBrightness(10)
 #IfWinActive
 
 
-#IfWinActive ahk_exe singlebox.exe
+#IfWinActive ahk_exe Ferdium.exe
   ; CapsLock + [ => navigate accouts
   CapsLock & [::
     If GetKeyState("Shift","P")
       Send {Blind}^[
     else
-      Send ^+[
+      Send ^!{left}
     Return
 
   ; CapsLock + ] => navigate accouts
@@ -276,7 +276,7 @@ F2:: AdjustScreenBrightness(10)
     If GetKeyState("Shift","P")
       Send {Blind}^]
     else
-      Send ^+]
+      Send ^!{right}
     Return
 #IfWinActive
 
