@@ -58,6 +58,7 @@ setKeymap('n', '<leader>b', ':Telescope buffers<cr>', opts)
 setKeymap('n', '<leader>p', ':Telescope registers<cr>', opts)
 setKeymap('n', '<leader>g', ':Telescope live_grep<cr>', opts)
 setKeymap('n', '<leader>G', ':Telescope git_status<cr>', opts)
+setKeymap('n', '<leader>m', ':Telescope marks<cr>', opts)
 setKeymap('n', 'gr', ':Telescope coc references path_display={\'tail\'}<cr>', opts)
 -- path_display='smart' ATM only checks for forward slashes in path instead of OS-specific path seperator.
 -- setKeymap('n', 'gr', ':Telescope coc references path_display={\'smart\'}<cr>', opts)
