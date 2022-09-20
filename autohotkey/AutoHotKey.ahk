@@ -299,6 +299,7 @@ F2:: AdjustScreenBrightness(10)
 ; RightAlt + ' then ], for close guillemet
 >!'::
     Input, key, L1 M T3, {Delete}{Esc}{Home}{End}{Enter}{BS}
+    KeyWait, Alt
     If (key == "a") { 
         Send {U+00E1}
     }
@@ -364,6 +365,7 @@ Return
 ; RightAlt + ; then vocal, for grave accent
 >!;::
     Input, key, L1 M T3, {Delete}{Esc}{Home}{End}{Enter}{BS}
+    KeyWait, Alt
     If (key == "a") { 
         Send {U+00E0}
     }
@@ -399,6 +401,7 @@ Return
 ; RightAlt + ^ then vocal, for circumflex
 >!^::
     Input, key, L1 M T3, {Delete}{Esc}{Home}{End}{Enter}{BS}
+    KeyWait, Alt
     If (key == "a") { 
         Send {U+00E2}
     }
@@ -434,6 +437,7 @@ Return
 ; RightAlt + " then vocal, for umlaut
 >!"::
     Input, key, L1 M T3, {Delete}{Esc}{Home}{End}{Enter}{BS}
+    KeyWait, Alt
     If (key == "a") { 
         Send {U+00E4}
     }
