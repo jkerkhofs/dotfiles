@@ -34,5 +34,7 @@
   "Lua.diagnostics.globals": ["vim"],
   "Lua.hint.enable": false,
 
-  "coc.preferences.rootPatterns": ["tsconfig.json", "package.json", ".git"]
+  "coc.preferences.rootPatterns": ["tsconfig.json", "package.json", ".git"],
+
+  "typescript.preferences.importModuleSpecifier": "project-relative"
 }
