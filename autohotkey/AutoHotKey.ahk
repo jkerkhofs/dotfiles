@@ -222,8 +222,20 @@ F2:: AdjustScreenBrightness(10)
   ; Refresh (F5 is more reliable than Ctrl+r)
   CapsLock & r::F5
 
+  ; CapsLock + Shift + Enter => open current page in private window
   ; CapsLock + Enter => focus address bar
-  CapsLock & Enter::F4
+  CapsLock & Enter::
+    If GetKeyState("Shift","P") {
+      Send {F4}     ; focus address bar
+      Send ^c       ; copy url
+      Send ^+n      ; open new private window
+      Send ^v       ; paste url in address bar (focussed by default)
+      Send {Enter}  ; open webpage
+    }
+    else {
+      Send {F4}
+    }
+    Return
 
   ; CapsLock + Space => open tab search
   CapsLock & Space::^+a
