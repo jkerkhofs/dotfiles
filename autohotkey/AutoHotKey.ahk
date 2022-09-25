@@ -30,13 +30,14 @@ InitAutoHideCursor()
 CapsLock::Esc
 
 ; Fix glitches with CapsLock-modifier combos
-!CapsLock::Return
-^CapsLock::Return
 +CapsLock::Return
-#CapsLock::Return
+!CapsLock::Return
 !+CapsLock::Return
+^CapsLock::Return
 ^+CapsLock::Return
+#CapsLock::Return
 #+CapsLock::Return
+#!CapsLock::Return
 
 ; RightAlt is being used in mappings for accents, umlauts, ...
 ; To prevent unwanted behaviour, do nothing when pressing only RightAlt.
