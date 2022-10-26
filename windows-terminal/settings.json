@@ -3,14 +3,22 @@
   "$schema": "https://aka.ms/terminal-profiles-schema",
   "actions": [
     {
-      "command": "duplicateTab",
-      "keys": "ctrl+shift+t"
-    },
-    {
       "command": {
         "action": "prevTab"
       },
       "keys": "ctrl+["
+    },
+    {
+      "command": "duplicateTab",
+      "keys": "ctrl+shift+t"
+    },
+    {
+      "command": "find",
+      "keys": "ctrl+shift+f"
+    },
+    {
+      "command": "closePane",
+      "keys": "ctrl+shift+w"
     },
     {
       "command": {
@@ -24,10 +32,6 @@
         "direction": "up"
       },
       "keys": "shift+up"
-    },
-    {
-      "command": "closePane",
-      "keys": "ctrl+shift+w"
     },
     {
       "command": {
@@ -109,10 +113,6 @@
     {
       "command": "togglePaneZoom",
       "keys": "ctrl+shift+z"
-    },
-    {
-      "command": "find",
-      "keys": "ctrl+shift+f"
     }
   ],
   "copyFormatting": "none",
@@ -152,12 +152,6 @@
         "name": "Ubuntu",
         "source": "Windows.Terminal.Wsl",
         "startingDirectory": "\\\\wsl$\\Ubuntu\\home\\jke"
-      },
-      {
-        "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-        "hidden": true,
-        "name": "Git Bash",
-        "source": "Git"
       },
       {
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
