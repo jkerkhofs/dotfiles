@@ -3,6 +3,7 @@ if (not status) then return end
 
 treesitter_configs.setup {
   ensure_installed = {
+    'vim',
     'bash',
     'c_sharp',
     'comment',
