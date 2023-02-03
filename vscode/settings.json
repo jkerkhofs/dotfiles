@@ -1,12 +1,14 @@
 {
   "telemetry.telemetryLevel": "off",
+
   "window.zoomLevel": 0,
+  "window.restoreWindows": "none",
+
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Gruvbox Material Dark",
-  "workbench.editor.showTabs": false,
+  "workbench.editor.showTabs": true,
   "workbench.settings.editor": "json",
   "workbench.list.keyboardNavigation": "filter",
-  "workbench.activityBar.visible": false,
 
   "explorer.autoReveal": false,
 
@@ -24,6 +26,7 @@
   "editor.linkedEditing": true,
   "editor.cursorSurroundingLines": 10,
   "editor.fontFamily": "'HACK NF'",
+  "editor.peekWidgetDefaultFocus": "editor",
 
   "terminal.external.osxExec": "iterm.app",
   "terminal.integrated.defaultProfile.osx": "zsh",
@@ -39,6 +42,7 @@
   "scss.lint.duplicateProperties": "warning",
   "csharpextensions.privateMemberPrefix": "_",
   "csharpextensions.useThisForCtorAssignments": false,
+  "typescript.preferences.importModuleSpecifier": "project-relative",
   "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[html]": { "editor.defaultFormatter": "vscode.html-language-features" },
   "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
@@ -267,5 +271,6 @@
       "before": ["<leader>", "h"],
       "commands": ["workbench.action.debug.stepOut"]
     }
-  ]
+  ],
+  "workbench.activityBar.visible": false
 }
