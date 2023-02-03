@@ -81,6 +81,11 @@ return require('packer').startup(function(use)
     requires = { 'tpope/vim-obsession' },
     config = function() require('plugins.prosession') end
   }
+  use {
+    -- The undo history visualizer for VIM
+    'mbbill/undotree',
+    config = function() require('plugins.undotree') end
+  }
 
 
   -------------------
