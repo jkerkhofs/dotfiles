@@ -237,8 +237,8 @@ F2:: AdjustScreenBrightness(10)
     }
     Return
 
-  ; CapsLock + Space => open tab search
-  CapsLock & Space::^+a
+  ; CapsLock + p => open tab search
+  CapsLock & p::^+a
 
   ; CapsLock + ; => open developer tools
   CapsLock & `;::F12

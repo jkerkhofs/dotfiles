@@ -54,6 +54,7 @@ telescope.load_extension('fzf')
 telescope.load_extension('coc')
 
 setKeymap('n', '<leader><Space>', ':Telescope find_files<cr>', opts)
+setKeymap('n', '<c-p>', ':Telescope find_files<cr>', opts)
 setKeymap('n', '<leader>b', ':Telescope buffers<cr>', opts)
 setKeymap('n', '<leader>p', ':Telescope registers<cr>', opts)
 setKeymap('n', '<leader>g', ':Telescope live_grep<cr>', opts)

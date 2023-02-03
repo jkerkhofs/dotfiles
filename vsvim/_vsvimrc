@@ -42,6 +42,7 @@ nnoremap `[ :vsc Window.PreviousTab<cr>
 nnoremap <C-o> :vsc ReSharper.ReSharper_NavigateBackward<cr>
 nnoremap <C-i> :vsc ReSharper.ReSharper_NavigateForward<cr>
 nnoremap <leader><space> :vsc ReSharper.ReSharper_GotoRecentFiles<cr> 
+nnoremap <C-p> :vsc ReSharper.ReSharper_GotoRecentFiles<cr>
 nnoremap <leader><leader> :vsc Window.QuickLaunch<cr>
 nnoremap <leader>g :vsc Edit.FindInFiles<cr>
 
