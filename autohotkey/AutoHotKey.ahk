@@ -240,8 +240,8 @@ F2:: AdjustScreenBrightness(10)
   ; CapsLock + p => open tab search
   CapsLock & p::^+a
 
-  ; CapsLock + d => open developer tools
-  CapsLock & d::F12
+  ; CapsLock + ; => open developer tools
+  CapsLock & `;::F12
 
   ; CapsLock + Tab => toggle focus between webpage, tabs and address bar
   CapsLock & Tab::F6
