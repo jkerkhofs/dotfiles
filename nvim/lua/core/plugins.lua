@@ -155,7 +155,8 @@ return require('packer').startup(function(use)
     -- Nodejs extension host for vim & neovim, load extensions
     -- like VSCode and host language servers
     'neoclide/coc.nvim',
-    branch = 'release'
+    branch = 'release',
+    config = function() require('plugins.coc') end
   }
   -- Execute a CocUpdate after each packer update
   vim.api.nvim_create_autocmd("User", {
