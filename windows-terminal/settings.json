@@ -189,7 +189,7 @@
   "profiles": {
     "defaults": {
       "backgroundImage": "desktopWallpaper",
-      "backgroundImageOpacity": 0.070000000000000007,
+      "backgroundImageOpacity": 0.04,
       "bellStyle": "none",
       "colorScheme": "GruvboxMaterialMediumDark",
       "cursorShape": "bar",
@@ -283,8 +283,8 @@
       "yellow": "#C19C00"
     },
     {
-      "background": "#282828",
-      "black": "#282828",
+      "background": "#1F1F1F",
+      "black": "#1F1F1F",
       "blue": "#7DAEA3",
       "brightBlack": "#928374",
       "brightBlue": "#7DAEA3",
