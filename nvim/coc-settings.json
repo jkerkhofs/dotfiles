@@ -6,7 +6,9 @@
   "explorer.width": 50,
   "explorer.keyMappings.global": {
     "<esc>": false,
-    "<C-v>": "open:vsplit"
+    "<C-x>": "open:split",
+    "<C-v>": "open:vsplit",
+    "<C-t>": "open:tab"
   },
   "explorer.sources": [
     {
