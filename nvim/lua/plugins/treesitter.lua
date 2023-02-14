@@ -26,7 +26,10 @@ treesitter_configs.setup {
     'yaml'
   },
   highlight = {
-    enable = true
+    enable = true,
+    disable = {
+      'html'
+    },
   },
   context_commentstring = {
     enable = true
