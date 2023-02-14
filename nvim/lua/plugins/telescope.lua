@@ -74,6 +74,7 @@ setKeymap('v', '<leader>g', function() builtin.live_grep({ default_text = vim.ge
 -- Find (other) files relative to current buffer
 setKeymap('n', '<leader>o', function() builtin.find_files({
     cwd = utils.buffer_dir(),
-    find_command = { 'rg', '--files', '--max-depth=1' }
+    find_command = { 'rg', '--files', '--max-depth=1' },
+    prompt_title = 'Find Other Files | at the same level as the current buffer'
   })
 end, opts)
