@@ -80,8 +80,8 @@ vim.keymap.set("n", "<leader>e", ":CocCommand explorer<cr>", { silent = true, de
 
 -- Use `[e` and `]e` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-vim.keymap.set("n", "[e", "<Plug>(coc-diagnostic-prev)", { silent = true, desc = "Previous diagnostic" })
-vim.keymap.set("n", "]e", "<Plug>(coc-diagnostic-next)", { silent = true, desc = "Next diagnostic" })
+vim.keymap.set("n", "[d", "<Plug>(coc-diagnostic-prev)", { silent = true, desc = "Previous diagnostic" })
+vim.keymap.set("n", "]d", "<Plug>(coc-diagnostic-next)", { silent = true, desc = "Next diagnostic" })
 
 -- Navigate chunks for current buffer
 vim.keymap.set("n", "[g", "<Plug>(coc-git-prevchunk)", { silent = true, desc = "Previous chunk" })
