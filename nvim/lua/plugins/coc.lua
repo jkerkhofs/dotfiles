@@ -139,12 +139,12 @@ vim.keymap.set("n", "<leader>ce", ":<C-u>CocList extensions<cr>", opts)
 -- Show commands
 vim.keymap.set("n", "<leader><leader>", ":<C-u>CocList commands<cr>", opts)
 -- Find symbol of current document
-vim.keymap.set("n", "<leader>co", ":<C-u>CocList outline<cr>", opts)
+-- vim.keymap.set("n", "<leader>co", ":<C-u>CocList outline<cr>", opts)
 -- Search workspace symbols
-vim.keymap.set("n", "<leader>cs", ":<C-u>CocList -I symbols<cr>", opts)
+-- vim.keymap.set("n", "<leader>cs", ":<C-u>CocList -I symbols<cr>", opts)
 -- Do default action for next item
-vim.keymap.set("n", "<leader>cj", ":<C-u>CocNext<cr>", opts)
+-- vim.keymap.set("n", "<leader>cj", ":<C-u>CocNext<cr>", opts)
 -- Do default action for previous item
-vim.keymap.set("n", "<leader>ck", ":<C-u>CocPrev<cr>", opts)
+-- vim.keymap.set("n", "<leader>ck", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list
-vim.keymap.set("n", "<leader>c<space>", ":<C-u>CocListResume<cr>", opts)
+-- vim.keymap.set("n", "<leader>c<space>", ":<C-u>CocListResume<cr>", opts)
