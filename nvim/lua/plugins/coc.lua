@@ -1,5 +1,3 @@
-local utils = require("core.utils")
-
 vim.g.coc_global_extensions = {
     'coc-tsserver',
     'coc-eslint',
@@ -21,23 +19,6 @@ vim.g.coc_global_extensions = {
 -- Use tab and shift tab to jump through snippet
 vim.g.coc_snippet_next = '<TAB>'
 vim.g.coc_snippet_prev = '<S-TAB>'
-
--- Tab confirms selection, jumps through snippets or acts as a normal tab
-local SmartTab = function()
-  if vim.fn["coc#pum#visible"]() == 1 then
-    return vim.fn["coc#_select_confirm"]()
-  elseif vim.fn["coc#expandableOrJumpable"]() == 1 then
-    return utils.termcodes "<C-r>" ..
-        [[=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])]] .. utils.termcodes "<CR>"
-  else
-    local status, result = pcall(utils.check_back_space)
-    if status and result then
-      return utils.termcodes "<Tab>"
-    else
-      return vim.fn["coc#refresh"]()
-    end
-  end
-end
 
 local ShowDocumentation = function()
   if vim.fn.index({ "vim", "help" }, vim.bo.filetype) >= 0 then
@@ -65,8 +46,19 @@ vim.api.nvim_create_autocmd("FileType", {
     desc = "Setup formatexpr specified filetype(s)."
 })
 
--- Use Tab for trigger completion
-vim.keymap.set("i", "<Tab>", SmartTab, { expr = true, noremap = true, silent = true })
+-- " Map <tab> for trigger completion, completion confirm, snippet expand and jump like VSCode
+vim.cmd [[
+  inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#_select_confirm() :
+        \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+        \ CheckBackspace() ? "\<TAB>" :
+        \ coc#refresh()
+
+  function! CheckBackspace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+]]
 
 -- Enter to confirm completion
 vim.keymap.set(
