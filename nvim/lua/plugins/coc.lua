@@ -1,19 +1,19 @@
 vim.g.coc_global_extensions = {
-    'coc-tsserver',
-    'coc-eslint',
-    'coc-prettier',
-    'coc-angular',
-    'coc-html',
-    'coc-emmet',
-    'coc-css',
-    'coc-json',
-    'coc-yaml',
-    'coc-git',
-    'coc-sumneko-lua',
-    'coc-snippets',
-    'coc-explorer',
-    'coc-markdownlint',
-    'coc-powershell',
+  'coc-tsserver',
+  'coc-eslint',
+  'coc-prettier',
+  'coc-angular',
+  'coc-html',
+  'coc-emmet',
+  'coc-css',
+  'coc-json',
+  'coc-yaml',
+  'coc-git',
+  'coc-sumneko-lua',
+  'coc-snippets',
+  'coc-explorer',
+  'coc-markdownlint',
+  'coc-powershell',
 }
 
 -- Use tab and shift tab to jump through snippet
@@ -21,29 +21,30 @@ vim.g.coc_snippet_next = '<TAB>'
 vim.g.coc_snippet_prev = '<S-TAB>'
 
 local ShowDocumentation = function()
-  if vim.fn.index({ "vim", "help" }, vim.bo.filetype) >= 0 then
-    vim.cmd("h " .. vim.fn.expand "<cword>")
-  elseif vim.fn["coc#rpc#ready"]() then
-    vim.fn.CocActionAsync "doHover"
+  local cw = vim.fn.expand('<cword>')
+  if vim.fn.index({ 'vim', 'help' }, vim.bo.filetype) >= 0 then
+    vim.api.nvim_command('h ' .. cw)
+  elseif vim.api.nvim_eval('coc#rpc#ready()') then
+    vim.fn.CocActionAsync('doHover')
   else
-    vim.cmd("!" .. vim.o.keywordprg .. " " .. vim.fn.expand "<cword>")
+    vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
   end
 end
 
 -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
 vim.api.nvim_create_augroup("CocGroup", {})
 vim.api.nvim_create_autocmd("CursorHold", {
-    group = "CocGroup",
-    command = "silent call CocActionAsync('highlight')",
-    desc = "Highlight symbol under cursor on CursorHold"
+  group = "CocGroup",
+  command = "silent call CocActionAsync('highlight')",
+  desc = "Highlight symbol under cursor on CursorHold"
 })
 
 -- Setup formatexpr specified filetype(s)
 vim.api.nvim_create_autocmd("FileType", {
-    group = "CocGroup",
-    pattern = "typescript,json",
-    command = "setl formatexpr=CocAction('formatSelected')",
-    desc = "Setup formatexpr specified filetype(s)."
+  group = "CocGroup",
+  pattern = "typescript,json",
+  command = "setl formatexpr=CocAction('formatSelected')",
+  desc = "Setup formatexpr specified filetype(s)."
 })
 
 -- " Map <tab> for trigger completion, completion confirm, snippet expand and jump like VSCode
@@ -62,10 +63,10 @@ vim.cmd [[
 
 -- Enter to confirm completion
 vim.keymap.set(
-    "i",
-    "<CR>",
-    'coc#pum#visible() && coc#pum#info()["index"] != -1 ? coc#pum#confirm() : "\\<C-g>u\\<CR>\\<c-r>=coc#on_enter()\\<CR>"',
-    { expr = true, noremap = true, silent = true }
+  "i",
+  "<CR>",
+  'coc#pum#visible() && coc#pum#info()["index"] != -1 ? coc#pum#confirm() : "\\<C-g>u\\<CR>\\<c-r>=coc#on_enter()\\<CR>"',
+  { expr = true, noremap = true, silent = true }
 )
 
 vim.keymap.set("n", "<leader>e", ":CocCommand explorer<cr>", { silent = true, desc = "Open explorer" })
@@ -91,7 +92,7 @@ if telescopeAvailable then
   telescope.load_extension('coc')
   vim.keymap.set('n', 'gr', ':Telescope coc references path_display={\'tail\'}<cr>', { noremap = true, silent = true })
   -- path_display='smart' ATM only checks for forward slashes in path instead of OS-specific path seperator.
-  -- setKeymap('n', 'gr', ':Telescope coc references path_display={\'smart\'}<cr>', opts)
+  -- vim.keymap.set('n', 'gr', ':Telescope coc references path_display={\'smart\'}<cr>', { noremap = true, silent = true })
 else
   vim.keymap.set("n", "gr", "<Plug>(coc-references)", { silent = true })
 end
