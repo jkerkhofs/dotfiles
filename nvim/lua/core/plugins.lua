@@ -130,8 +130,7 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = {
       'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope-fzf-native.nvim',
-      'fannheyward/telescope-coc.nvim'
+      'nvim-telescope/telescope-fzf-native.nvim'
     },
     config = function() require('plugins.telescope') end
   }
@@ -168,7 +167,11 @@ return require('packer').startup(function(use)
   use {
     -- The Refactoring library based off the Refactoring book by Martin Fowler
     'ThePrimeagen/refactoring.nvim',
-    requires = { 'nvim-lua/plenary.nvim', 'nvim-treesitter/nvim-treesitter' },
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-telescope/telescope.nvim'
+    },
     config = function() require('plugins.refactoring') end
   }
 

@@ -51,7 +51,6 @@ telescope.setup {
 }
 
 telescope.load_extension('fzf')
-telescope.load_extension('coc')
 
 setKeymap('n', '<leader><Space>', ':Telescope find_files<cr>', opts)
 setKeymap('n', '<c-p>', ':Telescope find_files<cr>', opts)
@@ -60,9 +59,6 @@ setKeymap('n', '<leader>p', ':Telescope registers<cr>', opts)
 setKeymap('n', '<leader>g', ':Telescope live_grep<cr>', opts)
 setKeymap('n', '<leader>G', ':Telescope git_status<cr>', opts)
 setKeymap('n', '<leader>m', ':Telescope marks<cr>', opts)
-setKeymap('n', 'gr', ':Telescope coc references path_display={\'tail\'}<cr>', opts)
--- path_display='smart' ATM only checks for forward slashes in path instead of OS-specific path seperator.
--- setKeymap('n', 'gr', ':Telescope coc references path_display={\'smart\'}<cr>', opts)
 
 -- Find files based on selection.
 setKeymap('v', '<leader><Space>',
@@ -72,7 +68,8 @@ setKeymap('v', '<leader><Space>',
 setKeymap('v', '<leader>g', function() builtin.live_grep({ default_text = vim.getVisualSelection() }) end, opts)
 
 -- Find (other) files relative to current buffer
-setKeymap('n', '<leader>o', function() builtin.find_files({
+setKeymap('n', '<leader>o', function()
+  builtin.find_files({
     cwd = utils.buffer_dir(),
     find_command = { 'rg', '--files', '--max-depth=1' },
     prompt_title = 'Find Other Files | at the same level as the current buffer'

@@ -86,7 +86,15 @@ vim.keymap.set("n", "<leader>hg", "<Plug>(coc-git-chunkinfo)", { silent = true, 
 vim.keymap.set("n", "gd", "<Plug>(coc-definition)", { silent = true, desc = "Go to definition" })
 vim.keymap.set("n", "gy", "<Plug>(coc-type-definition)", { silent = true, desc = "Go to type definition" })
 vim.keymap.set("n", "gi", "<Plug>(coc-implementation)", { silent = true, desc = "Go to implementation" })
--- vim.keymap.set("n", "gr", "<Plug>(coc-references)", {silent = true}) -- mapped using telescope (./telescope.lua)
+local telescopeAvailable, telescope = pcall(require, "telescope")
+if telescopeAvailable then
+  telescope.load_extension('coc')
+  vim.keymap.set('n', 'gr', ':Telescope coc references path_display={\'tail\'}<cr>', { noremap = true, silent = true })
+  -- path_display='smart' ATM only checks for forward slashes in path instead of OS-specific path seperator.
+  -- setKeymap('n', 'gr', ':Telescope coc references path_display={\'smart\'}<cr>', opts)
+else
+  vim.keymap.set("n", "gr", "<Plug>(coc-references)", { silent = true })
+end
 
 -- Use K or gh to show documentation in preview window
 vim.keymap.set("n", "K", ShowDocumentation, { noremap = true, silent = true, desc = "Show documentation" })
