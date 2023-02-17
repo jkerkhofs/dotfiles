@@ -190,11 +190,11 @@
       "commands": ["workbench.action.debug.stepOut"]
     },
     {
-      "before": ["]", "e"],
+      "before": ["]", "d"],
       "commands": ["editor.action.marker.next"]
     },
     {
-      "before": ["[", "e"],
+      "before": ["[", "d"],
       "commands": ["editor.action.marker.prev"]
     }
   ],
