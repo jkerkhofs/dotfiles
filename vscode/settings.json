@@ -25,13 +25,13 @@
   "editor.minimap.enabled": false,
   "editor.linkedEditing": true,
   "editor.cursorSurroundingLines": 10,
-  "editor.fontFamily": "'HACK NF'",
+  "editor.fontFamily": "'HACK NFM'",
   "editor.peekWidgetDefaultFocus": "editor",
 
   "terminal.external.osxExec": "iterm.app",
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
-  "terminal.integrated.fontFamily": "'HACK NF'",
+  "terminal.integrated.fontFamily": "'HACK NFM'",
   
   "prettier.printWidth": 120,
   "html.format.wrapLineLength": 100,
