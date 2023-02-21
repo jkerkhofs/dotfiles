@@ -54,8 +54,8 @@
   augroup General
     autocmd!
     " Disable relative numbers on insert mode.
-    autocmd InsertEnter * :set norelativenumber
-    autocmd InsertLeave * :set relativenumber
+    autocmd InsertEnter * if &number | set norelativenumber | endif
+    autocmd InsertLeave * if &number | set relativenumber | endif
     " Clear jumplist to avoid jumping to another session/project.
     autocmd VimEnter * :clearjumps
   augroup END
