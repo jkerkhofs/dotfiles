@@ -57,6 +57,11 @@ New-Item -ItemType SymbolicLink `
   -Target "$PSScriptRoot\lf\lfrc.ps1" `
   -Force
 
+New-Item -ItemType SymbolicLink `
+  -Path "C:\Users\$env:UserName\AppData\Roaming\lazygit\config.yml" `
+  -Target "$PSScriptRoot\lazygit\config.yml" `
+  -Force
+
 # Create AutoHotKey shortcut in startup dir.
 $WScriptObj = New-Object -ComObject ("WScript.Shell")
 $shortcut = $WscriptObj.CreateShortcut("C:\Users\$env:UserName\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoHotKey.lnk")
