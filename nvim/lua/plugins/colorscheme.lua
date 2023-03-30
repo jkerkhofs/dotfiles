@@ -1,12 +1,16 @@
 return {
-  -- Gruvbox with Material Palette
-  'sainnhe/gruvbox-material',
+  -- Comfortable & Pleasant Color Scheme for Vim
+  'sainnhe/everforest',
   enabled = true,
   lazy = false,
   config = function()
-    vim.g.gruvbox_material_better_performance = 1
-    vim.g.gruvbox_material_background = 'medium'
-    vim.g.gruvbox_material_transparent_background = 1
-    vim.cmd 'colorscheme gruvbox-material'
+    vim.g.everforest_better_performance = 1
+    vim.g.everforest_background = 'medium'
+    vim.g.everforest_transparent_background = 1
+    vim.cmd.colorscheme 'everforest'
+
+    -- Fix markdown checkbox highlighting
+    vim.api.nvim_set_hl(0, "@text.todo.unchecked", { fg = '#4F585E' })
+    vim.api.nvim_set_hl(0, "@text.todo.checked", { fg = '#E69875' })
   end
 }
