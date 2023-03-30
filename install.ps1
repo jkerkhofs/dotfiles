@@ -43,6 +43,11 @@ New-Item -ItemType SymbolicLink `
   -Force
 
 New-Item -ItemType SymbolicLink `
+  -Path "C:\Users\$env:UserName\vimfiles" `
+  -Target "$PSScriptRoot\vim" `
+  -Force
+
+New-Item -ItemType SymbolicLink `
   -Path "C:\Users\$env:UserName\AppData\Local\nvim" `
   -Target "$PSScriptRoot\nvim" `
   -Force
