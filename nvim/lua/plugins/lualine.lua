@@ -3,14 +3,13 @@ return {
   'nvim-lualine/lualine.nvim',
   enabled = true,
   config = function()
-    local status, lualine = pcall(require, "lualine")
-    if (not status) then return end
-
-    lualine.setup {
+    require('lualine').setup {
       options = {
         icons_enabled = true,
         theme = 'auto',
-        disabled_filetypes = {}
+        disabled_filetypes = {},
+        section_separators = '',
+        component_separators = ''
       },
       sections = {
         lualine_a = { 'mode' },
