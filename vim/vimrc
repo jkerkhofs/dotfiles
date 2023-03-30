@@ -166,7 +166,6 @@
   nnoremap <down> <C-w>j
   nnoremap <up> <C-w>k
   nnoremap <right> <C-w>l
-  nnoremap <space> <C-w>w
 
   " navigating tabs
   nnoremap <silent> ]t :tabnext<CR>
