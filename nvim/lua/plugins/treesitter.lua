@@ -60,4 +60,10 @@ return {
     enabled = true,
     dependencies = { 'nvim-treesitter/nvim-treesitter' }
   },
+  {
+    -- Treesitter playground integrated into Neovim
+    'nvim-treesitter/playground',
+    enabled = true,
+    dependencies = { 'nvim-treesitter/nvim-treesitter' }
+  }
 }
