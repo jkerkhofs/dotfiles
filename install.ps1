@@ -28,6 +28,11 @@ New-Item -ItemType SymbolicLink `
   -Force
 
 New-Item -ItemType SymbolicLink `
+  -Path "C:\Users\$env:UserName\.ideavimrc" `
+  -Target "$PSScriptRoot\ideavim\ideavimrc" `
+  -Force
+
+New-Item -ItemType SymbolicLink `
   -Path (Get-Item "C:\users\$env:UserName\AppData\Local\Packages\Microsoft.WindowsTerminal_*\LocalState\settings.json").FullName `
   -Target "$PSScriptRoot\windows-terminal\settings.json" `
   -Force

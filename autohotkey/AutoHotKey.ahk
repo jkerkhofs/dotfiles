@@ -12,6 +12,7 @@ Process, Priority,, High ; Raise the script's priority.
 GroupAdd, VimApps, ahk_exe WindowsTerminal.exe
 GroupAdd, VimApps, ahk_exe devenv.exe
 GroupAdd, VimApps, ahk_exe Code.exe
+GroupAdd, VimApps, ahk_exe rider64.exe
 GroupAdd, Browsers, ahk_exe msedge.exe
 GroupAdd, Browsers, ahk_exe firefox.exe
 
