@@ -69,6 +69,7 @@ return {
       setKeymap('n', '<leader>g', ':Telescope live_grep<cr>', opts)
       setKeymap('n', '<leader>G', ':Telescope git_status<cr>', opts)
       setKeymap('n', '<leader>m', ':Telescope marks<cr>', opts)
+      setKeymap('n', '<space><space>', ':Telescope resume<cr>', opts)
 
       -- Find files based on selection.
       setKeymap('v', '<leader><Space>',
