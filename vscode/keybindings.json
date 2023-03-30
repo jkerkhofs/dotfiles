@@ -1,8 +1,16 @@
 // Place your key bindings in this file to override the defaults
 [
   {
-    "key": "ctrl+,",
+    "key": "ctrl+space",
     "command": "workbench.action.focusFirstEditorGroup"
+  },
+  {
+    "key": "ctrl+]",
+    "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.previousEditor"
   },
   {
     "key": "left",
