@@ -16,3 +16,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins')
+
+-- Neovim options
+vim.opt.fillchars = { eob = " " } -- hide the end of buffer chars
