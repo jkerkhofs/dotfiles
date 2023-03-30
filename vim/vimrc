@@ -122,6 +122,8 @@
   set termguicolors
   set bg=dark
   highlight Normal guibg=NONE ctermbg=NONE
+  " Use a more pleasant colorscheme by default
+  colorscheme slate
 
 " }}}
 
