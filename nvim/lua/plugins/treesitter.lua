@@ -35,9 +35,7 @@ return {
         },
         highlight = {
           enable = true,
-          disable = {
-            'html'
-          },
+          disable = {},
         },
         context_commentstring = {
           enable = true
