@@ -17,7 +17,6 @@ return {
           'comment',
           'css',
           'graphql',
-          'help',
           'html',
           'http',
           'javascript',
