@@ -238,8 +238,17 @@ F2:: AdjustScreenBrightness(10)
     }
     Return
 
+  ; CapsLock + Shift + p => open command palette
   ; CapsLock + p => open tab search
-  CapsLock & p::^+a
+  CapsLock & p::
+    If GetKeyState("Shift","P") {
+      Send ^+p
+    }
+    else {
+      Send ^+a
+    }
+    Return
+
 
   ; CapsLock + ; => open developer tools
   CapsLock & `;::F12
