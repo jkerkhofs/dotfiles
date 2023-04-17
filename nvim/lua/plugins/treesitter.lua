@@ -30,7 +30,8 @@ return {
           'toml',
           'tsx',
           'typescript',
-          'yaml'
+          'yaml',
+          'vimdoc'
         },
         highlight = {
           enable = true,
