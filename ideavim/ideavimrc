@@ -41,6 +41,8 @@ nmap <right> <C-w>l
 " nmap <space> <C-w>w
 nmap <C-w>H <Action>(MoveEditorToOppositeTabGroup)
 nmap <C-w>L <Action>(MoveEditorToOppositeTabGroup)
+" Maximize/Normalize editor
+nmap <C-w>= <Action>(MaximizeEditorInSplit)
 
 " Navigation
 nmap <C-p> <Action>(GotoFile)
