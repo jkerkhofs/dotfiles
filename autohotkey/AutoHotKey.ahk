@@ -40,6 +40,9 @@ CapsLock::Esc
 #+CapsLock::Return
 #!CapsLock::Return
 
+; Disable Cortana shortcut
+#c::Return
+
 ; RightAlt is being used in mappings for accents, umlauts, ...
 ; To prevent unwanted behaviour, do nothing when pressing only RightAlt.
 RAlt::Return
