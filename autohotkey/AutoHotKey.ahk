@@ -143,6 +143,9 @@ CapsLock & Backspace::Send {Blind}^{Backspace}
 ; LeftWin + Tab acts as AltTab
 <#Tab::AltTab
 
+; RightWin + Enter opens Task Manager
+>#Enter::Send ^+{Esc}
+
 ; Function Keys
 CapsLock & F1::F1
 CapsLock & F2::F2
