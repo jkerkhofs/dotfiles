@@ -13,8 +13,11 @@ GroupAdd, VimApps, ahk_exe WindowsTerminal.exe
 GroupAdd, VimApps, ahk_exe devenv.exe
 GroupAdd, VimApps, ahk_exe Code.exe
 GroupAdd, VimApps, ahk_exe rider64.exe
-GroupAdd, Browsers, ahk_exe msedge.exe
 GroupAdd, Browsers, ahk_exe firefox.exe
+GroupAdd, Browsers, ahk_exe msedge.exe
+GroupAdd, Browsers, ahk_exe chrome.exe
+GroupAdd, ChromiumBasedBrowsers, ahk_exe chrome.exe
+GroupAdd, ChromiumBasedBrowsers, ahk_exe edge.exe
 
 ; Enable this to hide the cursor while typing.
 IsAutoHideCursorEnabled := true
@@ -225,7 +228,7 @@ F2:: AdjustScreenBrightness(10)
 #IfWinActive
 
 
-#IfWinActive ahk_exe msedge.exe
+#IfWinActive ahk_group ChromiumBasedBrowsers
   ; Refresh (F5 is more reliable than Ctrl+r)
   CapsLock & r::F5
 
@@ -233,14 +236,14 @@ F2:: AdjustScreenBrightness(10)
   ; CapsLock + Enter => focus address bar
   CapsLock & Enter::
     If GetKeyState("Shift","P") {
-      Send {F4}     ; focus address bar
+      Send ^l       ; focus address bar
       Send ^c       ; copy url
       Send ^+n      ; open new private window
       Send ^v       ; paste url in address bar (focussed by default)
       Send {Enter}  ; open webpage
     }
     else {
-      Send {F4}
+      Send ^l
     }
     Return
 
