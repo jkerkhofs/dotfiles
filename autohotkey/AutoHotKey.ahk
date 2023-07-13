@@ -143,8 +143,12 @@ CapsLock & Backspace::Send {Blind}^{Backspace}
 #[::Send !{Esc}
 #]::Send !+{Esc}
 
-; LeftWin + Tab acts as AltTab
-<#Tab::AltTab
+; Disable LeftWin + Tab
+LWin & Tab::Return
+
+; LeftWin + j/k acts as AltTab/ShiftAltTab
+LWin & j::AltTab
+LWin & k::ShiftAltTab
 
 ; RightWin + Enter opens Task Manager
 >#Enter::Send ^+{Esc}
