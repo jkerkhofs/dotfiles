@@ -258,7 +258,6 @@ F2:: AdjustScreenBrightness(10)
     }
     Return
 
-
   ; CapsLock + ; => open developer tools
   CapsLock & `;::F12
 
@@ -616,8 +615,8 @@ HideCursor() {
     SystemCursor("Off")
     ; Save the original cursor location.
     MouseGetPos GlobalPosX, GlobalPosY
-    ; Move cursor to the top-left corner to avoid UI side effects (hover, focus, ...).
-    DllCall("SetCursorPos", "int", 0, "int", 0)
+    ; Move cursor to the bottom-right corner to avoid UI side effects (hover, focus, ...).
+    DllCall("SetCursorPos", "int", A_ScreenWidth, "int", A_ScreenHeight)
   }
 }
 
