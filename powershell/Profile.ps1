@@ -89,6 +89,36 @@ function vim {
 function la { ls -Force $args }
 
 function l { lf -single $args }
+# Open downloads
+function down {
+  $Host.UI.RawUI.WindowTitle = "Downloads"
+  $previousDir = Get-Location
+  cd "~\Downloads"
+  lf
+  cd $previousDir
+  clear
+}
+
+# Open Drive
+function drive {
+  $Host.UI.RawUI.WindowTitle = "Drive"
+  $previousDir = Get-Location
+  cd "G:\My Drive"
+  lf
+  cd $previousDir
+  clear
+}
+
+# Open default setup for doing administration
+function admin {
+  $Host.UI.RawUI.WindowTitle = "Downloads"
+  $previousDir = Get-Location
+  cd "~\Downloads"
+  wt -w 0 split-pane -V --title Administration -d "G:\My Drive\Administration" lf
+  lf
+  cd $previousDir
+  clear
+}
 
 # Explorer
 function e {
