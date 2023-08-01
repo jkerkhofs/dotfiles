@@ -74,6 +74,12 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory
 # Initialize cursor (disable cursor blink)
 SetCursorToLine
 
+# Initialize lf server for faster startup when needed
+# If server is already running, this job will complete immediately
+Start-Job -Name start-lf-server -ScriptBlock {
+  lf -server
+} | Out-Null
+
 function lgit {
   lazygit
   SetCursorToLine
@@ -88,7 +94,6 @@ function vim {
 
 function la { ls -Force $args }
 
-function l { lf -single $args }
 # Open downloads
 function down {
   $Host.UI.RawUI.WindowTitle = "Downloads"
