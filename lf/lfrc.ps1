@@ -15,3 +15,5 @@ map Y :{{
 map <enter> :{{
   &echo ($env:f).Trim('"') | Invoke-Item
 }}
+
+map <esc> reload
