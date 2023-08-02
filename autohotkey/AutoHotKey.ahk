@@ -34,6 +34,7 @@ InitAutoHideCursor()
 CapsLock::Esc
 
 ; Fix glitches with CapsLock-modifier combos
++CapsLock::Return
 !CapsLock::Return
 !+CapsLock::Return
 ^CapsLock::Return
