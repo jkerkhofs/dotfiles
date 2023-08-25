@@ -1,10 +1,12 @@
 # Set PowerShell to UTF-8
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
+$homeDir = "C:\Users\$($env:UserName)";
+
 # Environment variables
 $env:SHELL = "pwsh"
 $env:LANG = "en_US.utf8"
-$env:NODE_PATH = "C:\Users\$($env:UserName)\scoop\apps\nvm\current\nodejs\nodejs"
+$env:NODE_PATH = "$($homeDir)\scoop\apps\nvm\current\nodejs\nodejs"
 $env:FZF_DEFAULT_OPTS = @'
     --bind "ctrl-u:half-page-up"
     --bind "ctrl-d:half-page-down"
@@ -18,8 +20,18 @@ $env:FZF_DEFAULT_OPTS = @'
 # Settings
 $PSStyle.Progress.UseOSCIndicator = $true
 
-# Prompt
-oh-my-posh init pwsh --config "$PSScriptRoot\pure.jke.omp.json" | Invoke-Expression
+function prompt {
+  $loc = $executionContext.SessionState.Path.CurrentLocation;
+
+  Write-Host -ForegroundColor Blue $loc.path.Replace($homeDir, '~');
+  Write-Host -NoNewline -ForegroundColor Yellow "❯";
+
+  $out = " ";
+  if ($loc.Provider.Name -eq "FileSystem") {
+    $out += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
+  }
+  return $out
+}
 
 # Color highlighting for some basic PowerShell output
 Import-Module PSColor
