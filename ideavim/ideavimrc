@@ -75,11 +75,6 @@ nmap <leader>8 <Action>(GoToTab8)
 nmap <leader>9 <Action>(GoToTab9)
 nmap <leader>0 <Action>(GoToLastTab)
 
-" NERDTree mappings
-let g:NERDTreeMapOpenInTab = '<C-t>'
-let g:NERDTreeMapOpenVSplit = '<C-v>'
-let g:NERDTreeMapOpenSplit = '<C-x>'
-
 " Navigate by method
 nmap ]m <Action>(MethodDown)
 nmap [m <Action>(MethodUp)
