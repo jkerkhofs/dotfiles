@@ -327,6 +327,12 @@ F2:: AdjustScreenBrightness(10)
 ; RightAlt + $, for euro sign.
 >!$::Send {U+20AC}
 
+; RightAlt + 2, for superscript 2.
+>!2::Send {U+00B2}
+
+; RightAlt + 3, for superscript 3.
+>!3::Send {U+00B3}
+
 ; RightAlt + ' then vocal, for acute accent
 ; RightAlt + ' then c, for cedille
 ; RightAlt + ' then b, for Eszett
