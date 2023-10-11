@@ -319,6 +319,25 @@ F2:: AdjustScreenBrightness(10)
 #IfWinActive
 
 
+#IfWinActive ahk_exe Obsidian.exe
+; CapsLock + [ => navigate tabs
+  CapsLock & [::
+    If GetKeyState("Shift","P")
+      Send {Blind}^[
+    else
+      Send ^+{Tab}
+    Return
+
+  ; CapsLock + ] => navigate tabs
+  CapsLock & ]::
+    If GetKeyState("Shift","P")
+      Send {Blind}^]
+    else
+      Send ^{Tab}
+    Return
+#IfWinActive
+
+
 ;-----------------------------------------------------------------------------------;
 ; RightAlt mapping for accents, umlauts, ...                                        ;
 ; Based on https://gist.github.com/danidiaz/583824e50e3667ab50963cc30c7df0ec        ;
