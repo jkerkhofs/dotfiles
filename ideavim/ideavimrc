@@ -51,6 +51,7 @@ nmap <leader><space> <Action>(RecentFiles)
 nmap <leader><tab> <Action>(Switcher)
 nmap <leader><leader> <Action>(GotoAction)
 nmap <leader>g <Action>(FindInPath)
+nmap <leader>s <Action>(GotoRelated)
 nmap <C-o> <Action>(Back)
 nmap <C-i> <Action>(Forward)
 
