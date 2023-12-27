@@ -16,6 +16,7 @@ $env:FZF_DEFAULT_OPTS = @'
     --bind "ctrl-s:toggle-sort"
     --bind "shift-right:accept"
 '@
+$env:DOTNET_CLI_TELEMETRY_OPTOUT = 1 # Get rid of dotnet telemetry
 
 # Settings
 $PSStyle.Progress.UseOSCIndicator = $true
