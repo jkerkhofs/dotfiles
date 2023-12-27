@@ -89,7 +89,7 @@ nmap ]g <Action>(VcsShowNextChangeMarker)
 nmap [g <Action>(VcsShowPrevChangeMarker)
 
 " nmap K <Action>(QuickJavaDoc)
-nmap gh <Action>(ShowErrorDescription)
+nmap gh <Action>(ShowHoverInfo)
 nmap gd <Action>(GotoDeclaration)
 nmap gp <Action>(QuickImplementations)
 nmap gr <Action>(FindUsages)
