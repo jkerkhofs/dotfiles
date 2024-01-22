@@ -8,7 +8,7 @@ set info size:time
 set drawbox
 
 map Y :{{
-  &Split-Path -Leaf ($env:f).Trim('"') | Set-Clipboard
+  &Split-Path -LeafBase ($env:f).Trim('"') | Set-Clipboard
   echo "Filename copied..."
 }}
 
