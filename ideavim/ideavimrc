@@ -87,6 +87,7 @@ nmap [d <Action>(GotoPreviousError)
 " Navigate by changes
 nmap ]g <Action>(VcsShowNextChangeMarker)
 nmap [g <Action>(VcsShowPrevChangeMarker)
+nmap gH <Action>(VcsShowCurrentChangeMarker)
 
 " nmap K <Action>(QuickJavaDoc)
 nmap gh <Action>(ShowHoverInfo)
@@ -136,6 +137,7 @@ nmap <leader>tt <Action>(RerunTests)<Action>(ActivateRunToolWindow)
 " Show/hide windows
 nmap <leader>z <Action>(ToggleDistractionFreeMode)
 nmap <leader>e <Action>(SelectInProjectView)
+nmap <c-w>a <Action>(ActivateAIAssistantToolWindow)
 nmap <c-w>B <Action>(ViewToolButtons)
 nmap <c-w><cr> <Action>(ActivateTerminalToolWindow)
 nmap <c-w>. <Action>(Terminal.OpenInTerminal)
