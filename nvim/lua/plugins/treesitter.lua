@@ -50,7 +50,7 @@ return {
     {
       -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file
       'JoosepAlviste/nvim-ts-context-commentstring',
-      enabled = true,
+      enabled = false,
       dependencies = { 'nvim-treesitter/nvim-treesitter' }
     },
   },
