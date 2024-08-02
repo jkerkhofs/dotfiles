@@ -47,6 +47,7 @@ nmap <C-w>= <Action>(MaximizeEditorInSplit)
 " Navigation
 nmap <C-p> <Action>(GotoFile)
 nmap <C-S-p> <Action>(SearchEverywhere)
+nmap <C-s> <Action>(RiderManageRecentProjects)
 nmap <leader><space> <Action>(RecentFiles)
 nmap <leader><tab> <Action>(Switcher)
 nmap <leader><leader> <Action>(GotoAction)
