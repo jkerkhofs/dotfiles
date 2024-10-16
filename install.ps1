@@ -62,6 +62,11 @@ New-Item -ItemType SymbolicLink `
   -Target "$PSScriptRoot\lazygit\config.yml" `
   -Force
 
+New-Item -ItemType SymbolicLink `
+  -Path "C:\Users\$env:UserName\.angular-config.json" `
+  -Target "$PSScriptRoot\angular\angular-config.json" `
+  -Force
+
 # Create AutoHotKey shortcut in startup dir.
 $WScriptObj = New-Object -ComObject ("WScript.Shell")
 $shortcut = $WscriptObj.CreateShortcut("C:\Users\$env:UserName\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\AutoHotKey.lnk")
