@@ -122,7 +122,7 @@ vmap <leader>/ <Action>(CommentByLineComment)
 " Build, debug & run
 nmap <leader>B <Action>(BuildSolutionAction)
 nmap <leader>D <Action>(Debug)
-nmap <leader>R <Action>(mainRunToolbarRunProcess)
+nmap <leader>R <Action>(Run)
 nmap <leader>Q <Action>(Stop)
 
 " Debugging
