@@ -270,6 +270,13 @@ F2:: AdjustScreenBrightness(10)
 
   ; CapsLock + space => move focus to the web content pane
   CapsLock & space::^F6
+
+  ; CapsLock + b => search for bookmarks in current tab using address bar
+  CapsLock & b::
+    Send ^l
+    SendInput {text}@bookmarks
+    Send {Blind}{Space}
+    Return
 #IfWinActive
 
 
