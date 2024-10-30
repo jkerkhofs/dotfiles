@@ -6,7 +6,7 @@
 
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "Gruvbox Material Dark",
-  "workbench.editor.showTabs": false,
+  "workbench.editor.showTabs": "single",
   "workbench.settings.editor": "json",
   "workbench.list.keyboardNavigation": "filter",
 
@@ -272,5 +272,6 @@
       "commands": ["workbench.action.debug.stepOut"]
     }
   ],
-  "workbench.activityBar.visible": false
+  "workbench.activityBar.location": "hidden",
+  "git.openRepositoryInParentFolders": "never"
 }
