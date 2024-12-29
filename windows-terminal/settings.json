@@ -34,6 +34,16 @@
         {
             "command": 
             {
+                "action": "splitPane",
+                "split": "right",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.FEF0D40B",
+            "keys": "ctrl+shift+plus"
+        },
+        {
+            "command": 
+            {
                 "action": "switchToTab",
                 "index": 2
             },
@@ -118,16 +128,6 @@
         {
             "command": 
             {
-                "action": "splitPane",
-                "split": "right",
-                "splitMode": "duplicate"
-            },
-            "id": "User.splitPane.FEF0D40B",
-            "keys": "ctrl+shift+plus"
-        },
-        {
-            "command": 
-            {
                 "action": "resizePane",
                 "direction": "right"
             },
@@ -152,6 +152,11 @@
             "keys": "ctrl+shift+u"
         },
         {
+            "command": "togglePaneZoom",
+            "id": "User.togglePaneZoom",
+            "keys": "ctrl+shift+z"
+        },
+        {
             "command": 
             {
                 "action": "splitPane",
@@ -168,11 +173,6 @@
             },
             "id": "User.scrollDown.0",
             "keys": "ctrl+shift+d"
-        },
-        {
-            "command": "togglePaneZoom",
-            "id": "User.togglePaneZoom",
-            "keys": "ctrl+shift+z"
         },
         {
             "command": 
@@ -254,7 +254,7 @@
             "cursorShape": "bar",
             "font": 
             {
-                "face": "Hack NFM",
+                "face": "Hack Nerd Font",
                 "size": 11
             },
             "intenseTextStyle": "all",
@@ -300,6 +300,7 @@
             }
         ]
     },
+    "rendering.graphicsAPI": "direct3d11",
     "schemes": 
     [
         {
