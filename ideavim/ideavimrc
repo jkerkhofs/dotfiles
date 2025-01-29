@@ -152,6 +152,7 @@ nmap <c-w>n <Action>(ActivateNotificationsToolWindow)
 nmap <c-w>t <Action>(ActivateUnitTestsToolWindow)
 nmap <c-w>s <Action>(ActivateStructureToolWindow)
 nmap <c-w>r <Action>(ActivateRunToolWindow)
+nmap <c-w>p <Action>(ActivateProblemsViewToolWindow)
 
 " Git
 nmap <leader>G <Action>(Vcs.ShowTabbedFileHistory)
