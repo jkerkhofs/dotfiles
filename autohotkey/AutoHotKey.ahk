@@ -130,6 +130,17 @@ CapsLock & Space::Send {Blind}^{Space}
 CapsLock & Enter::Send {Blind}^{Enter}
 CapsLock & Backspace::Send {Blind}^{Backspace}
 
+; RightWin + number to simulate taskbar icon click
+>#1::ClickTaskbarIcon(1)
+>#2::ClickTaskbarIcon(2)
+>#3::ClickTaskbarIcon(3)
+>#4::ClickTaskbarIcon(4)
+>#5::ClickTaskbarIcon(5)
+>#6::ClickTaskbarIcon(6)
+>#7::ClickTaskbarIcon(7)
+>#8::ClickTaskbarIcon(8)
+>#9::ClickTaskbarIcon(9)
+
 ; Win + backspace to delete (* to allow shift for permanent delete).
 *#BS::Send {Delete}
 
@@ -553,6 +564,24 @@ AdjustScreenBrightness(step) {
 	}
 }
 
+; Click a taskbar icon based on the given slotNumber.
+; When AutoHideCursor is enabled, the cursor position will
+; jump back to the original position after moving the mouse.
+ClickTaskbarIcon(slotNumber) {
+  global
+  HideCursor()
+  firstIconX := 100 ; Adjust for your needs!
+  iconWidth := 76 ; Adjust for your needs!
+
+  ; Detect the screen coordinates of the taskbar
+  WinGetPos, tx, ty, tw, th, ahk_class Shell_TrayWnd
+
+  iconHeight := th
+  iconX := firstIconX + tx + ((slotNumber - 1) * iconWidth) + iconWidth // 2
+  iconY := ty + (iconHeight // 2)
+  Click, %iconX%, %iconY%
+}
+
 InitAutoHideCursor() {
   global
   ; Initialize the mouse cursor
@@ -616,6 +645,9 @@ ShowCursor() {
 
 HideCursor() {
   global
+  if (!IsAutoHideCursorEnabled) {
+    Return
+  }
   if (IsCursorVisible) {
     IsCursorVisible := false
     ; Block mouse movements until the cursor is made visible again.
