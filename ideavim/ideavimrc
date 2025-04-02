@@ -132,8 +132,9 @@ nmap <leader>l <Action>(StepInto)
 nmap <leader>h <Action>(StepOut)
 
 " Testing
-nmap <leader>tr <Action>(RunClass)<Action>(ActivateRunToolWindow)
-nmap <leader>tt <Action>(RerunTests)<Action>(ActivateRunToolWindow)
+nmap <leader>tt <Action>(RiderUnitTestRunContextAction)<Action>(ActivateUnitTestsToolWindow)
+nmap <leader>td <Action>(RiderUnitTestDebugContextAction)
+nmap <leader>tr <Action>(RiderUnitTestRunSolutionAction)<Action>(ActivateUnitTestsToolWindow)
 
 " Show/hide windows
 nmap <leader>z <Action>(ToggleDistractionFreeMode)
