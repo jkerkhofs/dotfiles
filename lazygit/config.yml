@@ -5,3 +5,4 @@ gui:
 git:
   log:
     order: default
+  autoForwardBranches: none
