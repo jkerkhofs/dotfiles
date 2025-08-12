@@ -363,6 +363,9 @@ F2:: AdjustScreenBrightness(10)
 ; RightAlt + 3, for superscript 3.
 >!3::Send {U+00B3}
 
+; RightAlt + =, for plus-minus.
+>!=::Send {U+00B1}
+
 ; RightAlt + ' then vocal, for acute accent
 ; RightAlt + ' then c, for cedille
 ; RightAlt + ' then b, for Eszett
