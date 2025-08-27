@@ -53,7 +53,7 @@ New-Item -ItemType SymbolicLink `
   -Force
 
 New-Item -ItemType SymbolicLink `
-  -Path "C:\Users\$env:UserName\AppData\Local\lf\lfrc" `
+  -Path "C:\Users\$env:UserName\AppData\Roaming\lf\lfrc" `
   -Target "$PSScriptRoot\lf\lfrc.ps1" `
   -Force
 
