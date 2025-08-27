@@ -4,6 +4,10 @@
     "actions": 
     [
         {
+            "command": "find",
+            "id": "User.find"
+        },
+        {
             "command": 
             {
                 "action": "moveFocus",
@@ -20,35 +24,12 @@
             "id": "User.resizePane.2A0DA8E0"
         },
         {
-            "command": "find",
-            "id": "User.find"
-        },
-        {
             "command": 
             {
-                "action": "prevTab"
+                "action": "switchToTab",
+                "index": 2
             },
-            "id": "User.prevTab.0"
-        },
-        {
-            "command": 
-            {
-                "action": "resizePane",
-                "direction": "down"
-            },
-            "id": "User.resizePane.F747588A"
-        },
-        {
-            "command": "duplicateTab",
-            "id": "User.duplicateTab"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "left"
-            },
-            "id": "User.moveFocus.2A0DA8E0"
+            "id": "User.switchToTab.87C324ED"
         },
         {
             "command": 
@@ -61,10 +42,37 @@
         {
             "command": 
             {
-                "action": "switchToTab",
-                "index": 2
+                "action": "resizePane",
+                "direction": "down"
             },
-            "id": "User.switchToTab.87C324ED"
+            "id": "User.resizePane.F747588A"
+        },
+        {
+            "command": 
+            {
+                "action": "prevTab"
+            },
+            "id": "User.prevTab.0"
+        },
+        {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "left"
+            },
+            "id": "User.moveFocus.2A0DA8E0"
+        },
+        {
+            "command": "duplicateTab",
+            "id": "User.duplicateTab"
+        },
+        {
+            "command": 
+            {
+                "action": "moveFocus",
+                "direction": "up"
+            },
+            "id": "User.moveFocus.6CD791B"
         },
         {
             "command": 
@@ -74,14 +82,6 @@
                 "splitMode": "duplicate"
             },
             "id": "User.splitPane.10B260D2"
-        },
-        {
-            "command": 
-            {
-                "action": "moveFocus",
-                "direction": "up"
-            },
-            "id": "User.moveFocus.6CD791B"
         },
         {
             "command": "closePane",
@@ -99,17 +99,17 @@
         {
             "command": 
             {
-                "action": "switchToTab",
-                "index": 7
+                "action": "nextTab"
             },
-            "id": "User.switchToTab.D7681B66"
+            "id": "User.nextTab.0"
         },
         {
             "command": 
             {
-                "action": "nextTab"
+                "action": "switchToTab",
+                "index": 7
             },
-            "id": "User.nextTab.0"
+            "id": "User.switchToTab.D7681B66"
         },
         {
             "command": 
@@ -138,17 +138,17 @@
         {
             "command": 
             {
-                "action": "scrollUp"
-            },
-            "id": "User.scrollUp.0"
-        },
-        {
-            "command": 
-            {
                 "action": "resizePane",
                 "direction": "right"
             },
             "id": "User.resizePane.87C324ED"
+        },
+        {
+            "command": 
+            {
+                "action": "scrollUp"
+            },
+            "id": "User.scrollUp.0"
         },
         {
             "command": "togglePaneZoom",
@@ -210,36 +210,36 @@
     "keybindings": 
     [
         {
-            "id": "User.splitPane.FEF0D40B",
-            "keys": "ctrl+shift+plus"
-        },
-        {
             "id": "User.resizePane.2A0DA8E0",
             "keys": "alt+shift+left"
         },
         {
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
-        },
-        {
-            "id": "User.togglePaneZoom",
-            "keys": "ctrl+shift+z"
+            "id": "User.splitPane.FEF0D40B",
+            "keys": "ctrl+shift+plus"
         },
         {
             "id": "User.closePane",
             "keys": "ctrl+shift+w"
         },
         {
-            "id": "User.duplicateTab",
-            "keys": "ctrl+shift+t"
+            "id": "User.togglePaneZoom",
+            "keys": "ctrl+shift+z"
+        },
+        {
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": "User.prevTab.0",
+            "keys": "ctrl+["
         },
         {
             "id": "User.switchToTab.6CD791B",
             "keys": "ctrl+shift+4"
         },
         {
-            "id": "User.prevTab.0",
-            "keys": "ctrl+["
+            "id": "User.duplicateTab",
+            "keys": "ctrl+shift+t"
         },
         {
             "id": "User.moveFocus.6CD791B",
@@ -396,7 +396,6 @@
             }
         ]
     },
-    "rendering.graphicsAPI": "direct2d",
     "schemes": 
     [
         {
