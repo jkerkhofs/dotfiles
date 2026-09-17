@@ -182,3 +182,10 @@ function notes {
   cd $previousDir
   clear
 }
+
+$customFunctionsPath = Join-Path $PSScriptRoot "functions"
+if (Test-Path $customFunctionsPath) {
+  Get-ChildItem -Path $customFunctionsPath -Filter "*.ps1" | ForEach-Object {
+    . $_.FullName
+  }
+}

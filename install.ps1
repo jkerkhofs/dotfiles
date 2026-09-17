@@ -8,6 +8,11 @@ New-Item -ItemType SymbolicLink `
   -Force
 
 New-Item -ItemType SymbolicLink `
+  -Path "C:\Users\$env:UserName\Documents\PowerShell\functions" `
+  -Target "$PSScriptRoot\powershell\functions" `
+  -Force
+
+New-Item -ItemType SymbolicLink `
   -Path "C:\Users\$env:UserName\Documents\PowerShell\pure.jke.omp.json" `
   -Target "$PSScriptRoot\powershell\pure.jke.omp.json" `
   -Force
