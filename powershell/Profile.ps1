@@ -35,7 +35,7 @@ function prompt {
 }
 
 # Color highlighting for some basic PowerShell output
-Import-Module PSColor
+Import-Module PoshColor
 
 # Zoxide
 Invoke-Expression (& {
@@ -62,9 +62,6 @@ function SetGitProjectAsWindowTitle {
     $Host.UI.RawUI.WindowTitle = $projectName + $suffix
   }
 }
-
-# CompletionPredictor
-Import-Module CompletionPredictor
 
 # PSReadLine
 Set-PSReadLineOption -BellStyle None

@@ -75,10 +75,13 @@ $shortcut.Arguments = "$PSScriptRoot\autohotkey\AutoHotKey.ahk"
 $shortcut.Save()
 
 # Installing powershell modules
-Install-Module -Name PSReadLine -AllowPrerelease -Force
-Install-Module -Name CompletionPredictor
-Install-Module -Name PSColor
-Install-Module -Name PSFzf
-
+$modules = 'PSReadLine', 'PSFzf', 'PoshColor'
+foreach ($module in $modules) {
+  if (Get-InstalledPSResource -Name $module -Scope CurrentUser -ErrorAction SilentlyContinue) {
+    Update-PSResource -Name $module -Repository PSGallery -Scope CurrentUser -TrustRepository
+  } else {
+    Install-PSResource -Name $module -Repository PSGallery -Scope CurrentUser -TrustRepository
+  }
+}
 
 # (Optional) Reset execution policy: Set-ExecutionPolicy Default
