@@ -21,17 +21,29 @@ $env:DOTNET_CLI_TELEMETRY_OPTOUT = 1 # Get rid of dotnet telemetry
 # Settings
 $PSStyle.Progress.UseOSCIndicator = $true
 
+# Cursor control
+# Windows Terminal only renders a cursor shape change when the cursor moves (microsoft/terminal#4106),
+# so nudge the cursor back and forth after changing the shape.
+$ESC = [char]27
+function SetCursorShape($shape) {
+  $atLineStart = try { [Console]::CursorLeft -eq 0 } catch { $true }
+  $nudge = if ($atLineStart) { "$ESC[C$ESC[D" } else { "$ESC[D$ESC[C" }
+  [Console]::Write("$ESC[$shape q$nudge")
+}
+function SetCursorToBlock { SetCursorShape 2 }
+function SetCursorToLine { SetCursorShape 6 }
+
 function prompt {
+  SetCursorToLine
   $loc = $executionContext.SessionState.Path.CurrentLocation;
 
   Write-Host -ForegroundColor Blue $loc.path.Replace($homeDir, '~');
   Write-Host -NoNewline -ForegroundColor Yellow "❯";
 
-  $out = " ";
   if ($loc.Provider.Name -eq "FileSystem") {
-    $out += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
+    [Console]::Write("$ESC]9;9;`"$($loc.ProviderPath)`"$ESC\")
   }
-  return $out
+  return " "
 }
 
 # Color highlighting for some basic PowerShell output
@@ -44,8 +56,6 @@ Invoke-Expression (& {
   })
 
 # Helper functions
-function SetCursorToBlock { Write-Host -NoNewLine "`e[2 q" }
-function SetCursorToLine { Write-Host -NoNewLine "`e[6 q" }
 function GetGitProjectName {
   $gitTopLevel = (git rev-parse --show-toplevel) 2> $null
   $projectName = ""
@@ -68,21 +78,19 @@ Set-PSReadLineOption -BellStyle None
 Set-PSReadLineOption -PredictionSource HistoryAndPlugin
 Set-PSReadLineOption -PredictionViewStyle InlineView
 Set-PSReadLineOption -Colors @{ InlinePrediction = "#685d52" }
-Set-PsReadLineOption -EditMode Vi
-Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler {
+Set-PSReadLineOption -EditMode Vi
+function OnViModeChange {
   if ($args[0] -eq 'Command') { SetCursorToBlock } else { SetCursorToLine }
 }
+Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
 Set-PSReadLineKeyHandler -Key Ctrl-j -Function SwitchPredictionView
 Set-PSReadLineKeyHandler -Key Ctrl-k -Function ShowCommandHelp
-Set-PSReadlineKeyHandler -Key Ctrl-l -Function ClearScreen
+Set-PSReadLineKeyHandler -Key Ctrl-l -Function ClearScreen
 
 # PSFzf
 Import-Module PSFzf
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 # Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
-
-# Initialize cursor (disable cursor blink)
-SetCursorToLine
 
 # Initialize lf server for faster startup when needed
 # If server is already running, this job will complete immediately
@@ -92,13 +100,11 @@ Start-Job -Name start-lf-server -ScriptBlock {
 
 function lgit {
   lazygit
-  SetCursorToLine
 }
 
 function vim {
   SetGitProjectAsWindowTitle "vim"
   nvim $args
-  SetCursorToLine
   clear
 }
 
@@ -169,7 +175,6 @@ function notes {
 
   nvim
 
-  SetCursorToLine
   Stop-Job -Name notes
   Remove-Job -Name notes
   cd $previousDir
