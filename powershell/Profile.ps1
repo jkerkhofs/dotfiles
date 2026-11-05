@@ -106,7 +106,6 @@ function la { ls -Force $args }
 
 # Open downloads
 function down {
-  $Host.UI.RawUI.WindowTitle = "Downloads"
   $previousDir = Get-Location
   cd "~\Downloads"
   lf
@@ -116,7 +115,6 @@ function down {
 
 # Open Drive
 function drive {
-  $Host.UI.RawUI.WindowTitle = "Drive"
   $previousDir = Get-Location
   cd "G:\My Drive"
   lf
@@ -126,7 +124,6 @@ function drive {
 
 # Open default setup for doing administration
 function admin {
-  $Host.UI.RawUI.WindowTitle = "Downloads"
   $previousDir = Get-Location
   cd "~\Downloads"
   wt -w 0 split-pane -V --title Administration -d "G:\My Drive\Administration" lf
@@ -149,7 +146,7 @@ function f {
   fd --type f | sort | fzf --tac --no-sort --multi `
     --bind "ctrl-y:execute-silent(Resolve-Path {} | Split-Path -Leaf | Set-Clipboard)+change-prompt(Filename copied > )" `
     --bind "alt-y:execute-silent(Resolve-Path {} | Set-Clipboard)+change-prompt(Path copied > )" `
-    --bind "enter:execute-multi(echo {} | Invoke-Item)"
+    --bind "enter:execute-multi(echo {} | Invoke-Item)" `
   | Split-Path -Parent | Set-Location
 }
 
@@ -158,7 +155,6 @@ function f {
 function notes {
   $previousDir = Get-Location
   cd ~/Workspace/notes
-  $Host.UI.RawUI.WindowTitle = "Notes"
 
   Start-Job -Name notes -ScriptBlock {
     while (1) {
