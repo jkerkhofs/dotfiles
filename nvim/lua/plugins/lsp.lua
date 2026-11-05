@@ -24,6 +24,8 @@ local tools = {
   'stylua',
   'csharpier',
   'markdownlint-cli2',
+  -- C# language server, used by roslyn.nvim
+  'roslyn',
 }
 
 return {
