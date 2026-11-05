@@ -2,34 +2,22 @@ return {
   -- The Refactoring library based off the Refactoring book by Martin Fowler
   'ThePrimeagen/refactoring.nvim',
   enabled = true,
+  lazy = false,
   dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-treesitter/nvim-treesitter',
-    'nvim-telescope/telescope.nvim'
+    -- only required for Neovim 0.12
+    'lewis6991/async.nvim',
   },
   config = function()
-    local status_refactoring, refactoring = pcall(require, "refactoring")
-    local status_telescope, telescope = pcall(require, "telescope")
-    if not (status_refactoring or status_telescope) then return end
+    local ok, refactoring = pcall(require, 'refactoring')
+    if not ok then return end
 
     refactoring.setup({})
 
-    -- load refactoring Telescope extension
-    telescope.load_extension("refactoring")
-
-    -- remap to open the Telescope refactoring menu in visual mode
-    vim.api.nvim_set_keymap(
-      "v",
-      "<leader>A",
-      "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-      { noremap = true }
-    )
-
-    vim.api.nvim_set_keymap(
-      "n",
-      "<leader>A",
-      "V<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-      { noremap = true }
-    )
-  end
+    -- Select a refactor via vim.ui.select for the selection (visual) or the current line (normal)
+    vim.keymap.set('x', '<leader>A', function()
+      refactoring.select_refactor()
+    end, { desc = 'Select refactor' })
+    vim.keymap.set('n', '<leader>A', "V<Cmd>lua require('refactoring').select_refactor()<CR>",
+      { desc = 'Select refactor for current line' })
+  end,
 }
