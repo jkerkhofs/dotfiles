@@ -1,36 +1,38 @@
+-- Shared Vim/Neovim settings (leader, options, mappings, shell)
 vim.cmd([[source ~/.vim/vimrc]])
+
+-- Neovim specific options
+require('config.options')
 
 -- Init Lazy.nvim
 -- Each plugin is defined in its own config file inside lua/plugins
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.uv.fs_stat(lazypath) then
+  local out = vim.fn.system({
+    'git',
+    'clone',
+    '--filter=blob:none',
+    '--branch=stable', -- latest stable release
+    'https://github.com/folke/lazy.nvim.git',
     lazypath,
   })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
+      { out, 'WarningMsg' },
+    }, true, {})
+    return
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup('plugins')
+require('lazy').setup({
+  spec = { { import = 'plugins' } },
+  install = { colorscheme = { 'everforest' } },
+  rocks = { enabled = false },
+  change_detection = { notify = false },
+})
 
--- Neovim options
-vim.opt.fillchars = { eob = " " } -- hide the end of buffer chars
-
--- Windows Terminal resets the cursor shape to the profile's cursorShape on focus (microsoft/terminal#18174).
--- Re-apply guicursor and redraw so the cursor matches the current mode again.
--- Only needed in Windows Terminal, which sets WT_SESSION in every shell it starts.
-if vim.env.WT_SESSION then
-  vim.api.nvim_create_autocmd("FocusGained", {
-    group = vim.api.nvim_create_augroup("RestoreCursorShape", { clear = true }),
-    callback = function()
-      local guicursor = vim.o.guicursor
-      vim.o.guicursor = ""
-      vim.o.guicursor = guicursor
-      vim.cmd("redraw!")
-    end,
-  })
-end
+require('config.diagnostics')
+require('config.keymaps')
+require('config.autocmds')
