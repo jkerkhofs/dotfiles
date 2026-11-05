@@ -133,17 +133,6 @@ return {
     vim.keymap.set("n", "<leader>a", "<Plug>(coc-codeaction-cursor)", opts)
     vim.keymap.set("x", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
 
-    -- Map function and class text objects
-    -- NOTE: Requires 'textDocument.documentSymbol' support from the language server
-    vim.keymap.set("x", "if", "<Plug>(coc-funcobj-i)", opts)
-    vim.keymap.set("o", "if", "<Plug>(coc-funcobj-i)", opts)
-    vim.keymap.set("x", "af", "<Plug>(coc-funcobj-a)", opts)
-    vim.keymap.set("o", "af", "<Plug>(coc-funcobj-a)", opts)
-    vim.keymap.set("x", "ic", "<Plug>(coc-classobj-i)", opts)
-    vim.keymap.set("o", "ic", "<Plug>(coc-classobj-i)", opts)
-    vim.keymap.set("x", "ac", "<Plug>(coc-classobj-a)", opts)
-    vim.keymap.set("o", "ac", "<Plug>(coc-classobj-a)", opts)
-
     -- Mappings for CoCList
     -- code actions and coc stuff
     ---@diagnostic disable-next-line: redefined-local
