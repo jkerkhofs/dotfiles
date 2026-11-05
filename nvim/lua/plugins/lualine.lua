@@ -15,7 +15,7 @@ return {
         lualine_a = { 'mode' },
         lualine_b = { 'branch' },
         lualine_c = { 'filename' },
-        lualine_x = {},
+        lualine_x = { 'diagnostics', 'lsp_status' },
         lualine_y = { 'filetype', 'encoding', 'fileformat' },
         lualine_z = { 'progress', 'location' }
       },

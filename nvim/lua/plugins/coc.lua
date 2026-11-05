@@ -22,10 +22,8 @@ return {
       'coc-css',
       'coc-json',
       'coc-yaml',
-      'coc-git',
       'coc-sumneko-lua',
       'coc-snippets',
-      'coc-explorer',
       'coc-markdownlint',
       'coc-powershell',
     }
@@ -83,34 +81,16 @@ return {
       { expr = true, noremap = true, silent = true }
     )
 
-    vim.keymap.set("n", "<leader>e", ":CocCommand explorer<cr>", { silent = true, desc = "Open explorer" })
-
     -- Use `[e` and `]e` to navigate diagnostics
     -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
     vim.keymap.set("n", "[d", "<Plug>(coc-diagnostic-prev)", { silent = true, desc = "Previous diagnostic" })
     vim.keymap.set("n", "]d", "<Plug>(coc-diagnostic-next)", { silent = true, desc = "Next diagnostic" })
 
-    -- Navigate chunks for current buffer
-    vim.keymap.set("n", "[g", "<Plug>(coc-git-prevchunk)", { silent = true, desc = "Previous chunk" })
-    vim.keymap.set("n", "]g", "<Plug>(coc-git-nextchunk)", { silent = true, desc = "Next chunk" })
-
-    -- Show chunk diff at current position
-    vim.keymap.set("n", "<leader>hg", "<Plug>(coc-git-chunkinfo)", { silent = true, desc = "Chunk info" })
-
     -- GoTo code navigation
     vim.keymap.set("n", "gd", "<Plug>(coc-definition)", { silent = true, desc = "Go to definition" })
     vim.keymap.set("n", "gy", "<Plug>(coc-type-definition)", { silent = true, desc = "Go to type definition" })
     vim.keymap.set("n", "gi", "<Plug>(coc-implementation)", { silent = true, desc = "Go to implementation" })
-    local telescopeAvailable, telescope = pcall(require, "telescope")
-    if telescopeAvailable then
-      telescope.load_extension('coc')
-      vim.keymap.set('n', 'gr', ':Telescope coc references path_display={\'tail\'}<cr>',
-        { noremap = true, silent = true })
-      -- path_display='smart' ATM only checks for forward slashes in path instead of OS-specific path seperator.
-      -- vim.keymap.set('n', 'gr', ':Telescope coc references path_display={\'smart\'}<cr>', { noremap = true, silent = true })
-    else
-      vim.keymap.set("n", "gr", "<Plug>(coc-references)", { silent = true })
-    end
+    vim.keymap.set("n", "gr", "<Plug>(coc-references)", { silent = true })
 
     -- Use K or gh to show documentation in preview window
     vim.keymap.set("n", "K", ShowDocumentation, { noremap = true, silent = true, desc = "Show documentation" })
@@ -137,12 +117,8 @@ return {
     -- code actions and coc stuff
     ---@diagnostic disable-next-line: redefined-local
     local opts = { silent = true, nowait = true }
-    -- Show all diagnostics
-    vim.keymap.set("n", "<leader>cd", ":<C-u>CocList diagnostics<cr>", opts)
     -- Manage extensions
     vim.keymap.set("n", "<leader>ce", ":<C-u>CocList extensions<cr>", opts)
-    -- Show commands
-    vim.keymap.set("n", "<leader><leader>", ":<C-u>CocList commands<cr>", opts)
     -- Find symbol of current document
     -- vim.keymap.set("n", "<leader>co", ":<C-u>CocList outline<cr>", opts)
     -- Search workspace symbols

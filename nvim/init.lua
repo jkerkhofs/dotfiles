@@ -1,3 +1,7 @@
+-- Load filetype detection before the vimrc: otherwise its `syntax enable` runs `filetype on` and
+-- `doautoall`, which loads the startup files early without BufReadPre/BufReadPost (breaks lazy-loading)
+vim.cmd('filetype plugin indent on')
+
 -- Shared Vim/Neovim settings (leader, options, mappings, shell)
 vim.cmd([[source ~/.vim/vimrc]])
 
