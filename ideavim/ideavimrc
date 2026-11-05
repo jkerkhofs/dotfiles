@@ -138,11 +138,11 @@ nmap <leader>td <Action>(RiderUnitTestDebugContextAction)
 nmap <leader>tr <Action>(RiderUnitTestRunSolutionAction)<Action>(ActivateUnitTestsToolWindow)
 
 " Show/hide windows
+nmap <c-space> <Action>(ActivateTerminalToolWindow)
 nmap <leader>z <Action>(ToggleDistractionFreeMode)
 nmap <leader>e <Action>(SelectInProjectView)
 nmap <c-w>a <Action>(ActivateAIAssistantToolWindow)
 nmap <c-w>B <Action>(ViewToolButtons)
-nmap <c-w><cr> <Action>(ActivateTerminalToolWindow)
 nmap <c-w>. <Action>(Terminal.OpenInTerminal)
 nmap <c-w>e <Action>(ActivateProjectToolWindow)
 nmap <c-w>D <Action>(ActivateDatabaseToolWindow)
