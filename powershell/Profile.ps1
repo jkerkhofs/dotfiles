@@ -156,6 +156,50 @@ function f {
   | Split-Path -Parent | Set-Location
 }
 
+# Interactive winget update: select packages to upgrade with fzf
+function wup {
+  if (!(Get-Module -ListAvailable Microsoft.WinGet.Client)) {
+    Write-Host -ForegroundColor Red "Microsoft.WinGet.Client not installed (run install.ps1 or Install-PSResource Microsoft.WinGet.Client)"
+    return
+  }
+
+  $packages = @(Get-WinGetPackage | Where-Object IsUpdateAvailable | Sort-Object Name)
+  if (!$packages) { Write-Host -ForegroundColor Green "Everything is up to date"; return }
+
+  $nameWidth = ($packages.Name | Measure-Object Length -Maximum).Maximum
+  $idWidth   = ($packages.Id   | Measure-Object Length -Maximum).Maximum
+  $lines = $packages | ForEach-Object {
+    $availableVersion = $_.AvailableVersions | Select-Object -First 1
+    if ($availableVersion -eq 'Unknown') { $availableVersion = '' }
+    "{0}`t{1} {2} {3} -> {4}" -f $_.Id, $_.Name.PadRight($nameWidth), $_.Id.PadRight($idWidth),
+      $_.InstalledVersion, $availableVersion
+  }
+
+  $selected = $lines | fzf --multi --delimiter "`t" --with-nth 2.. `
+    --header "ctrl-space: toggle | ctrl-t: toggle all | del: deselect all | enter: update"
+  if (!$selected) { return }
+
+  $selectedIds = $selected | ForEach-Object { ($_ -split "`t", 2)[0] }
+  $results = foreach ($id in $selectedIds) {
+    Write-Host -ForegroundColor Blue "Updating $id..."
+    try {
+      $result = Update-WinGetPackage -Id $id -MatchOption Equals -Mode Silent -ErrorAction Stop
+      [pscustomobject]@{
+        Id             = $id
+        Status         = $result.Status
+        RebootRequired = $result.RebootRequired
+      }
+    } catch {
+      [pscustomobject]@{
+        Id             = $id
+        Status         = "Failed: $($_.Exception.Message)"
+        RebootRequired = $null
+      }
+    }
+  }
+  $results | Format-Table Id, Status, RebootRequired -AutoSize
+}
+
 # Open notes project in vim while auto pulling/pushing from git in the background every 5 min.
 # Cleans up background job after quiting vim.
 function notes {

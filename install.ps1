@@ -70,7 +70,7 @@ $shortcut.Arguments = "$PSScriptRoot\autohotkey\AutoHotKey.ahk"
 $shortcut.Save()
 
 # Installing powershell modules
-$modules = 'PSReadLine', 'PSFzf', 'PoshColor'
+$modules = 'PSReadLine', 'PSFzf', 'PoshColor', 'Microsoft.WinGet.Client'
 foreach ($module in $modules) {
   if (Get-InstalledPSResource -Name $module -Scope CurrentUser -ErrorAction SilentlyContinue) {
     Update-PSResource -Name $module -Repository PSGallery -Scope CurrentUser -TrustRepository
