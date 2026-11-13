@@ -38,11 +38,14 @@ vim.api.nvim_create_user_command('UpdateAll', function()
   local function log(msg)
     io.write(msg .. '\n')
   end
+  local failed = false
   -- print notifications (e.g. from mason-tool-installer) as separate lines
   vim.notify = function(msg, level)
+    if level == vim.log.levels.ERROR then
+      failed = true
+    end
     log('  ' .. (level == vim.log.levels.ERROR and 'error: ' or '') .. msg)
   end
-  local failed = false
 
   log('Updating lazy.nvim plugins...')
   -- don't show the output of every git task, the updated and failed plugins are listed below
