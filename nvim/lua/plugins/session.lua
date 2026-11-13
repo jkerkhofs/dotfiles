@@ -9,8 +9,9 @@ return {
     'dhruvasagar/vim-prosession',
     enabled = true,
     dependencies = { 'tpope/vim-obsession' },
-    config = function()
-      vim.g.prosession_dir = vim.fn.stdpath('config') .. '/session/'
+    init = function()
+      -- must be set before the plugin is loaded
+      vim.g.prosession_dir = vim.fn.stdpath('state') .. '/sessions/'
     end
   }
 }

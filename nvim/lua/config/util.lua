@@ -1,13 +1,11 @@
 local M = {}
 
--- Returns the current visual selection as a single line of text.
+-- Returns the current visual selection as a single line of text (without touching any register).
 function M.get_visual_selection()
-  vim.cmd('noau normal! "vy"')
-  local text = vim.fn.getreg('v')
-  vim.fn.setreg('v', {})
-
-  text = string.gsub(text, '\n', '')
-  return text
+  local lines = vim.fn.getregion(vim.fn.getpos('v'), vim.fn.getpos('.'), { type = vim.fn.mode() })
+  -- leave visual mode, like a yank would
+  vim.cmd('normal! ' .. vim.keycode('<Esc>'))
+  return table.concat(lines, '')
 end
 
 -- Returns the current visual selection as an exact match (fzf syntax) for a filename.

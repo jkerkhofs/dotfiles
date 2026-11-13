@@ -25,7 +25,11 @@ return {
       documentation = { auto_show = true },
     },
     sources = {
-      default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      per_filetype = {
+        -- Neovim API completions are only useful in Lua files
+        lua = { inherit_defaults = true, 'lazydev' },
+      },
       providers = {
         lazydev = {
           name = 'LazyDev',

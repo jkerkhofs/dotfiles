@@ -3,6 +3,7 @@ return {
     -- A Git wrapper so awesome, it should be illegal
     'tpope/vim-fugitive',
     enabled = true,
+    cmd = { 'G', 'Git', 'Gdiffsplit', 'Gvdiffsplit', 'Gread', 'Gwrite', 'Ggrep', 'GMove', 'GDelete', 'GBrowse' },
   },
   {
     -- Git integration for buffers (signs, hunks, blame)

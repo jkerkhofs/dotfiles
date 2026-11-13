@@ -2,7 +2,7 @@ return {
   -- An asynchronous linter plugin for Neovim complementary to the built-in LSP support
   'mfussenegger/nvim-lint',
   enabled = true,
-  event = { 'BufWritePost', 'InsertLeave' },
+  event = { 'BufReadPost', 'BufWritePost', 'InsertLeave' },
   dependencies = {
     -- linters are installed with mason
     'mason-org/mason.nvim',
@@ -13,7 +13,7 @@ return {
       markdown = { 'markdownlint-cli2' },
     }
 
-    vim.api.nvim_create_autocmd({ 'BufWritePost', 'InsertLeave' }, {
+    vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePost', 'InsertLeave' }, {
       group = vim.api.nvim_create_augroup('Lint', { clear = true }),
       callback = function()
         lint.try_lint()
