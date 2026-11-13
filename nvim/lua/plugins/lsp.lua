@@ -62,6 +62,7 @@ return {
 
       vim.lsp.config('vtsls', {
         settings = {
+          vtsls = { autoUseWorkspaceTsdk = true },
           typescript = {
             preferences = { importModuleSpecifier = 'project-relative' },
           },
