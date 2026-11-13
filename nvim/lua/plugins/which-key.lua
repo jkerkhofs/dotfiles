@@ -8,7 +8,7 @@ return {
       { '<leader>c', group = 'Code' },
       { '<leader>h', group = 'Git hunks' },
       { '<leader>l', group = 'Lazygit' },
-      { '<leader>v', group = 'Vimrc' },
+      { '<leader>v', group = 'Vim/Neovim config' },
 
       { '<leader>w', desc = 'Save file' },
       { '<leader>W', desc = 'Convert line endings to Unix' },

@@ -76,6 +76,11 @@ return {
       end,
       desc = 'Find other files next to the current buffer',
     },
+    {
+      '<leader>vn',
+      function() Snacks.picker.files({ cwd = vim.fn.stdpath('config') }) end,
+      desc = 'Neovim config files',
+    },
     -- Find files based on selection
     {
       '<leader><Space>',
