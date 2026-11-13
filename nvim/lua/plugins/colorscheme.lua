@@ -2,6 +2,7 @@ return {
   -- Comfortable & Pleasant Color Scheme for Vim
   'sainnhe/everforest',
   enabled = true,
+  priority = 1000,
   lazy = false,
   config = function()
     vim.g.everforest_better_performance = 1
