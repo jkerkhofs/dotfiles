@@ -28,5 +28,6 @@
   "vim-obsession": { "branch": "master", "commit": "dad3b5a1f9b661e27cb77fc69308287349d3cf30" },
   "vim-prosession": { "branch": "master", "commit": "f88c0fa1691e0f88f0ddd50f5028a4b523509b3d" },
   "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
-  "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" }
+  "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
+  "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
 }

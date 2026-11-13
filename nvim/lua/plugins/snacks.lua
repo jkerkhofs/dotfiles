@@ -61,6 +61,7 @@ return {
     { '<leader>m', function() Snacks.picker.marks() end, desc = 'Marks' },
     { '<leader>g', function() Snacks.picker.grep() end, desc = 'Grep' },
     { '<leader>G', function() Snacks.picker.git_status() end, desc = 'Git status' },
+    { '<leader>k', function() Snacks.picker.keymaps() end, desc = 'Keymaps' },
     { '<Space><Space>', function() Snacks.picker.resume() end, desc = 'Resume last picker' },
     { '<leader>C', function() Snacks.picker.commands() end, desc = 'Commands' },
     { '<leader>cd', function() Snacks.picker.diagnostics() end, desc = 'Diagnostics' },

@@ -1,0 +1,47 @@
+return {
+  -- Display available keymaps and their descriptions as a popup
+  'folke/which-key.nvim',
+  enabled = true,
+  event = 'VeryLazy',
+  opts = {
+    spec = {
+      { '<leader>c', group = 'Code' },
+      { '<leader>h', group = 'Git hunks' },
+      { '<leader>l', group = 'Lazygit' },
+      { '<leader>v', group = 'Vimrc' },
+
+      { '<leader>w', desc = 'Save file' },
+      { '<leader>W', desc = 'Convert line endings to Unix' },
+      { '<leader>ve', desc = 'Edit vimrc' },
+      { '<leader>vv', desc = 'Reload vimrc' },
+      { '<leader>0', desc = 'Go to last tab' },
+      { '<leader>1', desc = 'Go to tab 1' },
+      { '<leader>2', desc = 'Go to tab 2' },
+      { '<leader>3', desc = 'Go to tab 3' },
+      { '<leader>4', desc = 'Go to tab 4' },
+      { '<leader>5', desc = 'Go to tab 5' },
+      { '<leader>6', desc = 'Go to tab 6' },
+      { '<leader>7', desc = 'Go to tab 7' },
+      { '<leader>8', desc = 'Go to tab 8' },
+      { '<leader>9', desc = 'Go to tab 9' },
+      { ']t', desc = 'Next tab' },
+      { '[t', desc = 'Previous tab' },
+      { 'Y', desc = 'Yank to system clipboard', mode = { 'n', 'v' } },
+      { '<A-j>', desc = 'Move line or selection down', mode = { 'n', 'i', 'v' } },
+      { '<A-k>', desc = 'Move line or selection up', mode = { 'n', 'i', 'v' } },
+      { '<S-Down>', desc = 'Next quickfix item' },
+      { '<S-Up>', desc = 'Previous quickfix item' },
+      { '<Left>', desc = 'Move to left window' },
+      { '<Down>', desc = 'Move to lower window' },
+      { '<Up>', desc = 'Move to upper window' },
+      { '<Right>', desc = 'Move to right window' },
+    },
+  },
+  keys = {
+    {
+      '<leader>?',
+      function() require('which-key').show({ global = false }) end,
+      desc = 'Buffer keymaps',
+    },
+  },
+}
