@@ -102,8 +102,8 @@
   " Enable incremental searching
   set incsearch
   set wildignore+=*/node_modules/*
-  set wildignore+=*/public/*
-  set wildignore+=*/build/*
+  set wildignore+=*/dist/*
+  set wildignore+=*/.angular/*
   " Ignore case when searching
   set ignorecase
   " Override the 'ignorecase' option if the search pattern contains upper case characters.
