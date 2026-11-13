@@ -6,7 +6,7 @@ $homeDir = "C:\Users\$($env:UserName)";
 # Environment variables
 $env:SHELL = "pwsh"
 $env:LANG = "en_US.utf8"
-if ($env:NVM_SYMLINK) { $env:NODE_PATH = Join-Path $env:NVM_SYMLINK 'node_modules' }
+if ($env:NVM_SYMLINK -and (Test-Path $env:NVM_SYMLINK)) { $env:NODE_PATH = Join-Path $env:NVM_SYMLINK 'node_modules' }
 $env:FZF_DEFAULT_OPTS = @'
     --bind "ctrl-u:half-page-up"
     --bind "ctrl-d:half-page-down"
