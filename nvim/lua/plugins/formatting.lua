@@ -24,8 +24,7 @@ local function organize_imports()
       end
       if action.command then
         local command = type(action.command) == 'table' and action.command or action
-        client:request_sync('workspace/executeCommand', { command = command.command, arguments = command.arguments }, 3000,
-          bufnr)
+        client:exec_cmd(command, { bufnr = bufnr })
       end
     end
     if #actions > 0 then
@@ -37,7 +36,8 @@ end
 local function format()
   require('conform').format({ async = true }, function(err)
     -- leave visual mode after a range format
-    if not err and vim.startswith(vim.api.nvim_get_mode().mode:lower(), 'v') then
+    local mode = vim.api.nvim_get_mode().mode
+    if not err and (vim.startswith(mode:lower(), 'v') or mode == '\22') then
       vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', true)
     end
   end)
