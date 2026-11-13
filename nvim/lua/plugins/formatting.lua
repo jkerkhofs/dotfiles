@@ -1,11 +1,20 @@
--- Run the 'source.organizeImports' code action synchronously for all attached LSP clients that support it
+-- Run the 'source.organizeImports' code action synchronously for the first attached LSP client that returns one
+-- (vtsls first), so the imports are never organized twice
 local function organize_imports()
   local bufnr = vim.api.nvim_get_current_buf()
-  for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr, method = 'textDocument/codeAction' })) do
+  local clients = vim.lsp.get_clients({ bufnr = bufnr, method = 'textDocument/codeAction' })
+  table.sort(clients, function(a, b)
+    if (a.name == 'vtsls') ~= (b.name == 'vtsls') then
+      return a.name == 'vtsls'
+    end
+    return a.id < b.id
+  end)
+  for _, client in ipairs(clients) do
     local params = vim.lsp.util.make_range_params(0, client.offset_encoding)
     params.context = { only = { 'source.organizeImports' }, diagnostics = {} }
     local response = client:request_sync('textDocument/codeAction', params, 3000, bufnr)
-    for _, action in ipairs(response and response.result or {}) do
+    local actions = response and response.result or {}
+    for _, action in ipairs(actions) do
       if not action.edit and client:supports_method('codeAction/resolve') then
         local resolved = client:request_sync('codeAction/resolve', action, 3000, bufnr)
         action = resolved and resolved.result or action
@@ -18,6 +27,9 @@ local function organize_imports()
         client:request_sync('workspace/executeCommand', { command = command.command, arguments = command.arguments }, 3000,
           bufnr)
       end
+    end
+    if #actions > 0 then
+      break
     end
   end
 end

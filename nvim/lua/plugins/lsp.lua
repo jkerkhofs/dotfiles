@@ -1,4 +1,4 @@
--- Language servers installed by mason and enabled by mason-lspconfig (via vim.lsp.enable)
+-- Language servers installed by mason-tool-installer and enabled by mason-lspconfig (via vim.lsp.enable)
 local servers = {
   -- web
   'vtsls',
@@ -58,7 +58,6 @@ return {
     config = function()
       vim.lsp.config('*', {
         capabilities = require('blink.cmp').get_lsp_capabilities(),
-        root_markers = { 'tsconfig.json', 'package.json', '.git' },
       })
 
       vim.lsp.config('vtsls', {
@@ -70,6 +69,11 @@ return {
             preferences = { importModuleSpecifier = 'project-relative' },
           },
         },
+      })
+
+      -- also provide HTML completion and hover in Angular templates
+      vim.lsp.config('html', {
+        filetypes = { 'html', 'htmlangular' },
       })
 
       -- only start in Angular workspaces (angular.json or nx.json)
@@ -106,15 +110,17 @@ return {
       })
 
       require('mason-lspconfig').setup({
-        ensure_installed = servers,
         automatic_enable = {
           -- stylua is used as formatter via conform.nvim
           exclude = { 'stylua' },
         },
       })
 
+      -- all mason packages in one list, so :MasonToolsUpdate also updates the language servers
       require('mason-tool-installer').setup({
-        ensure_installed = tools,
+        ensure_installed = vim.list_extend(vim.deepcopy(servers), tools),
+        -- :UpdateAll installs and updates the packages itself
+        run_on_start = not vim.g.update_all,
       })
 
       -- Remove the default LSP mappings starting with `gr` so `gr` (references) doesn't wait for 'timeoutlen'
@@ -147,6 +153,11 @@ return {
 
           map('n', '<leader>r', vim.lsp.buf.rename, 'Rename')
           map({ 'n', 'x' }, '<leader>a', vim.lsp.buf.code_action, 'Code action')
+
+          local client = vim.lsp.get_client_by_id(ev.data.client_id)
+          if client and client.name == 'eslint' then
+            map('n', '<leader>ce', function() vim.cmd('LspEslintFixAll') end, 'Fix all ESLint problems')
+          end
         end,
       })
     end,
