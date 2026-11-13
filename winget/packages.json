@@ -1,0 +1,47 @@
+{
+  "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+  "Sources": [
+    {
+      "SourceDetails": {
+        "Name": "winget",
+        "Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+        "Argument": "https://cdn.winget.microsoft.com/cache",
+        "Type": "Microsoft.PreIndexed.Package"
+      },
+      "Packages": [
+        { "PackageIdentifier": "Microsoft.PowerShell",             "Category": "Shell",        "Name": "PowerShell 7 - shell (pwsh)" },
+        { "PackageIdentifier": "Microsoft.WindowsTerminal",        "Category": "Shell",        "Name": "Windows Terminal - terminal app" },
+        { "PackageIdentifier": "AutoHotkey.AutoHotkey",            "Category": "Shell",        "Name": "AutoHotkey v1 - hotkeys and automation scripts", "Version": "1.1.37.02", "Scope": "machine" },
+
+        { "PackageIdentifier": "ajeetdsouza.zoxide",               "Category": "CLI tools",    "Name": "zoxide - smarter cd" },
+        { "PackageIdentifier": "junegunn.fzf",                     "Category": "CLI tools",    "Name": "fzf - fuzzy finder" },
+        { "PackageIdentifier": "sharkdp.fd",                       "Category": "CLI tools",    "Name": "fd - file finder" },
+        { "PackageIdentifier": "BurntSushi.ripgrep.MSVC",          "Category": "CLI tools",    "Name": "ripgrep - search file contents (rg)" },
+        { "PackageIdentifier": "gokcehan.lf",                      "Category": "CLI tools",    "Name": "lf - terminal file manager" },
+        { "PackageIdentifier": "gsass1.NTop",                      "Category": "CLI tools",    "Name": "NTop - process monitor" },
+        { "PackageIdentifier": "7zip.7zip",                        "Category": "CLI tools",    "Name": "7-Zip - file archiver" },
+        { "PackageIdentifier": "ImageMagick.ImageMagick",          "Category": "CLI tools",    "Name": "ImageMagick - image processing" },
+
+        { "PackageIdentifier": "Git.Git",                          "Category": "Git",          "Name": "Git - version control" },
+        { "PackageIdentifier": "JesseDuffield.lazygit",            "Category": "Git",          "Name": "lazygit - terminal UI for git" },
+
+        { "PackageIdentifier": "Neovim.Neovim",                    "Category": "Editors",      "Name": "Neovim - text editor" },
+        { "PackageIdentifier": "Microsoft.VisualStudioCode",       "Category": "Editors",      "Name": "VS Code - code editor" },
+
+        { "PackageIdentifier": "BrechtSanders.WinLibs.POSIX.UCRT", "Category": "Neovim build", "Name": "GCC (WinLibs) - C compiler for treesitter" },
+        { "PackageIdentifier": "tree-sitter.tree-sitter-cli",      "Category": "Neovim build", "Name": "tree-sitter CLI - builds treesitter parsers" },
+        { "PackageIdentifier": "ezwinports.make",                  "Category": "Neovim build", "Name": "GNU Make - build tool" },
+
+        { "PackageIdentifier": "CoreyButler.NVMforWindows",        "Category": "Development",  "Name": "NVM for Windows - Node.js version manager" },
+        { "PackageIdentifier": "Python.Python.3.15",               "Category": "Development",  "Name": "Python 3.15 - Python interpreter" },
+        { "PackageIdentifier": "Microsoft.DotNet.SDK.10",          "Category": "Development",  "Name": ".NET SDK 10 - .NET development kit" },
+        { "PackageIdentifier": "Microsoft.DotNet.SDK.11",          "Category": "Development",  "Name": ".NET SDK 11 - .NET development kit" },
+        { "PackageIdentifier": "Microsoft.WSL",                    "Category": "Development",  "Name": "WSL - Linux on Windows" },
+        { "PackageIdentifier": "Docker.DockerDesktop",             "Category": "Development",  "Name": "Docker Desktop - containers" },
+
+        { "PackageIdentifier": "GitHub.Copilot",                   "Category": "AI",           "Name": "GitHub Copilot CLI - AI in the terminal" },
+        { "PackageIdentifier": "GitHub.CopilotApp",                "Category": "AI",           "Name": "GitHub Copilot - AI desktop app" }
+      ]
+    }
+  ]
+}
