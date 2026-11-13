@@ -156,11 +156,11 @@
   endif
 
   " place cursor at the end after yanking selection
-  vnoremap y ygv<esc>
+  xnoremap y ygv<esc>
 
   " Y to yank to system clipboard.
   nnoremap Y "+y
-  vnoremap Y "+y
+  xnoremap Y "+y
 
   " Note: C-hjkl are mapped to left/down/up/right at OS level.
   " faster window movement.
@@ -247,8 +247,8 @@
   nnoremap <silent> <A-k> :<C-u>call MoveLineUp()<CR>
   inoremap <silent> <A-j> <C-o>:call MoveLineDown()<CR>
   inoremap <silent> <A-k> <C-o>:call MoveLineUp()<CR>
-  vnoremap <silent> <A-j> :<C-u>call MoveVisualDown()<CR>
-  vnoremap <silent> <A-k> :<C-u>call MoveVisualUp()<CR>
+  xnoremap <silent> <A-j> :<C-u>call MoveVisualDown()<CR>
+  xnoremap <silent> <A-k> :<C-u>call MoveVisualUp()<CR>
 
 " }}}
 
