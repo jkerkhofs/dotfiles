@@ -32,7 +32,7 @@
         { "PackageIdentifier": "tree-sitter.tree-sitter-cli",      "Category": "Neovim build", "Name": "tree-sitter CLI - builds treesitter parsers" },
         { "PackageIdentifier": "ezwinports.make",                  "Category": "Neovim build", "Name": "GNU Make - build tool" },
 
-        { "PackageIdentifier": "CoreyButler.NVMforWindows",        "Category": "Development",  "Name": "NVM for Windows - Node.js version manager" },
+        { "PackageIdentifier": "AuthorSoftware.NVMWindows",        "Category": "Development",  "Name": "NVM for Windows - Node.js version manager" },
         { "PackageIdentifier": "Python.Python.3.15",               "Category": "Development",  "Name": "Python 3.15 - Python interpreter" },
         { "PackageIdentifier": "Microsoft.DotNet.SDK.10",          "Category": "Development",  "Name": ".NET SDK 10 - .NET development kit" },
         { "PackageIdentifier": "Microsoft.DotNet.SDK.11",          "Category": "Development",  "Name": ".NET SDK 11 - .NET development kit" },

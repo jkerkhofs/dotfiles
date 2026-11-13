@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "packages": [
+    { "name": "@angular/cli", "category": "Frameworks", "description": "Angular CLI tooling" },
+    { "name": "@lavamoat/allow-scripts", "category": "Security", "description": "Dependency script sandboxing" },
+    { "name": "@progress/kendo-cli", "category": "Tooling", "description": "Kendo UI tooling" },
+    { "name": "neovim", "category": "Editor", "description": "Neovim Node.js client provider" },
+    { "name": "npm-check-updates", "category": "Maintenance", "description": "Dependency update utility (ncu)" }
+  ]
+}

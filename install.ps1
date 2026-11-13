@@ -6,7 +6,7 @@ $ErrorActionPreference = 'Stop'
 
 # Output helpers: every phase prints a numbered header and every item a status line (OK, SKIP, WARN or FAIL).
 # All results are collected for the summary at the end.
-$phaseCount = 6
+$phaseCount = 7
 $phaseNames = [System.Collections.Generic.List[string]]::new()
 $results = [System.Collections.Generic.List[object]]::new()
 $statusColors = @{ OK = 'Green'; SKIP = 'DarkGray'; WARN = 'Yellow'; FAIL = 'Red' }
@@ -285,6 +285,58 @@ foreach ($module in $modules)
   {
     Write-Result FAIL $module $_.Exception.Message
   }
+}
+
+# Installing global npm packages
+# packages.json is shared; packages.local.json (same format, git-ignored) holds work- and machine-specific packages.
+Start-Phase 'npm global packages'
+if (Get-Command npm -ErrorAction SilentlyContinue)
+{
+  foreach ($packageFile in "$PSScriptRoot\npm\packages.json", "$PSScriptRoot\npm\packages.local.json")
+  {
+    $fileName = Split-Path $packageFile -Leaf
+    if (!(Test-Path $packageFile))
+    {
+      Write-Result SKIP $fileName 'file not found'
+      continue
+    }
+
+    $packages = @((Get-Content -Raw $packageFile | ConvertFrom-Json).packages.name)
+    if (!$packages)
+    {
+      Write-Result SKIP $fileName 'no packages configured'
+      continue
+    }
+
+    try
+    {
+      $installedJson = npm list -g --depth=0 --json 2>$null | ConvertFrom-Json
+      $installedNames = @($installedJson.dependencies.PSObject.Properties.Name)
+    } catch
+    {
+      $installedNames = @()
+    }
+
+    $toInstall = @($packages | Where-Object { $_ -notin $installedNames })
+    if ($toInstall.Count -eq 0)
+    {
+      Write-Result OK $fileName "all $($packages.Count) packages already installed"
+    } else
+    {
+      Write-Host "    Installing $($toInstall.Count) of $($packages.Count) npm packages: $($toInstall -join ', ')..."
+      npm install -g $toInstall --no-fund --no-audit
+      if ($LASTEXITCODE -eq 0)
+      {
+        Write-Result OK $fileName "installed $($toInstall.Count) packages"
+      } else
+      {
+        Write-Result WARN $fileName "npm install exited with code $LASTEXITCODE"
+      }
+    }
+  }
+} else
+{
+  Write-Result SKIP 'npm' 'npm CLI not found in PATH'
 }
 
 Write-Summary
