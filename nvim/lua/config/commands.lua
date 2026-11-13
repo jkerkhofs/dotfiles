@@ -1,6 +1,16 @@
 -- Update the lazy.nvim plugins, the mason packages (language servers and tools) and the treesitter parsers.
 -- Interactive: shows the lazy.nvim UI and updates mason and treesitter in the background after the sync.
 -- Headless (e.g. `nvim --headless +UpdateAll +qa`): runs everything synchronously and prints the progress.
+local function remaining_plugins()
+  require('lazy.core.plugin').update_state()
+  local remaining = {}
+  for _, plugin in ipairs(require('lazy.core.config').to_clean) do
+    remaining[#remaining + 1] = plugin.name
+  end
+  table.sort(remaining)
+  return remaining
+end
+
 vim.api.nvim_create_user_command('UpdateAll', function()
   local headless = #vim.api.nvim_list_uis() == 0
   -- prevents the mason-tool-installer run on start, which would install in parallel with the update
@@ -13,6 +23,10 @@ vim.api.nvim_create_user_command('UpdateAll', function()
       pattern = 'LazySync',
       once = true,
       callback = function()
+        local remaining = remaining_plugins()
+        if #remaining > 0 then
+          vim.notify('Plugin directories not removed:\n' .. table.concat(remaining, '\n'), vim.log.levels.ERROR)
+        end
         vim.cmd('MasonToolsUpdate')
         require('nvim-treesitter').update(nil, { summary = true })
       end,
@@ -35,6 +49,10 @@ vim.api.nvim_create_user_command('UpdateAll', function()
   local headless_opts = require('lazy.core.config').options.headless
   headless_opts.process, headless_opts.log, headless_opts.task = false, false, false
   require('lazy').sync({ wait = true, show = false })
+  for _, name in ipairs(remaining_plugins()) do
+    failed = true
+    log('  not removed: ' .. name)
+  end
   local Plugin = require('lazy.core.plugin')
   local updated = 0
   for name, plugin in pairs(require('lazy.core.config').plugins) do
