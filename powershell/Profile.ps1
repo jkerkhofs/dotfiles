@@ -6,7 +6,7 @@ $homeDir = "C:\Users\$($env:UserName)";
 # Environment variables
 $env:SHELL = "pwsh"
 $env:LANG = "en_US.utf8"
-$env:NODE_PATH = "$($homeDir)\scoop\apps\nvm\current\nodejs\nodejs"
+if ($env:NVM_SYMLINK) { $env:NODE_PATH = Join-Path $env:NVM_SYMLINK 'node_modules' }
 $env:FZF_DEFAULT_OPTS = @'
     --bind "ctrl-u:half-page-up"
     --bind "ctrl-d:half-page-down"
@@ -163,7 +163,19 @@ function wup {
     return
   }
 
-  $packages = @(Get-WinGetPackage | Where-Object IsUpdateAvailable | Sort-Object Name)
+  # Package IDs to hide from wup are read from winget\wup-ignore.local.json (git-ignored, [{ "id": ..., "reason": ... }])
+  $repoRoot   = Split-Path -Parent (Split-Path -Parent (Get-Item $PSCommandPath).ResolvedTarget)
+  $ignoreFile = Join-Path $repoRoot 'winget\wup-ignore.local.json'
+  $ignoredIds = @()
+  if (Test-Path $ignoreFile) {
+    try { $ignoredIds = @((Get-Content -Raw $ignoreFile | ConvertFrom-Json).id | Where-Object { $_ }) }
+    catch { Write-Host -ForegroundColor Yellow "Could not read $ignoreFile, nothing is ignored: $($_.Exception.Message)" }
+  }
+
+  $updatable = @(Get-WinGetPackage | Where-Object IsUpdateAvailable)
+  $ignored   = @($updatable | Where-Object Id -in $ignoredIds)
+  if ($ignored) { Write-Host -ForegroundColor DarkGray "Ignored: $($ignored.Id -join ', ')" }
+  $packages  = @($updatable | Where-Object Id -notin $ignoredIds | Sort-Object Name)
   if (!$packages) { Write-Host -ForegroundColor Green "Everything is up to date"; return }
 
   $nameWidth = ($packages.Name | Measure-Object Length -Maximum).Maximum
