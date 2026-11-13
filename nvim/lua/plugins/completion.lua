@@ -4,6 +4,7 @@ return {
   enabled = true,
   -- use a release tag to download the prebuilt fuzzy matcher binary
   version = '1.*',
+  -- nvim-lspconfig also loads this on BufReadPre, before configuring LSP capabilities
   event = { 'InsertEnter', 'CmdlineEnter' },
   dependencies = {
     -- Set of preconfigured snippets for different languages
