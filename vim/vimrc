@@ -150,8 +150,10 @@
   " Esc in normal mode clears hlsearch and command line message.
   nnoremap <silent> <esc> :noh<bar>echon''<CR>
 
-  " Open default file explorer
-  nmap <silent> <leader>e :Lexplore<CR>
+  " Open default file explorer (Neovim uses the snacks.nvim explorer)
+  if !has('nvim')
+    nmap <silent> <leader>e :Lexplore<CR>
+  endif
 
   " place cursor at the end after yanking selection
   vnoremap y ygv<esc>
@@ -268,7 +270,10 @@
 
 " Native plugins {{{ 
 
-  packadd! matchit " enable the matchit plugin (e.g. to find the matching html tags)
+  " enable the matchit plugin (e.g. to find the matching html tags), Neovim loads it by default
+  if !has('nvim')
+    packadd! matchit
+  endif
 
 " }}}
 
