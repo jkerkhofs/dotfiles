@@ -22,6 +22,16 @@ return {
         },
       },
     })
+    vim.api.nvim_create_autocmd('LspAttach', {
+      callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if not client or client.name ~= 'roslyn' then return end
+
+        local filter = { bufnr = args.buf, client_id = client.id }
+        vim.lsp.inlay_hint.enable(true, filter)
+        vim.lsp.codelens.enable(true, filter)
+      end,
+    })
     require('roslyn').setup(opts)
   end,
 }
