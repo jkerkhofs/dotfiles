@@ -84,10 +84,12 @@
   " Use PowerShell when on Windows
   if IsWindows()
     let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
-    let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';'
-    let &shellredir = '>%s 2>&1'
-    let &shellpipe = '>%s 2>&1'
-    set shellquote= shellxquote=
+    if !has('nvim')
+      let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';'
+      let &shellredir = '>%s 2>&1'
+      let &shellpipe = '>%s 2>&1'
+      set shellquote= shellxquote=
+    endif
   endif
 
 " }}}
@@ -132,9 +134,11 @@
 " Backups {{{
 
   set backup
-  set backupdir=~/.vim/tmp/backup//
   set swapfile
-  set directory=~/.vim/tmp/swap//
+  if !has('nvim')
+    set backupdir=~/.vim/tmp/backup//
+    set directory=~/.vim/tmp/swap//
+  endif
   " set undofile
   " set undodir=~/.vim/tmp/undo//
 
