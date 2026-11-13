@@ -213,7 +213,7 @@ foreach ($packageFile in "$PSScriptRoot\winget\packages.json", "$PSScriptRoot\wi
 
 # Keep AutoHotkey on v1 (the script in autohotkey\ uses v1 syntax)
 Start-Phase 'AutoHotkey version pin'
-winget pin add --id AutoHotkey.AutoHotkey --exact --version '1.1.*' --force --accept-source-agreements | Out-Null
+winget pin add --id AutoHotkey.AutoHotkey --exact --version '1.1.*' --force --accept-source-agreements --source winget | Out-Null
 if ($LASTEXITCODE -eq 0)
 {
   Write-Result OK 'AutoHotkey.AutoHotkey' 'pinned to 1.1.*'
