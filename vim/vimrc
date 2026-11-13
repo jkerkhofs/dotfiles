@@ -120,9 +120,11 @@
 
   set termguicolors
   set bg=dark
-  highlight Normal guibg=NONE ctermbg=NONE
-  " Use a more pleasant colorscheme by default
-  colorscheme slate
+  if !has('nvim')
+    " Use a more pleasant colorscheme by default
+    colorscheme slate
+    highlight Normal guibg=NONE ctermbg=NONE
+  endif
 
 " }}}
 
