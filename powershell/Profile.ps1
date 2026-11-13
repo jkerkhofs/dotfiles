@@ -212,6 +212,19 @@ function wup {
   $results | Format-Table Id, Status, RebootRequired -AutoSize
 }
 
+# Update Neovim plugins (lazy.nvim), mason packages and treesitter parsers (see :UpdateAll)
+# and show which plugins changed in lazy-lock.json (roll back with git or :Lazy restore)
+function nup {
+  # don't load the session of the current directory
+  nvim --headless --cmd 'let g:prosession_on_startup=0' '+UpdateAll' '+qa!'
+  $exitCode = $LASTEXITCODE
+  Write-Host
+
+  $repoRoot = Split-Path -Parent (Split-Path -Parent (Get-Item $PSCommandPath).ResolvedTarget)
+  git -C $repoRoot diff --stat -- nvim/lazy-lock.json
+  if ($exitCode -ne 0) { Write-Host -ForegroundColor Red "Update finished with errors (exit code $exitCode)" }
+}
+
 # Open notes project in vim while auto pulling/pushing from git in the background every 5 min.
 # Cleans up background job after quiting vim.
 function notes {
