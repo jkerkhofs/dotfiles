@@ -24,8 +24,6 @@ local tools = {
   'stylua',
   'csharpier',
   'markdownlint-cli2',
-  -- C# language server, used by roslyn.nvim
-  'roslyn',
 }
 
 return {
@@ -34,13 +32,7 @@ return {
     'mason-org/mason.nvim',
     enabled = true,
     cmd = 'Mason',
-    opts = {
-      registries = {
-        'github:mason-org/mason-registry',
-        -- roslyn language server (C#)
-        'github:Crashdummyy/mason-registry',
-      },
-    },
+    opts = {},
   },
   {
     -- Quickstart configs for the builtin LSP client

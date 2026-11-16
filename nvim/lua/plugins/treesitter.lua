@@ -17,6 +17,7 @@ local parsers = {
   'markdown',
   'markdown_inline',
   'powershell',
+  'razor',
   'regex',
   'scss',
   'toml',
@@ -27,6 +28,10 @@ local parsers = {
   'xml',
   'yaml',
 }
+
+-- Filetypes that keep their own indentexpr, because the treesitter indent queries break the indentation
+-- (C#: https://github.com/GustavEikaas/easy-dotnet.nvim/issues/873)
+local no_treesitter_indent = { cs = true }
 
 return {
   {
@@ -50,7 +55,7 @@ return {
       vim.api.nvim_create_autocmd('FileType', {
         group = vim.api.nvim_create_augroup('TreesitterStart', { clear = true }),
         callback = function(ev)
-          if pcall(vim.treesitter.start, ev.buf) then
+          if pcall(vim.treesitter.start, ev.buf) and not no_treesitter_indent[ev.match] then
             vim.bo[ev.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
           end
         end,
