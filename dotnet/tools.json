@@ -1,0 +1,5 @@
+{
+  "tools": [
+    { "name": "EasyDotnet", "category": "Editor", "description": "Server for easy-dotnet.nvim (Roslyn LSP, test runner, debugger)" }
+  ]
+}

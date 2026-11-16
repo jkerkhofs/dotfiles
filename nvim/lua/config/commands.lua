@@ -1,5 +1,6 @@
--- Update the lazy.nvim plugins, the mason packages (language servers and tools) and the treesitter parsers.
--- Interactive: shows the lazy.nvim UI and updates mason and treesitter in the background after the sync.
+-- Update the lazy.nvim plugins, the mason packages (language servers and tools), the global dotnet tools and the
+-- treesitter parsers.
+-- Interactive: shows the lazy.nvim UI and updates mason, dotnet tools and treesitter in the background after the sync.
 -- Headless (e.g. `nvim --headless +UpdateAll +qa`): runs everything synchronously and prints the progress.
 local function remaining_plugins()
   require('lazy.core.plugin').update_state()
@@ -9,6 +10,52 @@ local function remaining_plugins()
   end
   table.sort(remaining)
   return remaining
+end
+
+-- global dotnet tools used by easy-dotnet.nvim, not managed by mason (`dotnet tool update` also installs missing tools)
+local dotnet_update_cmds = {
+  { name = 'EasyDotnet', cmd = { 'dotnet', 'tool', 'update', '--global', 'EasyDotnet' } },
+  -- easy-dotnet knows the feed and version of the roslyn-language-server tool it supports
+  { name = 'roslyn-language-server', cmd = { 'dotnet-easydotnet', 'roslyn', 'update' } },
+}
+
+-- Updates the dotnet tools one after another and reports every result with vim.notify.
+-- Runs synchronously when `sync` is true, otherwise in the background.
+local function update_dotnet_tools(sync)
+  if vim.fn.executable('dotnet') == 0 then
+    vim.notify('dotnet tools skipped: dotnet CLI not found in PATH', vim.log.levels.WARN)
+    return
+  end
+
+  local function update(i)
+    local tool = dotnet_update_cmds[i]
+    if not tool then
+      return
+    end
+    local function on_exit(result)
+      local output = vim.trim((result.stdout or '') .. '\n' .. (result.stderr or '')):gsub('\r', '')
+      if result.code == 0 then
+        local lines = vim.split(output, '\n')
+        vim.notify(('%s: %s'):format(tool.name, vim.trim(lines[#lines])), vim.log.levels.INFO)
+      else
+        vim.notify(('%s update failed:\n%s'):format(tool.name, output), vim.log.levels.ERROR)
+      end
+      update(i + 1)
+    end
+    -- vim.system throws when the executable doesn't exist (e.g. dotnet-easydotnet after a failed install)
+    local ok, err = pcall(function()
+      if sync then
+        on_exit(vim.system(tool.cmd, { text = true }):wait())
+      else
+        vim.system(tool.cmd, { text = true }, vim.schedule_wrap(on_exit))
+      end
+    end)
+    if not ok then
+      vim.notify(('%s update failed: %s'):format(tool.name, err), vim.log.levels.ERROR)
+      update(i + 1)
+    end
+  end
+  update(1)
 end
 
 vim.api.nvim_create_user_command('UpdateAll', function()
@@ -28,6 +75,7 @@ vim.api.nvim_create_user_command('UpdateAll', function()
           vim.notify('Plugin directories not removed:\n' .. table.concat(remaining, '\n'), vim.log.levels.ERROR)
         end
         vim.cmd('MasonToolsUpdate')
+        update_dotnet_tools(false)
         require('nvim-treesitter').update(nil, { summary = true })
       end,
     })
@@ -79,6 +127,9 @@ vim.api.nvim_create_user_command('UpdateAll', function()
   log('Updating mason packages...')
   vim.cmd('MasonToolsUpdateSync')
 
+  log('Updating dotnet tools...')
+  update_dotnet_tools(true)
+
   log('Updating treesitter parsers...')
   local ok, result = pcall(function()
     return require('nvim-treesitter').update():wait(10 * 60 * 1000)
@@ -94,4 +145,4 @@ vim.api.nvim_create_user_command('UpdateAll', function()
   if failed then
     vim.cmd('cquit 1')
   end
-end, { desc = 'Update plugins, mason packages and treesitter parsers' })
+end, { desc = 'Update plugins, mason packages, dotnet tools and treesitter parsers' })

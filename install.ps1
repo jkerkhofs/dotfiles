@@ -6,7 +6,7 @@ $ErrorActionPreference = 'Stop'
 
 # Output helpers: every phase prints a numbered header and every item a status line (OK, SKIP, WARN or FAIL).
 # All results are collected for the summary at the end.
-$phaseCount = 7
+$phaseCount = 8
 $phaseNames = [System.Collections.Generic.List[string]]::new()
 $results = [System.Collections.Generic.List[object]]::new()
 $statusColors = @{ OK = 'Green'; SKIP = 'DarkGray'; WARN = 'Yellow'; FAIL = 'Red' }
@@ -337,6 +337,60 @@ if (Get-Command npm -ErrorAction SilentlyContinue)
 } else
 {
   Write-Result SKIP 'npm' 'npm CLI not found in PATH'
+}
+
+# Installing global dotnet tools
+# tools.json is shared; tools.local.json (same format, git-ignored) holds work- and machine-specific tools.
+# Updating the tools is done by :UpdateAll in Neovim.
+Start-Phase 'dotnet global tools'
+if (Get-Command dotnet -ErrorAction SilentlyContinue)
+{
+  foreach ($toolFile in "$PSScriptRoot\dotnet\tools.json", "$PSScriptRoot\dotnet\tools.local.json")
+  {
+    $fileName = Split-Path $toolFile -Leaf
+    if (!(Test-Path $toolFile))
+    {
+      Write-Result SKIP $fileName 'file not found'
+      continue
+    }
+
+    $tools = @((Get-Content -Raw $toolFile | ConvertFrom-Json).tools.name)
+    if (!$tools)
+    {
+      Write-Result SKIP $fileName 'no tools configured'
+      continue
+    }
+
+    # the first two lines of 'dotnet tool list' are the table header, the first column is the package id
+    $installedIds = @(dotnet tool list -g 2>$null | Select-Object -Skip 2 | ForEach-Object { ($_ -split '\s+')[0] })
+    $toInstall = @($tools | Where-Object { $_ -notin $installedIds })
+    if ($toInstall.Count -eq 0)
+    {
+      Write-Result OK $fileName "all $($tools.Count) tools already installed"
+      continue
+    }
+
+    Write-Host "    Installing $($toInstall.Count) of $($tools.Count) dotnet tools: $($toInstall -join ', ')..."
+    $failedTools = @()
+    foreach ($tool in $toInstall)
+    {
+      dotnet tool install -g $tool
+      if ($LASTEXITCODE -ne 0)
+      {
+        $failedTools += $tool
+      }
+    }
+    if ($failedTools.Count -eq 0)
+    {
+      Write-Result OK $fileName "installed $($toInstall.Count) tools"
+    } else
+    {
+      Write-Result WARN $fileName "dotnet tool install failed for: $($failedTools -join ', ')"
+    }
+  }
+} else
+{
+  Write-Result SKIP 'dotnet' 'dotnet CLI not found in PATH'
 }
 
 Write-Summary

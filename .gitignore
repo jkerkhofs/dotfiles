@@ -4,3 +4,4 @@
 /winget/packages.local.json
 /winget/wup-ignore.local.json
 /npm/packages.local.json
+/dotnet/tools.local.json
