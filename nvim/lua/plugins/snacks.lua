@@ -39,12 +39,20 @@ return {
           },
         },
         explorer = {
+          actions = {
+            -- add a .NET item (class, interface, ...) with easy-dotnet in the selected directory
+            explorer_add_dotnet = function(picker, item)
+              local dir = item and (item.dir and item.file or vim.fs.dirname(item.file)) or picker:cwd()
+              require('easy-dotnet').create_item(dir)
+            end,
+          },
           win = {
             list = {
               keys = {
                 ['<C-x>'] = 'edit_split',
                 ['<C-v>'] = 'edit_vsplit',
                 ['<C-t>'] = 'tab',
+                ['A'] = { 'explorer_add_dotnet', desc = 'Add .NET item' },
               },
             },
           },

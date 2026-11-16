@@ -1,6 +1,11 @@
 -- project files are 'xml' buffers, only these have easy-dotnet support (package completion and mappings)
 local project_files = '*.csproj,*.fsproj,Directory.Build.props,Directory.Packages.props'
 
+-- <leader>n mapping for a :Dotnet command
+local function dotnet(key, args, desc)
+  return { '<leader>n' .. key, '<Cmd>Dotnet ' .. args .. '<CR>', desc = desc }
+end
+
 return {
   -- .NET development: Roslyn LSP (with Roslynator and Razor), test runner, debugger, NuGet and project commands
   'GustavEikaas/easy-dotnet.nvim',
@@ -8,6 +13,34 @@ return {
   ft = { 'cs', 'razor', 'fsharp' },
   event = { 'BufReadPre ' .. project_files, 'BufNewFile ' .. project_files },
   cmd = 'Dotnet',
+  keys = {
+    -- test runner (the buffer mappings in test files are configured in test_runner.mappings)
+    { '<leader>tt', '<Cmd>Dotnet testrunner<CR>', desc = 'Toggle test runner' },
+    { '<leader>ta', '<Cmd>Dotnet test solution<CR>', desc = 'Run all tests in the solution' },
+    -- .NET actions
+    dotnet('b', 'build', 'Build project'),
+    dotnet('B', 'build solution', 'Build solution'),
+    dotnet('q', 'build quickfix', 'Build project, errors in quickfix'),
+    dotnet('r', 'run', 'Run project'),
+    dotnet('p', 'run profile', 'Run project with launch profile'),
+    dotnet('w', 'watch', 'Watch project'),
+    dotnet('t', 'test', 'Test project'),
+    dotnet('R', 'restore', 'Restore'),
+    dotnet('c', 'clean', 'Clean'),
+    dotnet('N', 'new', 'New project from template'),
+    dotnet('a', 'add package', 'Add NuGet package'),
+    dotnet('x', 'remove package', 'Remove NuGet package'),
+    dotnet('o', 'outdated', 'Outdated NuGet packages'),
+    dotnet('s', 'secrets', 'Edit user secrets'),
+    dotnet('d', 'diagnostic', 'Workspace diagnostics'),
+    dotnet('S', 'solution select', 'Select solution'),
+    dotnet('T', 'terminal toggle', 'Toggle terminal'),
+    {
+      '<leader>ni',
+      function() require('easy-dotnet').create_item(vim.fn.expand('%:p:h')) end,
+      desc = 'New item next to the current file',
+    },
+  },
   dependencies = {
     'nvim-lua/plenary.nvim',
     'folke/snacks.nvim',
@@ -46,6 +79,15 @@ return {
       auto_register_dap = true,
       -- the CPU and memory graphs are nvim-dap-ui elements, nvim-dap-view is used instead
       mem_cpu_usage = false,
+    },
+    test_runner = {
+      -- buffer mappings in test files under <leader>t; the defaults override <leader>r (rename) and <leader>d (debug)
+      mappings = {
+        run_test_from_buffer = { lhs = '<leader>tr', desc = 'Run test' },
+        debug_test_from_buffer = { lhs = '<leader>td', desc = 'Debug test' },
+        run_all_tests_from_buffer = { lhs = '<leader>tf', desc = 'Run all tests in file' },
+        peek_stack_trace_from_buffer = { lhs = '<leader>tp', desc = 'Peek test output' },
+      },
     },
   },
   config = function(_, opts)

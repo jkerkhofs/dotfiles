@@ -6,8 +6,11 @@ return {
   opts = {
     spec = {
       { '<leader>c', group = 'Code' },
+      { '<leader>d', group = 'Debug' },
       { '<leader>h', group = 'Git hunks' },
       { '<leader>l', group = 'Lazygit' },
+      { '<leader>n', group = '.NET' },
+      { '<leader>t', group = 'Test' },
       { '<leader>v', group = 'Vim/Neovim config' },
 
       { '<leader>w', desc = 'Save file' },
