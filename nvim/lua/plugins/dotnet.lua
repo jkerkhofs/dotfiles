@@ -41,6 +41,12 @@ return {
         },
       },
     },
+    debugger = {
+      -- registers the netcoredbg adapter and the C# configuration with nvim-dap
+      auto_register_dap = true,
+      -- the CPU and memory graphs are nvim-dap-ui elements, nvim-dap-view is used instead
+      mem_cpu_usage = false,
+    },
   },
   config = function(_, opts)
     vim.api.nvim_create_autocmd('LspAttach', {
